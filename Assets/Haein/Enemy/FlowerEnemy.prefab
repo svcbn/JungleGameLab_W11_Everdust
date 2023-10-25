@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9083051238599658736}
   - component: {fileID: 9083051238599658737}
+  - component: {fileID: 1321242931307758688}
   m_Layer: 8
   m_Name: EnemySpriteRenderer
   m_TagString: Untagged
@@ -84,6 +85,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1321242931307758688
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9083051238599658739}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0cc9d8fda3d207546a3fb9c5c6ce8582, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &9083051239014995821
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,10 +253,10 @@ GameObject:
   - component: {fileID: 9083051239377326274}
   - component: {fileID: 9083051239377326275}
   - component: {fileID: 3760139198721885507}
-  - component: {fileID: 4183468501968815721}
   - component: {fileID: 5015153470781628271}
+  - component: {fileID: 501871726944074957}
   m_Layer: 8
-  m_Name: Enemy
+  m_Name: FlowerEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -287,20 +309,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.75, y: 1}
   m_Direction: 0
---- !u!114 &4183468501968815721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9083051239377326277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cabc1f9867441e4ab5ef926478cb3ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHp: 100
-  weaknessCircle: {fileID: 9083051239014995821}
 --- !u!50 &5015153470781628271
 Rigidbody2D:
   serializedVersion: 4
@@ -322,3 +330,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &501871726944074957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9083051239377326277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03112dad2956d5542b47871b6c0c67b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 100
+  weaknessCircle: {fileID: 9083051239014995821}

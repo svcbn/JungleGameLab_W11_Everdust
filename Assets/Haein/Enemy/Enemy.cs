@@ -1,23 +1,23 @@
 using UnityEngine;
 
-public class EnemyHP : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
     public int maxHp = 100;
     public GameObject weaknessCircle;
 
-    private int _curHp;
-    private float _hitDelay = 0f;
+    protected int _curHp;
+    protected float _hitDelay = 0f;
 
-    private HandleWeaknessCircle handleWeaknessCircle;
+    protected HandleWeaknessCircle _handleWeaknessCircle;
 
-    private void Awake()
+    protected virtual void Awake()
     {
-        handleWeaknessCircle = GetComponent<HandleWeaknessCircle>();
+        _handleWeaknessCircle = GetComponent<HandleWeaknessCircle>();
 
         _curHp = maxHp;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (_hitDelay > 0f)
         {
@@ -26,7 +26,7 @@ public class EnemyHP : MonoBehaviour
     }
     
     /// <summary>
-    /// 적이 데미지를 입는다. 플레이어 쪽에서 호출할 것.
+    ///이 적이 데미지를 입는다. 플레이어 쪽에서 호출할 것.
     /// </summary>
     /// <param name="hitWeakness"></param>
     public void TakeHit(bool hitWeakness = false)

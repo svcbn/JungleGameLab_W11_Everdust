@@ -61,7 +61,6 @@ public class HandleWeaponClick : MonoBehaviour
         Vector2 size = _hitBox.size;
         float angle = _hitBox.transform.rotation.eulerAngles.z;
         Collider2D[] allEnemyCols = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("Enemy"));
-        Debug.Log(allEnemyCols.Length);
         //콜라이더 중 약점 있으면 약점 타격 실행. 행렬에 동일 몬스터 전부 삭제.
         for (int i = 0; i < allEnemyCols.Length; i++)
         {
@@ -71,7 +70,7 @@ public class HandleWeaponClick : MonoBehaviour
                 {
                     //TODO: 약점 방향 체크 (아니면 컨티뉴)
                     //약점 데미지 주기
-                    EnemyHP enemy = allEnemyCols[i].transform.root.GetComponent<EnemyHP>();
+                    Enemy enemy = allEnemyCols[i].transform.root.GetComponent<Enemy>();
                     enemy.TakeHit(true);
                     //행렬에 동일 몬스터 전부 삭제
                     for (int j = i; j < allEnemyCols.Length; j++)
@@ -90,12 +89,12 @@ public class HandleWeaponClick : MonoBehaviour
             if (allEnemyCols[i] != null)
             {
                 //일반 데미지 주기
-                EnemyHP enemy = allEnemyCols[i].transform.root.GetComponent<EnemyHP>();
+                Enemy enemy = allEnemyCols[i].transform.root.GetComponent<Enemy>();
                 enemy.TakeHit();
                 //행렬에 동일 몬스터 전부 삭제
                 for (int j = i; j < allEnemyCols.Length; j++)
                 {
-                    if (allEnemyCols[j].transform.root.GetComponent<EnemyHP>() == enemy)
+                    if (allEnemyCols[j].transform.root.GetComponent<Enemy>() == enemy)
                     {
                         allEnemyCols[j] = null;
                     }
