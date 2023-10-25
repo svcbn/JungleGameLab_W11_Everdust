@@ -90,7 +90,11 @@ public class Laser : MonoBehaviour
         }   
     }
 
-    public bool IsHitRay(GameObject obj)
+    public static bool IsHitRay(Laser laser, GameObject obj)
+    {
+        return laser.IsLaserHitRay(obj);
+    }
+    public bool IsLaserHitRay(GameObject obj)
     {
         if(!isRayOn) return false;
         RaycastHit2D[] hit = Physics2D.RaycastAll(rayStart, rayDirection, rayDistance);
