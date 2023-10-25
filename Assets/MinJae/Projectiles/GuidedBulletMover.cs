@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Myd.Platform;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Video;
@@ -26,10 +27,10 @@ public class GuidedBulletMover : Mover
 
     public float refindRadius = 20f;
 
-    public Character owner;
+    public GameObject owner;
     public int damage;
 
-    public void Init(Character _owner, int _damage)
+    public void Init(GameObject _owner, int _damage)
     {
         owner = _owner;
         damage = _damage;
@@ -81,8 +82,7 @@ public class GuidedBulletMover : Mover
         foreach (var col in t)
         {
             Debug.Log($"GuidedBulletMover: {col.gameObject.name}");
-            //if (col.gameObject != owner.gameObject) // Owner is the self gameObject
-            if (col.GetComponent<Character>() != owner)
+            if (col.gameObject != owner) // Owner is the self gameObject
             {
                 
                 validTargets.Add(col);

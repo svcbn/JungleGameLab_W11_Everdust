@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Myd.Platform;
 using UnityEngine;
 
 
@@ -9,9 +10,7 @@ public class MagicMissile : MonoBehaviour
 	private MagicMissileData _data;
 	float AfterDelay = 1f;
 
-	Character Owner;
-
-	public Coroutine UsingSkillCo { get; protected set; }
+	GameObject Owner;
 
 
 	private void LoadDataSO()
@@ -35,7 +34,7 @@ public class MagicMissile : MonoBehaviour
 			LoadDataSO();
 		}
 
-		Owner = GetComponent<Character>();
+		Owner = gameObject; //GetComponent<GameObject>()
 		if(Owner == null)
 		{
 			Debug.LogWarning(" Owner is null ");
@@ -48,7 +47,7 @@ public class MagicMissile : MonoBehaviour
 
 	public void Execute()
 	{
-		UsingSkillCo = Owner.StartCoroutine(ExecuteImplCo());
+		StartCoroutine(ExecuteImplCo());
 
 	}
 
@@ -106,9 +105,10 @@ public class MagicMissile : MonoBehaviour
 	
 	public bool CheckCanUse()
 	{
-		bool isEnemyInRange = Vector2.Distance(Owner.Target.transform.position, Owner.transform.position) <= _data.range;
+		//bool isEnemyInRange = Vector2.Distance(Owner.Target.transform.position, Owner.transform.position) <= _data.range;
 
-		return isEnemyInRange;
+		//return isEnemyInRange;
+		return true;
 	}
 
 	// private void OnDrawGizmos() 

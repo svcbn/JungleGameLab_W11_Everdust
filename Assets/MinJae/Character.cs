@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Character  : MonoBehaviour
 {
-    public int playerIndex;
+    public int characterIndex;
 
     public Character Target;
 

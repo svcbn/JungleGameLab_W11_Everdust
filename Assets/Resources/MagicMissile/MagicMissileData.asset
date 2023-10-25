@@ -26,5 +26,5 @@ MonoBehaviour:
   duration: 1
   missileCount: 1
   range: 5
-  bezierDelta: 20
-  bezierDelta2: 20
+  bezierDelta: 10
+  bezierDelta2: 10

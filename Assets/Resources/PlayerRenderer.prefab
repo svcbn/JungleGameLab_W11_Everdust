@@ -5201,7 +5201,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1196128337
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -10013,7 +10013,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1196128337
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -10231,7 +10231,7 @@ GameObject:
   - component: {fileID: 4509220662286137549}
   - component: {fileID: 4509220662286137548}
   - component: {fileID: 4509220662286137586}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

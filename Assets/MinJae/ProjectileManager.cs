@@ -6,6 +6,10 @@ using UnityEngine;
 public class ProjectileManager : MonoBehaviour
 {
     Player player;
+
+    public GameObject Enemy;
+    
+
     public GameObject magicCirclePrefab;
 
     List<Vector3> offSets = new List<Vector3>{
@@ -32,11 +36,18 @@ public class ProjectileManager : MonoBehaviour
 
     void Update()
     {
-        if( Input.GetKeyDown(KeyCode.Q) )
+        if( Input.GetKeyDown(KeyCode.Q) ) // for test
         {
             Debug.Log("Q");
 
             DisplayProjectile();
+        }
+
+        if( Input.GetKeyDown(KeyCode.R) ) // for test
+        {
+            Debug.Log("Down Key R ");
+            Enemy.GetComponent<MagicMissile>().Init();
+            Enemy.GetComponent<MagicMissile>().Execute();
         }
 
     }
