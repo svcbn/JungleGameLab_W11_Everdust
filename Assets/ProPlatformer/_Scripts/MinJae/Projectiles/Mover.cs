@@ -55,7 +55,7 @@ public class Mover : MonoBehaviour
 
 
 
-    public void Move()
+    private void Move()
     {
         if (body == null)
         {

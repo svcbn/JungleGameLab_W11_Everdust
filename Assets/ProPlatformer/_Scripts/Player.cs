@@ -28,7 +28,7 @@ namespace Myd.Platform
         //플레이어 엔터티 로드
         public void Reload(Bounds bounds, Vector2 startPosition)
         {
-            this.playerRenderer = Object.Instantiate(Resources.Load<PlayerRenderer>("PlayerRenderer"));
+            this.playerRenderer = Object.Instantiate(Resources.Load<PlayerRenderer>("PlayerRenderer MJ"));
             //this.playerRenderer = AssetHelper.Create<PlayerRenderer>("Assets/ProPlatformer/_Prefabs/PlayerRenderer.prefab");
             this.playerRenderer.Reload();
             //초기화
@@ -78,6 +78,12 @@ namespace Myd.Platform
                 return Vector3.zero;
             }
             return playerController.GetCameraPosition();
+        }
+
+        public Vector3 GetPlayerPosition()
+        {
+            return playerRenderer.transform.position;
+
         }
     }
 

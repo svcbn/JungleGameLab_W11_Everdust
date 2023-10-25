@@ -112,23 +112,31 @@ public class GuidedBulletMover : Mover
         //Debug.Log(timer + ", (" + direction.x + ", " + direction.y + ")");
         //direction = Vector3.Slerp(direction.normalized, (target.position - transform.position).normalized, slerpCorrection);
 
-        float distance = GetDistance(target);
-        if( distance < 6f)
-        {
-            SetMovePhase(MovePhase.phase1);
-            
-        }
-        
+        // float distance = GetDistance(target);
+        // if( distance < 6f){
+        //     SetMovePhase(MovePhase.phase1);
+        // }
     }
     
-    public override void MovePhase1() // 멈추기까지
+    public override void MovePhase1() // 부웅 커지는 파트
     {
-        //Move();
+        base.MovePhase1();
+
+        transform.localScale += new Vector3(0.05f, 0.05f, 0.05f);
+
+        
+        if( transform.localScale.x > 2.5f )
+        {
+            SetMovePhase(MovePhase.phase2);
+        }
     }
 
-    public override void MovePhase2() // 부웅 커지는 파트
+    public override void MovePhase2() // 유저에게 돌격
     {
         base.MovePhase2();
+
+
+
     }
 
 

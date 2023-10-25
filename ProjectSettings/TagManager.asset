@@ -47,6 +47,9 @@ TagManager:
   - name: Player
     uniqueID: 2319277539
     locked: 0
+  - name: Projectile
+    uniqueID: 4083716251
+    locked: 0
   - name: EffectForgeground
     uniqueID: 3098838959
     locked: 0

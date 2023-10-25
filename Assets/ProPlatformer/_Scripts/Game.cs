@@ -4,6 +4,7 @@ using Myd.Common;
 using Myd.Platform.Core;
 using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace Myd.Platform
 {
@@ -77,6 +78,48 @@ namespace Myd.Platform
                     gameCamera.SetCameraPosition(player.GetCameraPosition());
                 }
             }
+
+
+            if( Input.GetKeyDown(KeyCode.Q) )
+            {
+                Debug.Log("Q");
+
+                DisplayCircle();
+            }
+
+            if( Input.GetKeyDown(KeyCode.E) )
+            {
+                Debug.Log("E");
+            }
+        }
+
+        public GameObject magicCirclePrefab;
+
+        List<Vector3> offSets = new List<Vector3>{
+                                    new Vector3(3,3,0),
+                                    new Vector3(3,-3,0),
+                                    new Vector3(-3,-3,0),
+                                    new Vector3(-3,3,0) };
+        List<GameObject> magicCircles = new List<GameObject>();
+
+        void DisplayCircle()
+        {
+            StartCoroutine(ShowProjectile());
+        }
+
+        IEnumerator ShowProjectile()
+        {
+            Vector3 curPlayerPos = player.GetPlayerPosition();
+
+            if( magicCircles.Count < 4 ){
+                GameObject magicCircle = Instantiate(magicCirclePrefab);
+                magicCircle.GetComponent<MagicCircle>().Init(player, offSets[magicCircles.Count]) ;
+                magicCircles.Add(magicCircle);
+            }
+
+            
+            Debug.Log($"Circle Count : {magicCircles.Count}");
+            yield return new WaitForSeconds(0.5f);
         }
 
         #region 冻帧
