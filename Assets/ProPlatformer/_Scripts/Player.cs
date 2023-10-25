@@ -28,7 +28,8 @@ namespace Myd.Platform
         //플레이어 엔터티 로드
         public void Reload(Bounds bounds, Vector2 startPosition)
         {
-            this.playerRenderer = Object.Instantiate(Resources.Load<PlayerRenderer>("PlayerRenderer MJ"));
+            this.playerRenderer = Object.Instantiate(Resources.Load<PlayerRenderer>("PlayerRenderer"));
+            PlayerManager.Instance.player = playerRenderer.transform.gameObject;
             //this.playerRenderer = AssetHelper.Create<PlayerRenderer>("Assets/ProPlatformer/_Prefabs/PlayerRenderer.prefab");
             this.playerRenderer.Reload();
             //초기화

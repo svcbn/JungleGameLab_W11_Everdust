@@ -23,8 +23,8 @@ MonoBehaviour:
   MaxFall: -16
   FastMaxFall: -24
   FastMaxAccel: 30
-  JumpSpeed: 10.5
-  VarJumpTime: 0.2
+  JumpSpeed: 28
+  VarJumpTime: 0
   JumpHBoost: 4
   JumpGraceTime: 0.1
   UpwardCornerCorrection: 4
@@ -32,7 +32,7 @@ MonoBehaviour:
   EndDashSpeed: 16
   EndDashUpMult: 0.75
   DashTime: 0.15
-  DashCooldown: 0.2
+  DashCooldown: 1.5
   DashRefillCooldown: 0.1
   DashCornerCorrection: 4
   MaxDashes: 1
