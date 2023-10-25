@@ -22,6 +22,7 @@ public class Laser : MonoBehaviour
 
     public bool isGroundBlocking = false; // 땅에 막히는지
 
+    bool isRayOn = false; // 레이저 켜졌는지
     Vector3 rayStart;
     Vector3 rayEnd;
 
@@ -35,7 +36,7 @@ public class Laser : MonoBehaviour
         laserSize = laserBeforeSize;
         _lineRenderer.SetWidth(laserSize,laserSize);
 
-        setRayPosition();
+        SetRayPosition();
     }
 
     private void FixedUpdate()
@@ -45,16 +46,17 @@ public class Laser : MonoBehaviour
             laserSize += animVelocity;
             laserSize = laserAfterSize < laserSize ? laserAfterSize : laserSize;
             _lineRenderer.SetWidth(laserSize,laserSize);
+            isRayOn = true;
             if(time >= delayTime + laserTime){
                 Destroy(gameObject);
             }
         }
 
-        setRayPosition();
+        SetRayPosition();
         if(isGroundBlocking)
-            hitRay();
+            HitRay();
     }
-    private void hitRay()
+    private void HitRay()
     {
         RaycastHit2D[] hit = Physics2D.RaycastAll(rayStart, rayDirection, rayDistance);
         Vector2[] points = _edgeCollider.points;
@@ -88,7 +90,24 @@ public class Laser : MonoBehaviour
         }   
     }
 
-    void setRayPosition(){
+    public bool IsHitRay(GameObject obj)
+    {
+        if(!isRayOn) return false;
+        RaycastHit2D[] hit = Physics2D.RaycastAll(rayStart, rayDirection, rayDistance);
+        if (hit.Length != 0)
+        {
+            foreach (var item in hit)
+            {
+                if (item.collider.gameObject == obj)
+                {
+                    return true;
+                }
+            }
+        }   
+        return false;
+    }
+
+    void SetRayPosition(){
         rayStart = transform.position + startOffset;
         rayEnd = rayStart + rayDistance * rayDirection;
         _lineRenderer.SetPosition(0, rayStart);
