@@ -46,6 +46,13 @@ public class ProjectileManager : MonoBehaviour
         if( Input.GetKeyDown(KeyCode.R) ) // for test
         {
             Debug.Log("Down Key R ");
+
+            if(Enemy == null)
+            {
+                Debug.Log(" Enemy is null ");
+                return;
+            }
+
             Enemy.GetComponent<MagicMissile>().Init();
             Enemy.GetComponent<MagicMissile>().Execute();
         }
@@ -59,6 +66,13 @@ public class ProjectileManager : MonoBehaviour
 
         activeProjectileCount++;
         allProjCnt++;
+
+
+        if(magicCirclePrefab == null)
+        {
+            Debug.Log(" magicCirclePrefab is null ");
+            return;
+        }
 
         GameObject magicCircle = Instantiate(magicCirclePrefab);
 

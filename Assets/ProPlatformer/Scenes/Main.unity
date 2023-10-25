@@ -728,6 +728,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProjectileManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3238967961553690807, guid: bf1e4a41c4ffa934c8b563f7b6ded166, type: 3}
+      propertyPath: Enemy
+      value: 
+      objectReference: {fileID: 524725848}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf1e4a41c4ffa934c8b563f7b6ded166, type: 3}
 --- !u!4 &379358479 stripped
@@ -933,6 +937,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &524725848 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9083051239377326277, guid: 04577702e38d71c4b9e9eb0b01c5407a, type: 3}
+  m_PrefabInstance: {fileID: 9083051238964627638}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &555466295
 GameObject:
   m_ObjectHideFlags: 0
