@@ -1,0 +1,107 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using Unity.Mathematics;
+using UnityEngine;
+
+public class Laser : MonoBehaviour
+{
+     private LineRenderer _lineRenderer;
+     private EdgeCollider2D _edgeCollider;
+
+    [Header("Ray")]
+    [SerializeField] private float rayDistance; // 레이저 최대 길이
+    [SerializeField] private Vector3 rayDirection; // 레이저 방향
+    [SerializeField] private float laserBeforeSize = 0.5f;
+    [SerializeField] private float laserAfterSize = 2f;
+    private float laserSize;
+    private Vector3 startOffset = Vector3.zero;
+    [SerializeField] private float delayTime; // 발사 전 딜레이 시간
+    [SerializeField] private float laserTime; // 레이저 발사 델타 시간
+    [SerializeField] private float animVelocity; // 레이저 커지는 속도
+
+    public bool isGroundBlocking = false; // 땅에 막히는지
+
+    Vector3 rayStart;
+    Vector3 rayEnd;
+
+    float time = 0;
+
+    private void Start()
+    {
+        _lineRenderer = GetComponent<LineRenderer>();
+        _edgeCollider = GetComponent<EdgeCollider2D>();
+
+        laserSize = laserBeforeSize;
+        _lineRenderer.SetWidth(laserSize,laserSize);
+
+        setRayPosition();
+    }
+
+    private void FixedUpdate()
+    {
+        time += Time.deltaTime;
+        if(time >= delayTime){
+            laserSize += animVelocity;
+            laserSize = laserAfterSize < laserSize ? laserAfterSize : laserSize;
+            _lineRenderer.SetWidth(laserSize,laserSize);
+            if(time >= delayTime + laserTime){
+                Destroy(gameObject);
+            }
+        }
+
+        setRayPosition();
+        if(isGroundBlocking)
+            hitRay();
+    }
+    private void hitRay()
+    {
+        RaycastHit2D[] hit = Physics2D.RaycastAll(rayStart, rayDirection, rayDistance);
+        Vector2[] points = _edgeCollider.points;
+        if (hit.Length != 0)
+        {
+            foreach (var item in hit)
+            {
+                if (item.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+                {
+                    if (rayDirection.y == 0){
+                        float colliderSizeX = item.point.x - rayStart.x;
+                        rayEnd.x = item.point.x;
+
+                        _lineRenderer.SetPosition(1, rayEnd);
+                        points[1].x = colliderSizeX - 0.5f;
+                        points[1].y = points[0].y;
+                        _edgeCollider.points = points;
+                    }
+                    else{
+                        float colliderSizeY = item.point.y - transform.position.y + startOffset.y;
+                        rayEnd.y = item.point.y;
+
+                        _lineRenderer.SetPosition(1, rayEnd);
+                        points[1].y = colliderSizeY - 0.5f;
+                        points[1].x = points[0].x;
+                        _edgeCollider.points = points;
+                    }
+                    return;
+                }
+            }
+        }   
+    }
+
+    void setRayPosition(){
+        rayStart = transform.position + startOffset;
+        rayEnd = rayStart + rayDistance * rayDirection;
+        _lineRenderer.SetPosition(0, rayStart);
+        _lineRenderer.SetPosition(1, rayEnd);
+        
+        Vector2[] points = _edgeCollider.points;
+        if (rayDirection.y == 0){
+            points[1].x = rayDistance;
+        }
+        else{
+            points[1].y = rayDistance;
+        }
+        _edgeCollider.points = points;
+
+    }
+}
