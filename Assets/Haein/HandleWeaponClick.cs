@@ -7,12 +7,14 @@ public class HandleWeaponClick : MonoBehaviour
     public bool canPoke = true;
     public float pokeCooltime = 0.1f;
     [Tooltip("찌르기 시 몇 초간 콜라이더가 켜져 있어야 하는가?")] public float hitboxDuration;
+    [SerializeField] private ParticleSystem _attackVfx;
 
     private float _pokeTimer = 0f;
     private Animator _animator; // Animator 컴포넌트를 참조하기 위한 변수
     private BoxCollider2D _hitBox;
     private Transform _spearRoot;
-    private Coroutine _tickSpearHitboxCR;
+    private Vector2 _attackVfxOffset;
+    private Quaternion _attackVfxRotation;
 
     void Awake()
     {
@@ -20,6 +22,8 @@ public class HandleWeaponClick : MonoBehaviour
         _animator = GetComponent<Animator>();
         _hitBox = transform.parent.GetComponent<BoxCollider2D>();
         _spearRoot = transform.parent;
+        _attackVfxOffset = _attackVfx.transform.localPosition;
+        _attackVfxRotation = _attackVfx.transform.localRotation;
     }
 
     void Update()
@@ -30,8 +34,14 @@ public class HandleWeaponClick : MonoBehaviour
             _pokeTimer = pokeCooltime;
             canPoke = false;
 
-            //TODO: 찌르기 공격 이펙트
+            //찌르기 공격 이펙트
+            if (_attackVfx.transform.parent != null) { _attackVfx.transform.SetParent(null); }
 
+            _attackVfx.transform.position = transform.parent.TransformPoint(_attackVfxOffset);
+            _attackVfx.transform.localRotation = transform.parent.rotation * _attackVfxRotation;
+            
+            _attackVfx.Clear();
+            _attackVfx.Play();
             //공격 범위내 적 있는지 체크
             SpearHitCheck();
         }
