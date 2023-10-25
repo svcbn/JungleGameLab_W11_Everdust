@@ -84,7 +84,7 @@ namespace Myd.Platform
             {
                 Debug.Log("Q");
 
-                DisplayCircle();
+                StartCoroutine(ShowProjectile());
             }
 
             if( Input.GetKeyDown(KeyCode.E) )
@@ -102,23 +102,15 @@ namespace Myd.Platform
                                     new Vector3(-3,3,0) };
         List<GameObject> magicCircles = new List<GameObject>();
 
-        void DisplayCircle()
-        {
-            StartCoroutine(ShowProjectile());
-        }
-
         IEnumerator ShowProjectile()
         {
-            Vector3 curPlayerPos = player.GetPlayerPosition();
-
             if( magicCircles.Count < 4 ){
                 GameObject magicCircle = Instantiate(magicCirclePrefab);
                 magicCircle.GetComponent<MagicCircle>().Init(player, offSets[magicCircles.Count]) ;
                 magicCircles.Add(magicCircle);
+                Debug.Log($"Circle Count : {magicCircles.Count}");
             }
-
             
-            Debug.Log($"Circle Count : {magicCircles.Count}");
             yield return new WaitForSeconds(0.5f);
         }
 
