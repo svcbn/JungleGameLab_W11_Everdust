@@ -3,47 +3,45 @@ using UnityEngine;
 public class EnemyHP : MonoBehaviour
 {
     public int maxHp = 100;
-    private int curHp;
-    private float hitDelay = 0f;
     public GameObject weaknessCircle;
 
-    private void Start()
+    private int _curHp;
+    private float _hitDelay = 0f;
+
+    private HandleWeaknessCircle handleWeaknessCircle;
+
+    private void Awake()
     {
-        curHp = maxHp;
+        handleWeaknessCircle = GetComponent<HandleWeaknessCircle>();
+
+        _curHp = maxHp;
     }
 
     private void Update()
     {
-        if (hitDelay > 0f)
+        if (_hitDelay > 0f)
         {
-            hitDelay -= Time.deltaTime;
+            _hitDelay -= Time.deltaTime;
         }
     }
     
-    private void OnTriggerEnter2D(Collider2D other)
+    /// <summary>
+    /// 적이 데미지를 입는다. 플레이어 쪽에서 호출할 것.
+    /// </summary>
+    /// <param name="hitWeakness"></param>
+    public void TakeHit(bool hitWeakness = false)
     {
-        if (other.gameObject.layer == LayerMask.GetMask("Weapon"))
-        {
-            if (PlayerManager.Instance.player != null && hitDelay <= 0f)
-            {
-                if (PlayerManager.Instance.player.GetComponent<HandleWeaponClick>().isPoke)
-                {
-                    if (GetComponent<HandleWeaknessCircle>().IsWeaknessAttacked() && other.IsTouching(weaknessCircle.GetComponent<Collider2D>()))
-                    {
-                        Hit(other.GetComponent<WeaponStats>().damage * other.GetComponent<WeaponStats>().criticalMultiplier);
-                        return;
-                    }
-                    Hit(other.GetComponent<WeaponStats>().damage);
-                }
-            }
-        }
+        int dmg = hitWeakness ? WeaponStats.damage * WeaponStats.criticalMultiplier : WeaponStats.damage;
+
+        Hit(dmg);
     }
 
     private void Hit(int _damage)
     {
-        hitDelay = 0.3f;
-        curHp -= _damage;
-        if (curHp <= 0)
+        _hitDelay = 0.3f;
+        _curHp -= _damage;
+        print($"{name} HP: {_curHp} (-{_damage})");
+        if (_curHp <= 0)
         {
             Destroy(gameObject);
         }
