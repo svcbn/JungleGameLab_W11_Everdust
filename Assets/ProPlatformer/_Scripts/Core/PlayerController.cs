@@ -56,6 +56,9 @@ namespace Myd.Platform
         //音效控制器
         public ISoundControl SoundControl { get; private set; }
         public ICamera camera { get; private set; }
+
+        public bool CanHit { get; set; }
+
         public PlayerController(ISpriteControl spriteControl, IEffectControl effectControl)
         {
             this.SpriteControl = spriteControl;
@@ -238,6 +241,16 @@ namespace Myd.Platform
 
             //状态机更新逻辑
             stateMachine.Update(deltaTime);
+
+            if (stateMachine.State == (int)EActionState.Dash)
+            {
+                CanHit = false;
+            }
+            else
+            {
+                CanHit = true;
+            }
+
             //更新位置
             UpdateCollideX(Speed.x * deltaTime);
             UpdateCollideY(Speed.y * deltaTime);
@@ -245,6 +258,8 @@ namespace Myd.Platform
             UpdateHair(deltaTime);
 
             UpdateCamera(deltaTime);
+
+
         }
 
         //处理跳跃,跳跃时候，会给跳跃前方一个额外的速度
@@ -486,6 +501,14 @@ namespace Myd.Platform
                 return !this.wasOnGround && this.OnGround;
             }
         }
+
+        public void Hit()
+        {
+            if (!CanHit) return;
+            // 여기서 피격
+            Debug.Log("Hit");
+        }
     }
+
 
 }
