@@ -33,6 +33,8 @@ namespace Myd.Platform
 
         EGameState gameState;
 
+        ProjectileManager projectileManager;
+
         void Awake()
         {
             Instance = this;
@@ -60,6 +62,9 @@ namespace Myd.Platform
             player.Reload(level.Bounds, level.StartPosition);
             this.gameState = EGameState.Play;
 
+            projectileManager = GetComponentInChildren<ProjectileManager>();
+            projectileManager.Init(player);
+
 
             yield return null;
         }
@@ -79,40 +84,9 @@ namespace Myd.Platform
                 }
             }
 
-
-            if( Input.GetKeyDown(KeyCode.Q) )
-            {
-                Debug.Log("Q");
-
-                StartCoroutine(ShowProjectile());
-            }
-
-            if( Input.GetKeyDown(KeyCode.E) )
-            {
-                Debug.Log("E");
-            }
         }
 
-        public GameObject magicCirclePrefab;
 
-        List<Vector3> offSets = new List<Vector3>{
-                                    new Vector3(3,3,0),
-                                    new Vector3(3,-3,0),
-                                    new Vector3(-3,-3,0),
-                                    new Vector3(-3,3,0) };
-        List<GameObject> magicCircles = new List<GameObject>();
-
-        IEnumerator ShowProjectile()
-        {
-            if( magicCircles.Count < 4 ){
-                GameObject magicCircle = Instantiate(magicCirclePrefab);
-                magicCircle.GetComponent<MagicCircle>().Init(player, offSets[magicCircles.Count]) ;
-                magicCircles.Add(magicCircle);
-                Debug.Log($"Circle Count : {magicCircles.Count}");
-            }
-            
-            yield return new WaitForSeconds(0.5f);
-        }
 
         #region 冻帧
         private float freezeTime;

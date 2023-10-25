@@ -7,11 +7,7 @@ using UnityEngine.AI;
 
 public class MagicCircle : MonoBehaviour
 {
-    private Vector2 delta1;
-    private Vector2 delta2;
-    [HideInInspector]public float bezierDelta  = 0f; // MagicMissileData 에서 받아옴
-    [HideInInspector]public float bezierDelta2 = 0f; // MagicMissileData 에서 받아옴
-
+    ProjectileManager projM;
 
 
     Player player;
@@ -37,8 +33,9 @@ public class MagicCircle : MonoBehaviour
         
     }
 
-    public void Init(Player player_, Vector3 posOffset_)
+    public void Init(ProjectileManager projM_, Player player_, Vector3 posOffset_)
     {
+        projM     = projM_;
         player    = player_;
         posOffset = posOffset_;
 
@@ -82,10 +79,8 @@ public class MagicCircle : MonoBehaviour
             
 
         }
-
-
-        
     }
+
     void MoveShoot(){
 
         float moveSpeed = 3f;
@@ -94,7 +89,7 @@ public class MagicCircle : MonoBehaviour
 
         if(transform.position == targetPos)
         {
-            Destroy(gameObject);
+            projM.EraseProjectile(gameObject);
         }
     }
 
