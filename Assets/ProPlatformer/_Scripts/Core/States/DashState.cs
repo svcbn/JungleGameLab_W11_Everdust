@@ -101,8 +101,10 @@ namespace Myd.Platform
         public override IEnumerator Coroutine()
         {
             yield return null;
-            //
-            var dir = ctx.LastAim;
+
+            //var dir = ctx.LastAim;
+            Vector2 mousePointVec = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+            var dir = (mousePointVec - ctx.Position).normalized;
             var newSpeed = dir * Constants.DashSpeed;
             //惯性
             if (Math.Sign(beforeDashSpeed.x) == Math.Sign(newSpeed.x) && Math.Abs(beforeDashSpeed.x) > Math.Abs(newSpeed.x))
