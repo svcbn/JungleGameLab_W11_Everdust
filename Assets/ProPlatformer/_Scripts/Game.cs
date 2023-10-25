@@ -9,10 +9,10 @@ namespace Myd.Platform
 {
     enum EGameState
     {
-        Load,   //加载中
-        Play,   //游戏中
-        Pause,  //游戏暂停
-        Fail,   //游戏失败
+        Load,
+        Play,
+        Pause,
+        Fail,
     }
     public class Game : MonoBehaviour, IGameContext
     {
@@ -20,12 +20,12 @@ namespace Myd.Platform
 
         [SerializeField]
         public Level level;
-        //场景特效管理器
+        //장면 효과 관리자
         [SerializeField]
         private SceneEffectManager sceneEffectManager;
         [SerializeField]
         private SceneCamera gameCamera;
-        //玩家
+        //플레이어
         Player player;
 
         Texture2D cursorTexture;
@@ -55,7 +55,7 @@ namespace Myd.Platform
         {
             yield return null;
 
-            //加载玩家
+            //플레이어 로드
             player.Reload(level.Bounds, level.StartPosition);
             this.gameState = EGameState.Play;
 
@@ -71,9 +71,9 @@ namespace Myd.Platform
                 if (this.gameState == EGameState.Play)
                 {
                     GameInput.Update(deltaTime);
-                    //更新玩家逻辑数据
+                    //플레이어 로직 데이터 업데이트
                     player.Update(deltaTime);
-                    //更新摄像机
+                    //카메라 업데이트
                     gameCamera.SetCameraPosition(player.GetCameraPosition());
                 }
             }
@@ -82,7 +82,7 @@ namespace Myd.Platform
         #region 冻帧
         private float freezeTime;
 
-        //更新顿帧数据，如果不顿帧，返回true
+        // 프레임 데이터를 업데이트하고, 프레임이 없으면 true를 반환합니다.
         public bool UpdateTime(float deltaTime)
         {
             if (freezeTime > 0f)
@@ -97,7 +97,7 @@ namespace Myd.Platform
             return true;
         }
 
-        //冻帧
+        //정지화면
         public void Freeze(float freezeTime)
         {
             this.freezeTime = Mathf.Max(this.freezeTime, freezeTime);

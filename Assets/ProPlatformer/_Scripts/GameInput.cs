@@ -81,13 +81,13 @@ namespace Myd.Platform
         public static VirtualJoystick Aim = new VirtualJoystick();
         public static Vector2 LastAim;
 
-        //根据当前朝向,决定移动方向.
+        //현재 방향을 기준으로 이동 방향을 결정합니다.
         public static Vector2 GetAimVector(Facings defaultFacing = Facings.Right)
         {
             Vector2 value = GameInput.Aim.Value;
-            //TODO 考虑辅助模式
+            //TODO 지원 모드 고려
 
-            //TODO 考虑摇杆
+            //TODO 조이스틱을 고려해보세요
             if (value == Vector2.zero)
             {
                 GameInput.LastAim = Vector2.right * ((int)defaultFacing);

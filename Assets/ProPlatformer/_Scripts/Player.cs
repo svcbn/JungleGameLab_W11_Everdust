@@ -7,11 +7,11 @@ using UnityEngine;
 
 namespace Myd.Platform
 {
-    /// <summary>
-    /// 玩家类：包含
-    /// 1、玩家显示器
-    /// 2、玩家控制器（核心控制器）
-    /// 并允许两者在内部进行交互
+    /// <요약>
+    /// 플레이어 클래스: 포함
+    /// 1. 플레이어 디스플레이
+    /// 2. 플레이어 컨트롤러(코어 컨트롤러)
+    /// 두 사람이 내부적으로 상호 작용하도록 허용합니다.
     /// </summary>
     public class Player
     {
@@ -25,13 +25,13 @@ namespace Myd.Platform
             this.gameContext = gameContext;
         }
 
-        //加载玩家实体
+        //플레이어 엔터티 로드
         public void Reload(Bounds bounds, Vector2 startPosition)
         {
             this.playerRenderer = Object.Instantiate(Resources.Load<PlayerRenderer>("PlayerRenderer"));
             //this.playerRenderer = AssetHelper.Create<PlayerRenderer>("Assets/ProPlatformer/_Prefabs/PlayerRenderer.prefab");
             this.playerRenderer.Reload();
-            //初始化
+            //초기화
             this.playerController = new PlayerController(playerRenderer, gameContext.EffectControl);
             this.playerController.Init(bounds, startPosition);
 
