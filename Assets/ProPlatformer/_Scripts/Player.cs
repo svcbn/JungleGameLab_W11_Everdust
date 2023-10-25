@@ -29,6 +29,7 @@ namespace Myd.Platform
         public void Reload(Bounds bounds, Vector2 startPosition)
         {
             this.playerRenderer = Object.Instantiate(Resources.Load<PlayerRenderer>("PlayerRenderer"));
+            PlayerManager.Instance.player = playerRenderer.transform.gameObject;
             //this.playerRenderer = AssetHelper.Create<PlayerRenderer>("Assets/ProPlatformer/_Prefabs/PlayerRenderer.prefab");
             this.playerRenderer.Reload();
             //초기화
