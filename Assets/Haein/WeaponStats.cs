@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class WeaponStats : MonoBehaviour
 {
-    public int damage = 10;
+    [SerializeField] private int _damage = 10;
+    [SerializeField] private int _criticalMultiplier = 4;
 
-    public int criticalMultiplier = 4;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static int damage;
+    public static int criticalMultiplier;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        damage = _damage;
+        criticalMultiplier = _criticalMultiplier;
     }
 }
