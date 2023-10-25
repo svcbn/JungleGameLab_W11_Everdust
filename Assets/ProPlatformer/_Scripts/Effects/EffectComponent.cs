@@ -25,7 +25,7 @@ namespace Myd.Platform
         }
         public void OnValidate()
         {
-            //Debug.Log("=======更新所有特效配置参数");
+            Debug.Log("=======모든 특수 효과 설정 매개 변수 업데이트");
             trailEffect.GetComponent<TrailRenderer>().enabled = (EnableTrailEffect);
         }
 
