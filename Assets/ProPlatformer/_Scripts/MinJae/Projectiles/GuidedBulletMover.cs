@@ -21,8 +21,8 @@ public class GuidedBulletMover : Mover
     private float reta;
 
     private bool initialized  = false;
-    public float bezierDelta  = 10.0f;
-    public float bezierDelta2 = 10.0f;
+    [HideInInspector]public float bezierDelta  = 10.0f; // MagicMissileData 에서 받아옴
+    [HideInInspector]public float bezierDelta2 = 10.0f; // MagicMissileData 에서 받아옴
 
     public float refindRadius = 20f;
 
@@ -55,6 +55,13 @@ public class GuidedBulletMover : Mover
         x = Mathf.Cos(Random.Range(0f, 360f) * Mathf.Deg2Rad) * bezierDelta + org.x;
         y = Mathf.Sin(Random.Range(0f, 360f) * Mathf.Deg2Rad) * bezierDelta + org.y;
         return new Vector2(x, y);
+    }
+
+
+    private float GetDistance(Transform target)
+    {
+        float distance = Vector3.Distance(transform.position, target.position);
+        return distance;
     }
 
     private void FindNewTarget()
@@ -94,6 +101,37 @@ public class GuidedBulletMover : Mover
         //Collider2d[] Physics2D.OverlapCircle(transform.position, 7f);
     }
 
+    public override void MovePhase0() // 멈추기까지
+    {
+        // 실제 곡선 궤적을 그리는 부분
+        body.position = new Vector2(
+            Bezier(timer, startPos.x, delta1.x, delta2.x, target.transform.position.x),
+            Bezier(timer, startPos.y, delta1.y, delta2.y, target.transform.position.y));
+        timer += Time.fixedDeltaTime * reta;
+
+        //Debug.Log(timer + ", (" + direction.x + ", " + direction.y + ")");
+        //direction = Vector3.Slerp(direction.normalized, (target.position - transform.position).normalized, slerpCorrection);
+
+        float distance = GetDistance(target);
+        if( distance < 6f)
+        {
+            SetMovePhase(MovePhase.phase1);
+            
+        }
+        
+    }
+    
+    public override void MovePhase1() // 멈추기까지
+    {
+        //Move();
+    }
+
+    public override void MovePhase2() // 부웅 커지는 파트
+    {
+        base.MovePhase2();
+    }
+
+
     public override void AfterMove()
     {
         if (target == null || !target.gameObject.activeSelf)
@@ -102,13 +140,7 @@ public class GuidedBulletMover : Mover
         }
         if (!initialized) return;
 
-        body.position = new Vector2(
-            Bezier(timer, startPos.x, delta1.x, delta2.x, target.transform.position.x),
-            Bezier(timer, startPos.y, delta1.y, delta2.y, target.transform.position.y));
-        timer += Time.fixedDeltaTime * reta;
 
-        //Debug.Log(timer + ", (" + direction.x + ", " + direction.y + ")");
-        //direction = Vector3.Slerp(direction.normalized, (target.position - transform.position).normalized, slerpCorrection);
     }
 
     private float Bezier(float t, float a, float b, float c, float d)

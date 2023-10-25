@@ -24,7 +24,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   duration: 1
-  missileCount: 5
-  range: 22.5
-  bezierDelta: 10
-  bezierDelta2: 10
+  missileCount: 1
+  range: 5
+  bezierDelta: 20
+  bezierDelta2: 20

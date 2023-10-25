@@ -1,8 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+//using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Windows;
+
+
+public enum MovePhase
+{
+    phase0,
+    phase1,
+    phase2
+}
+
 
 public class Mover : MonoBehaviour
 {
@@ -12,6 +22,9 @@ public class Mover : MonoBehaviour
         get { return _canMove; }
         set { _canMove = value; }
     }
+
+
+    public MovePhase movePhase = MovePhase.phase1;
 
 
     [Header("속도 관련")]
@@ -31,15 +44,16 @@ public class Mover : MonoBehaviour
         {
             lastInput = direction;
         }
-        BeforeMove();
+
         if (CanMove)
         {
             Move();
-            OnMove();
-            CalculateDelta();
+            AfterMove();
         }
-        AfterMove();
+        
     }
+
+
 
     public void Move()
     {
@@ -47,18 +61,50 @@ public class Mover : MonoBehaviour
         {
             body = GetComponent<Rigidbody2D>();
         }
-        body.MovePosition(body.position + speed * Time.fixedDeltaTime * direction.normalized);
-        //body.velocity = direction.normalized * speed;
+
+        switch(movePhase)            
+        {
+        case MovePhase.phase0:
+            MovePhase0();
+            break;
+        case MovePhase.phase1:
+            MovePhase1();
+            break;
+        case MovePhase.phase2:
+            MovePhase2();
+            break;
+
+        }
+
     }
 
     public void CalculateDelta()
     {
         //속도, 가속도, 각속도 계산
-        speed += accel * Time.fixedDeltaTime; 
+        speed     += accel        * Time.fixedDeltaTime; 
         direction += angularAccel * Time.fixedDeltaTime;
     }
 
-    public virtual void BeforeMove() { }
-    public virtual void OnMove() { }
+
+    public void SetMovePhase(MovePhase nextPhase)
+    {
+        movePhase = nextPhase;
+
+        Debug.Log("SetMovePhase to : " + movePhase);
+    }
+
+    public virtual void MovePhase0()
+    {
+        // 사실상 안쓰이는 부분. 천천히 느리게 움직.
+        body.MovePosition(body.position + speed * Time.fixedDeltaTime * direction.normalized);
+        body.velocity = direction.normalized * speed;
+
+        CalculateDelta();
+    }
+
+
+    public virtual void MovePhase1() {}
+    public virtual void MovePhase2() {}
+
     public virtual void AfterMove() { }
 }
