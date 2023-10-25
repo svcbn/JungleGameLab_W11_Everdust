@@ -64,7 +64,7 @@ namespace Myd.Platform
         public static float EndDashSpeed = 16f;        //종료 스퍼트 속도
         public static float EndDashUpMult = .75f;       //위로 스퍼트하면 저항.
         public static float DashTime = .15f;            //스퍼트 타임
-        public static float DashCooldown = .2f;         //스퍼트 냉각 시간,
+        public static float DashCooldown = 2f;         //스퍼트 냉각 시간,
         public static float DashRefillCooldown = .1f;   //스퍼트 재장전 시간
         public static int DashHJumpThruNudge = 6;       //
         public static int DashCornerCorrection = 4;     //수평 Dash에서 가로 막힘을 만나면 픽셀 값을 수정합니다.

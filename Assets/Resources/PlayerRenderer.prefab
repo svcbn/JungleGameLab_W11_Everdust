@@ -236,6 +236,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f40f5eddfee0445a7379e205a4cf46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPoke: 0
+  pokeTime: 0
+  pokeTimeMax: 0.1
 --- !u!1 &938816581918605896
 GameObject:
   m_ObjectHideFlags: 0

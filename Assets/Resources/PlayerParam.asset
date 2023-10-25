@@ -32,7 +32,7 @@ MonoBehaviour:
   EndDashSpeed: 16
   EndDashUpMult: 0.75
   DashTime: 0.15
-  DashCooldown: 0.2
+  DashCooldown: 1.5
   DashRefillCooldown: 0.1
   DashCornerCorrection: 4
   MaxDashes: 1

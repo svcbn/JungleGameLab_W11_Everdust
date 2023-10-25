@@ -24,7 +24,7 @@ namespace Myd.Platform
         private float maxFall;
         private float fastMaxFall;
 
-        private float dashCooldownTimer;                //冲刺冷却时间计数器，为0时，可以再次冲刺
+        private float dashCooldownTimer;                //스퍼트 냉각 시간 카운터, 0일 때 다시 스퍼트 가능
         private float dashRefillCooldownTimer;          //
         public int dashes;
         public int lastDashes;
@@ -144,12 +144,14 @@ namespace Myd.Platform
                 //Dash
                 {
                     if (dashCooldownTimer > 0)
+                    {
                         dashCooldownTimer -= deltaTime;
+                    }
                     if (dashRefillCooldownTimer > 0)
                     {
                         dashRefillCooldownTimer -= deltaTime;
                     }
-                    else if (onGround)
+                    if (onGround && dashCooldownTimer < 0)
                     {
                         RefillDash();
                     }
@@ -356,9 +358,11 @@ namespace Myd.Platform
 
         public bool RefillDash()
         {
+            // todo : dash timer 초기화해주기
             if (this.dashes < Constants.MaxDashes)
             {
                 this.dashes = Constants.MaxDashes;
+                dashCooldownTimer = Constants.DashCooldown;
                 return true;
             }
             else
