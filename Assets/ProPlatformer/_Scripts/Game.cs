@@ -28,6 +28,8 @@ namespace Myd.Platform
         //玩家
         Player player;
 
+        Texture2D cursorTexture;
+
         EGameState gameState;
 
         void Awake()
@@ -37,7 +39,17 @@ namespace Myd.Platform
             gameState = EGameState.Load;
 
             player = new Player(this);
+
+            cursorTexture = Resources.Load<Texture2D>("Sprites/Crosshair");
+
+            Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
+
         }
+
+        //void Start()
+        //{
+
+        //}
 
         IEnumerator Start()
         {
@@ -46,6 +58,8 @@ namespace Myd.Platform
             //加载玩家
             player.Reload(level.Bounds, level.StartPosition);
             this.gameState = EGameState.Play;
+
+
             yield return null;
         }
 
