@@ -11,7 +11,7 @@ namespace Myd.Common
     {
         public static void Log(object message)
         {
-            Debug.Log(message);
+            //Debug.Log(message);
         }
     }
 }
