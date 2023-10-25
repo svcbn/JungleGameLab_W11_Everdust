@@ -7,11 +7,11 @@ namespace Myd.Platform
     [CreateAssetMenu(fileName = "PlayerParams", menuName = "Pro Platformer/Player Param", order = 1 )]
     public class PlayerParams : ScriptableObject
     {
-        [Header("启用功能【墙壁下滑】")]
+        [Header("벽타기 활성화")]
         public bool EnableWallSlide;
-        [Header("启用功能【土狼时间】")]
+        [Header("코요테 타임 활성화")]
         public bool EnableJumpGrace;
-        [Header("启用功能【WallBoost】")]
+        [Header("벽 점프 활성화")]
         [Tooltip("一个可以不消耗耐力的技巧")]
         public bool EnableWallBoost;
 
@@ -21,86 +21,86 @@ namespace Myd.Platform
         [Tooltip("水平方向加速度")]
         public int RunAccel;
         [Tooltip("水平方向减速度")]
-        public int RunReduce = 40;
+        public int RunReduce;
         [Space]
         [Header("竖直方向参数")]
         [Tooltip("重力加速度")]
-        public float Gravity = 90f; //重力
+        public float Gravity; //重力
         [Tooltip("当速度小于该阈值时，重力减半。值越小，滞空时间越长，0表示关闭")]
         [Range(0, 9)]
-        public float HalfGravThreshold = 4f;
+        public float HalfGravThreshold;
         [Tooltip("下落的最大速度（带方向，向上为正）")]
-        public float MaxFall = -16; //普通最大下落速度
+        public float MaxFall; //普通最大下落速度
         [Tooltip("急速下落的最大速度（带方向，向上为正）")]
-        public float FastMaxFall = -24f;  //快速最大下落速度
+        public float FastMaxFall;  //快速最大下落速度
         [Tooltip("下落->急速下坠加速度")]
-        public float FastMaxAccel = 30f; //快速下落加速度
+        public float FastMaxAccel; //快速下落加速度
 
         [Space]
         [Header("跳跃参数")]
         [Tooltip("最大跳跃速度")]
-        public float JumpSpeed = 10.5f;
+        public float JumpSpeed;
         [Tooltip("跳跃持续时间（跳起时,会持续响应跳跃按键[VarJumpTime]秒,影响跳跃的最高高度）")]
-        public float VarJumpTime = 0.2f;
+        public float VarJumpTime;
         [Tooltip("跳跃水平方向，水平方向减速度")]
-        public float JumpHBoost = 4f;
+        public float JumpHBoost;
         [Tooltip("土狼时间（离开平台时，还能响应跳跃的时间）")]
-        public float JumpGraceTime = 0.1f;
+        public float JumpGraceTime;
         [Tooltip("向上运动遇到障碍的左右校正像素")]
-        public int UpwardCornerCorrection = 4;
+        public int UpwardCornerCorrection;
 
         [Header("Dash冲刺参数")]
         [Tooltip("开始冲刺初速度")]
-        public float DashSpeed = 24f;          //冲刺速度
+        public float DashSpeed;          //冲刺速度
         [Tooltip("结束冲刺后速度")]
-        public float EndDashSpeed = 16f;        //结束冲刺速度
+        public float EndDashSpeed;        //结束冲刺速度
         [Tooltip("Y轴向上冲刺的衰减系数")]
-        public float EndDashUpMult = .75f;       //如果向上冲刺，阻力。
+        public float EndDashUpMult;       //如果向上冲刺，阻力。
         [Tooltip("冲刺时间")]
-        public float DashTime = .15f;            //冲刺时间
+        public float DashTime;            //冲刺时间
         [Tooltip("冲刺冷却时间")]
-        public float DashCooldown = .2f;         //冲刺冷却时间，
+        public float DashCooldown = 2;         //冲刺冷却时间，
         [Tooltip("冲刺重新装填时间")]
-        public float DashRefillCooldown = .1f;   //冲刺重新装填时间
+        public float DashRefillCooldown;   //冲刺重新装填时间
         [Tooltip("Dashs水平或者竖直方向位置校正的像素值")]
-        public int DashCornerCorrection = 4;     //Dash时，遇到阻挡物的可纠正距离，单位0.1米
+        public int DashCornerCorrection;     //Dash时，遇到阻挡物的可纠正距离，单位0.1米
         [Tooltip("最大Dash次数")]
-        public int MaxDashes = 1;    // 最大Dash次数
+        public int MaxDashes;    // 最大Dash次数
 
 
         [Header("攀爬参数")]
         [Tooltip("攀爬水平方向射线检测像素")]
-        public int ClimbCheckDist = 2;           //攀爬检查像素值
+        public int ClimbCheckDist;           //攀爬检查像素值
         [Tooltip("攀爬竖直方向射线检测像素")]
-        public int ClimbUpCheckDist = 2;         //向上攀爬检查像素值
+        public int ClimbUpCheckDist;         //向上攀爬检查像素值
         [Tooltip("攀爬无法移动时间")]
-        public float ClimbNoMoveTime = .1f;
+        public float ClimbNoMoveTime;
         [Tooltip("向上攀爬速度")]
-        public float ClimbUpSpeed = 4.5f;        //上爬速度
+        public float ClimbUpSpeed;        //上爬速度
         [Tooltip("向下攀爬速度")]
-        public float ClimbDownSpeed = -8f;       //下爬速度
+        public float ClimbDownSpeed;       //下爬速度
         [Tooltip("攀爬下滑速度")]
-        public float ClimbSlipSpeed = -3f;       //下滑速度
+        public float ClimbSlipSpeed;       //下滑速度
         [Tooltip("攀爬下滑加速度")]
-        public float ClimbAccel = 90f;          //下滑加速度
+        public float ClimbAccel;          //下滑加速度
         [Tooltip("攀爬开始时，对原Y轴速度的衰减")]
-        public float ClimbGrabYMult = .2f;       //攀爬时抓取导致的Y轴速度衰减
+        public float ClimbGrabYMult;       //攀爬时抓取导致的Y轴速度衰减
 
         [Header("Hop参数（边缘登陆）")]
         [Tooltip("Hop的Y轴速度")]
-        public float ClimbHopY = 12f;          //Hop的Y轴速度
+        public float ClimbHopY;          //Hop的Y轴速度
         [Tooltip("Hop的X轴速度")]
-        public float ClimbHopX = 10f;           //Hop的X轴速度
+        public float ClimbHopX;           //Hop的X轴速度
         [Tooltip("Hop时间")]
-        public float ClimbHopForceTime = .2f;    //Hop时间
+        public float ClimbHopForceTime;    //Hop时间
         [Tooltip("WallBoost时间")]
-        public float ClimbJumpBoostTime = .2f;   //WallBoost时间
+        public float ClimbJumpBoostTime;   //WallBoost时间
         [Tooltip("Wind情况下,Hop会无风0.3秒")]
-        public float ClimbHopNoWindTime = .3f;   //Wind情况下,Hop会无风0.3秒
+        public float ClimbHopNoWindTime;   //Wind情况下,Hop会无风0.3秒
 
-        public float DuckFriction = 50f;
-        public float DuckSuperJumpXMult = 1.25f;
-        public float DuckSuperJumpYMult = 0.5f;
+        public float DuckFriction;
+        public float DuckSuperJumpXMult;
+        public float DuckSuperJumpYMult;
 
         private Action reloadCallback;
         public void SetReloadCallback(Action onReload)
@@ -115,7 +115,7 @@ namespace Myd.Platform
 
         public void ReloadParams()
         {
-            Debug.Log("=======更新所有Player配置参数");
+            Debug.Log("=======모든 Player 설정 매개 변수 업데이트");
             Constants.MaxRun = MaxRun;
             Constants.RunAccel = RunAccel;
             Constants.RunReduce = RunReduce;
