@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class HandleWeaponClick : MonoBehaviour
 {
+    public bool isPoke = false;
+    public float pokeTime = 0f;
+    public float pokeTimeMax = 0.1f;
     private Animator animator; // Animator 컴포넌트를 참조하기 위한 변수
 
     void Start()
@@ -14,10 +17,19 @@ public class HandleWeaponClick : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // 마우스 왼쪽 버튼 클릭 감지
+        if (Input.GetMouseButtonDown(0))
         {
-            // "Poke" 애니메이션을 실행합니다. Animator의 트리거 매개변수에 따라 변경할 수 있습니다.
             animator.SetTrigger("Poke");
+            pokeTime = pokeTimeMax;
+            isPoke = true;
+        }
+        if (pokeTime > 0)
+        {
+            pokeTime -= Time.deltaTime;
+        }
+        else
+        {
+            isPoke = false;
         }
     }
 }
