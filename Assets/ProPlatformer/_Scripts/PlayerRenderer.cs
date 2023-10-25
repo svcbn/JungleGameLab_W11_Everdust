@@ -8,7 +8,7 @@ namespace Myd.Platform
 {
 
     /// <summary>
-    /// 这里是Unity下实现玩家表现接口
+    /// Unity에서 구현된 플레이어 성능 인터페이스는 다음과 같습니다.
     /// </summary>
     public class PlayerRenderer : MonoBehaviour, ISpriteControl
     {
@@ -105,7 +105,7 @@ namespace Myd.Platform
         }
     }
 
-    //测试用的绘制接口
+    //테스트용 드로잉 인터페이스
     public enum EGizmoDrawType
     {
         SlipCheck,
