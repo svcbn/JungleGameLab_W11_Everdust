@@ -29,8 +29,14 @@ public abstract class Enemy : MonoBehaviour
     /// <param name="hitWeakness"></param>
     public void TakeHit(bool hitWeakness = false)
     {
+        if (TryGetComponent(out HandleWeaknessCircle weaknessCircle))
+        {
+            if (!weaknessCircle.IsWeaknessAttacked())
+            {
+                hitWeakness = false;
+            }
+        }
         int dmg = hitWeakness ? WeaponStats.damage * WeaponStats.criticalMultiplier : WeaponStats.damage;
-
         Hit(dmg, hitWeakness);
     }
 
