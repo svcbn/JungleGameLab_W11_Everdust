@@ -5,7 +5,7 @@ using UnityEngine;
 public class HandleWeaponClick : MonoBehaviour
 {
     public bool canPoke = true;
-    public float pokeCooltime = 0.1f;
+    public float pokeCooltime;
     [Tooltip("찌르기 시 몇 초간 콜라이더가 켜져 있어야 하는가?")] public float hitboxDuration;
     [SerializeField] private ParticleSystem _attackVfx;
 
@@ -68,16 +68,18 @@ public class HandleWeaponClick : MonoBehaviour
             {
                 if (allEnemyCols[i].GetComponent<HandleWeaknessCircleAnimation>() is HandleWeaknessCircleAnimation weakness)
                 {
-                    //TODO: 약점 방향 체크 (아니면 컨티뉴)
-                    //약점 데미지 주기
-                    Enemy enemy = allEnemyCols[i].transform.root.GetComponent<Enemy>();
-                    enemy.TakeHit(true);
-                    //행렬에 동일 몬스터 전부 삭제
-                    for (int j = i; j < allEnemyCols.Length; j++)
+                    if (true) //TODO: 약점 방향 체크
                     {
-                        if (allEnemyCols[j].GetComponentInChildren<HandleWeaknessCircleAnimation>() == weakness)
+                        //약점 데미지 주기
+                        Enemy enemy = allEnemyCols[i].transform.root.GetComponent<Enemy>();
+                        enemy.TakeHit(true);
+                        //행렬에 동일 몬스터 전부 삭제
+                        for (int j = i; j < allEnemyCols.Length; j++)
                         {
-                            allEnemyCols[j] = null;
+                            if (allEnemyCols[j].GetComponentInChildren<HandleWeaknessCircleAnimation>() == weakness)
+                            {
+                                allEnemyCols[j] = null;
+                            }
                         }
                     }
                 }
