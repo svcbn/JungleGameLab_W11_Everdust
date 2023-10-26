@@ -10,8 +10,27 @@ public class ParryingTest : MonoBehaviour
     BoxCollider2D _hitBox;
     [SerializeField] float _parryingTime = 0.2f;
     WaitForSecondsRealtime parriyngTime;
+    private bool _isParry = false;
 
-    public bool IsParry { get; private set; } = false;
+    public bool IsParry
+    {
+        get
+        {
+            return _isParry;
+        }
+        set
+        {
+            _isParry = value;
+            if(_isParry )
+            {
+                // when doing parry
+            }
+            else
+            {
+                // when end of parry
+            }
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -36,10 +55,13 @@ public class ParryingTest : MonoBehaviour
         // Á¶°Ç
 
         StartCoroutine(Parry());
+        
     }
 
     IEnumerator Parry()
     {
+        animator.SetTrigger("Parrying");
+
         IsParry = true;
         Debug.Log("parryOn");
 
@@ -50,10 +72,5 @@ public class ParryingTest : MonoBehaviour
     }
 
     
-    private void OnCollisionEnter2D(Collision2D other)
-    {
 
-        Debug.Log("fdssfds");
-        animator.SetTrigger("Parrying");
-    }
 }
