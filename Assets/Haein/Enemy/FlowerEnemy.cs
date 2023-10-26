@@ -65,24 +65,28 @@ public class FlowerEnemy : Enemy
             {
                 if (canFlip && Mathf.Abs(PlayerManager.Instance.player.transform.position.y - transform.position.y) < 5f)
                 {
-                    if (Mathf.Abs(PlayerManager.Instance.player.transform.position.x - transform.position.x) < 12f)
+                    if (Mathf.Abs(PlayerManager.Instance.player.transform.position.x - transform.position.x) < 20f)
                     {
                         canFlip = false;
                         animator.SetTrigger("Charge");
                     }
                 }
             }
-            
-            if(animator.GetCurrentAnimatorStateInfo(0).IsName("FlowerAttack") &&
-               animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            if(animator.GetCurrentAnimatorStateInfo(0).IsName("FlowerAttack") || animator.GetCurrentAnimatorStateInfo(0).IsName("FlowerCharging"))
             {
-                HandleAnimationEnd();
+                if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+                {
+                    StartCoroutine(HandleAnimationEnd());
+                }
             }
+            
         }
     }
 
-    public void HandleAnimationEnd()
+    public IEnumerator HandleAnimationEnd()
     {
+        yield return new WaitForSeconds(1f);
         canFlip = true;
+        attackMode = Random.Range(0, 2);
     }
 }

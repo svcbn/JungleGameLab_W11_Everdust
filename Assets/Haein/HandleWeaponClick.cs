@@ -59,12 +59,18 @@ public class HandleWeaponClick : MonoBehaviour
         }
     }
 
+    public void SetPokeTimerToZero()
+    {
+        _pokeTimer = 0f;
+    }
+    
     void SpearHitCheck()
     {
         Vector2 center = (Vector2)_spearRoot.position + (Vector2) (transform.rotation * _hitBox.offset);
         Vector2 size = _hitBox.size;
         float angle = _hitBox.transform.rotation.eulerAngles.z;
         Collider2D[] allEnemyCols = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("Enemy"));
+        Collider2D[] allProjectileCols = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("EnemyProjectile"));
         //콜라이더 중 약점 있으면 약점 타격 실행. 행렬에 동일 몬스터 전부 삭제.
         for (int i = 0; i < allEnemyCols.Length; i++)
         {
@@ -110,6 +116,23 @@ public class HandleWeaponClick : MonoBehaviour
             }
         }
 
+        for (int i = 0; i < allProjectileCols.Length; i++)
+        {
+            if (allProjectileCols[i] != null)
+            {
+                Projectile projectile = allProjectileCols[i].GetComponent<Projectile>();
+                projectile.TakeHit();
+                SetPokeTimerToZero();
+                for (int j = i; j < allProjectileCols.Length; j++)
+                {
+                    if (allProjectileCols[j].transform.root.GetComponent<Projectile>() == projectile)
+                    {
+                        allProjectileCols[j] = null;
+                    }
+                }
+                StartCoroutine(StopFalling(pokeStopTime));
+            }
+        }
     }
 
     IEnumerator StopFalling(float stopTime){
