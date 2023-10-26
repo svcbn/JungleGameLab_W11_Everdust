@@ -15,12 +15,12 @@ public class MagicMissile : MonoBehaviour
 
 	private void LoadDataSO()
 	{
-		string pathDataSO = "MagicMissile/MagicMissileData"; // in Resource folder
+		string pathDataSO = "Data/MagicMissileData"; // in Resource folder
 		_data = Resources.Load<MagicMissileData>(pathDataSO);
 
 		if(_data == null)
 		{
-			Debug.LogWarning(" Data Load Failis null ");
+			Debug.LogWarning(" Data Load Fail null ");
 		}else{
 			Debug.Log(" Data Load Success ");
 		}
