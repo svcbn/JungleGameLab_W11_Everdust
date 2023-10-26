@@ -1,8 +1,18 @@
 using UnityEngine;
+using UnityEngine.Networking.Types;
 
 public abstract class Enemy : MonoBehaviour
 {
-    public int maxHp = 100;
+    private int maxHp;
+    public int MaxHp{
+        get { return maxHp; }
+        set 
+        { 
+            maxHp = value;
+            if(value < _curHp)
+                _curHp = value;
+        }
+    }
     public GameObject weaknessCircle;
     private DamageFlash _damageFlash;
 
@@ -15,9 +25,11 @@ public abstract class Enemy : MonoBehaviour
     {
         _handleWeaknessCircle = GetComponent<HandleWeaknessCircle>();
         _damageFlash = GetComponent<DamageFlash>();
-        _curHp = maxHp;
+        MaxHp = 100;
+        _curHp = MaxHp;
     }
-
+    
+    protected virtual void Start(){}
     protected virtual void Update()
     {
         if (_hitDelay > 0f)
@@ -46,7 +58,7 @@ public abstract class Enemy : MonoBehaviour
         _curHp -= _damage;
         
         //흰색으로 번쩍이는 쉐이더
-        _damageFlash.CallDamageFlash();
+        // _damageFlash.CallDamageFlash();
         
         //데미지 텍스트
         float xOffset = Random.Range(-0.5f, 0.5f);
@@ -65,4 +77,5 @@ public abstract class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }
