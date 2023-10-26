@@ -10,6 +10,8 @@ public class FlowerEnemy : Enemy
     private Vector3 circlePos;
     private Animator animator;
     private int attackMode;
+    private int moveDir;
+    private float moveSpeed = 2f;
     
     protected override void Awake()
     {
@@ -24,6 +26,12 @@ public class FlowerEnemy : Enemy
     protected override void Update()
     {
         base.Update();
+        //move X
+        if (canFlip)
+        {
+            moveDir = spriteRenderer.flipX ? 1 : -1;
+            transform.Translate(moveDir * moveSpeed * Time.deltaTime, 0f, 0f);
+        }
         if (PlayerManager.Instance.player != null)
         {
             if (canFlip)
@@ -54,7 +62,7 @@ public class FlowerEnemy : Enemy
             {
                 if (canFlip && Mathf.Abs(PlayerManager.Instance.player.transform.position.y - transform.position.y) < 2f)
                 {
-                    if (Mathf.Abs(PlayerManager.Instance.player.transform.position.x - transform.position.x) < 4f)
+                    if (Mathf.Abs(PlayerManager.Instance.player.transform.position.x - transform.position.x) < 7f)
                     {
                         canFlip = false;
                         animator.SetTrigger("Attack");
@@ -65,7 +73,7 @@ public class FlowerEnemy : Enemy
             {
                 if (canFlip && Mathf.Abs(PlayerManager.Instance.player.transform.position.y - transform.position.y) < 5f)
                 {
-                    if (Mathf.Abs(PlayerManager.Instance.player.transform.position.x - transform.position.x) < 20f)
+                    if (Mathf.Abs(PlayerManager.Instance.player.transform.position.x - transform.position.x) < 15f)
                     {
                         canFlip = false;
                         animator.SetTrigger("Charge");
@@ -85,7 +93,7 @@ public class FlowerEnemy : Enemy
 
     public IEnumerator HandleAnimationEnd()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2.5f);
         canFlip = true;
         attackMode = Random.Range(0, 2);
     }
