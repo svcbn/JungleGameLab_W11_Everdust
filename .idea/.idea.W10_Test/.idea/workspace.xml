@@ -11,6 +11,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/DestroySeconds.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/HandleAttackEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/MoveAndDestroy.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{

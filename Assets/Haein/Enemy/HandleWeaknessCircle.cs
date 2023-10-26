@@ -3,10 +3,18 @@ using UnityEngine;
 
 public class HandleWeaknessCircle : MonoBehaviour
 {
+    enum WEAKTYPE
+    {
+        ALWAYS,
+        DISTANCE,
+        PARRYING
+    }
+    
     public bool isFlip = false;
     public GameObject weaknessCircle;
     private SpriteRenderer spriteRenderer;
     private Animator weaknessCircleAnimator;
+    private int weaknessCircleType = (int)WEAKTYPE.DISTANCE;
 
     private void Start()
     {
@@ -16,32 +24,44 @@ public class HandleWeaknessCircle : MonoBehaviour
 
     private void Update()
     {
+        weaknessCircle.GetComponent<SpriteRenderer>().flipX = isFlip;
         if (PlayerManager.Instance.player != null)
         {
-            float distance = Vector3.Distance(PlayerManager.Instance.player.transform.position, transform.position);
-            if (distance < 15f)
+            if (weaknessCircleType == (int)WEAKTYPE.ALWAYS)
             {
                 weaknessCircle.SetActive(true);
             }
-            else
+            else if (weaknessCircleType == (int)WEAKTYPE.DISTANCE)
             {
-                weaknessCircle.SetActive(false);
+                float distance = Vector3.Distance(PlayerManager.Instance.player.transform.position, transform.position);
+                if (distance < 15f)
+                {
+                    weaknessCircle.SetActive(true);
+                }
+                else
+                {
+                    weaknessCircle.SetActive(false);
+                }
+            }
+            else if (weaknessCircleType == (int)WEAKTYPE.PARRYING)
+            {
+                
             }
         }
     }
     
     public bool IsWeaknessAttacked()
     {
-        if (GetComponent<HandleWeaknessCircle>().isFlip) //왼쪽으로 때려야 하는 경우
+        if (isFlip) //왼쪽으로 때려야 하는 경우
         {
-            if (PlayerManager.Instance.player.transform.position.x < transform.position.x)
+            if (PlayerManager.Instance.player.transform.position.x < weaknessCircle.transform.position.x)
             {
                 return true;
             }
         }
         else //오른쪽으로 때려야 하는 경우
         {
-            if (PlayerManager.Instance.player.transform.position.x > transform.position.x)
+            if (PlayerManager.Instance.player.transform.position.x > weaknessCircle.transform.position.x)
             {
                 return true;
             }
