@@ -15,12 +15,9 @@ public class ParryingTest : MonoBehaviour
     void Update()
     {
         
-    }
-
-
-    
-    private void OnCollisionEnter2D(Collision2D other) {
-        Debug.Log("fdssfds");
-        animator.SetTrigger("Parrying");
+        if (Input.GetMouseButtonDown(0))
+        {
+            animator.SetTrigger("Parrying");
+        }
     }
 }
