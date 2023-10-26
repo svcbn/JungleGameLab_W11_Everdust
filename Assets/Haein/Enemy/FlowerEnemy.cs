@@ -72,17 +72,20 @@ public class FlowerEnemy : Enemy
                     }
                 }
             }
-            
-            if(animator.GetCurrentAnimatorStateInfo(0).IsName("FlowerAttack") &&
-               animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            if(animator.GetCurrentAnimatorStateInfo(0).IsName("FlowerAttack") || animator.GetCurrentAnimatorStateInfo(0).IsName("FlowerCharging"))
             {
-                HandleAnimationEnd();
+                if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+                {
+                    HandleAnimationEnd();
+                }
             }
+            
         }
     }
 
     public void HandleAnimationEnd()
     {
         canFlip = true;
+        attackMode = Random.Range(0, 2);
     }
 }
