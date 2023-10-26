@@ -39,7 +39,7 @@ public abstract class Enemy : MonoBehaviour
     }
     
     /// <param name="hitWeakness"></param>
-    public void TakeHit(bool hitWeakness = false)
+    public virtual void TakeHit(bool hitWeakness = false, float attackAngle = 0f)
     {
         if (TryGetComponent(out HandleWeaknessCircle weaknessCircle))
         {

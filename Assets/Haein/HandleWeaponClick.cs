@@ -64,6 +64,7 @@ public class HandleWeaponClick : MonoBehaviour
         Vector2 center = (Vector2)_spearRoot.position + (Vector2) (transform.rotation * _hitBox.offset);
         Vector2 size = _hitBox.size;
         float angle = _hitBox.transform.rotation.eulerAngles.z;
+
         Collider2D[] allEnemyCols = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("Enemy"));
         //콜라이더 중 약점 있으면 약점 타격 실행. 행렬에 동일 몬스터 전부 삭제.
         for (int i = 0; i < allEnemyCols.Length; i++)
@@ -76,7 +77,7 @@ public class HandleWeaponClick : MonoBehaviour
                     {
                         //약점 데미지 주기
                         Enemy enemy = allEnemyCols[i].transform.root.GetComponent<Enemy>();
-                        enemy.TakeHit(true);
+                        enemy.TakeHit(true, angle);
                         //행렬에 동일 몬스터 전부 삭제
                         for (int j = i; j < allEnemyCols.Length; j++)
                         {
@@ -97,7 +98,7 @@ public class HandleWeaponClick : MonoBehaviour
             {
                 //일반 데미지 주기
                 Enemy enemy = allEnemyCols[i].transform.root.GetComponent<Enemy>();
-                enemy.TakeHit();
+                enemy.TakeHit(false, angle);
                 //행렬에 동일 몬스터 전부 삭제
                 for (int j = i; j < allEnemyCols.Length; j++)
                 {
