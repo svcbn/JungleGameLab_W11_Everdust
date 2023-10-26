@@ -507,6 +507,13 @@ namespace Myd.Platform
             if (!CanHit) return;
             // 여기서 피격
             Debug.Log("Hit");
+
+        }
+
+        // iy
+        public void ResetSpeedY()
+        {
+            Speed.y = 0;
         }
     }
 

@@ -1,8 +1,18 @@
 using UnityEngine;
+using UnityEngine.Networking.Types;
 
 public abstract class Enemy : MonoBehaviour
 {
-    public int maxHp = 100;
+    private int maxHp;
+    public int MaxHp{
+        get { return maxHp; }
+        set 
+        { 
+            maxHp = value;
+            if(value < _curHp)
+                _curHp = value;
+        }
+    }
     public GameObject weaknessCircle;
     private DamageFlash _damageFlash;
 
@@ -15,9 +25,11 @@ public abstract class Enemy : MonoBehaviour
     {
         _handleWeaknessCircle = GetComponent<HandleWeaknessCircle>();
         _damageFlash = GetComponent<DamageFlash>();
-        _curHp = maxHp;
+        MaxHp = 100;
+        _curHp = MaxHp;
     }
-
+    
+    protected virtual void Start(){}
     protected virtual void Update()
     {
         if (_hitDelay > 0f)
@@ -42,8 +54,11 @@ public abstract class Enemy : MonoBehaviour
 
     private void Hit(int _damage, bool _hitWeakness)
     {
+        string damageStr = _curHp.ToString();
         _hitDelay = 0.3f;
         _curHp -= _damage;
+        if(_curHp > 0)
+            damageStr = _damage.ToString();
         
         //흰색으로 번쩍이는 쉐이더
         _damageFlash.CallDamageFlash();
@@ -56,7 +71,7 @@ public abstract class Enemy : MonoBehaviour
 
         GameObject damageTextPrefab = Resources.Load<GameObject>("Prefabs/UI/DamageText");
         GameObject damageText = Instantiate(damageTextPrefab, positionWithRandomOffset, Quaternion.identity);
-        damageText.GetComponent<MoveAndDestroy>()._text = "-" + _damage.ToString();
+        damageText.GetComponent<MoveAndDestroy>()._text = "-" + damageStr;
         if (!_hitWeakness) damageText.GetComponent<TextMesh>().color = Color.white;
         
         print($"{name} HP: {_curHp} (-{_damage})");
@@ -65,4 +80,5 @@ public abstract class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }

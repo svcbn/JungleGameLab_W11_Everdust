@@ -88,6 +88,17 @@ namespace Myd.Platform
             return playerRenderer.transform.position;
 
         }
+
+        #region iy
+
+        
+        // iy
+        public void ResetSpeedY()
+        {
+            playerController.ResetSpeedY();
+        }
+
+        #endregion
     }
 
 }

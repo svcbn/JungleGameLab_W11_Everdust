@@ -25,6 +25,10 @@ public class ParryingTest : MonoBehaviour
     void Update()
     {
         
+        if (Input.GetMouseButtonDown(0))
+        {
+            animator.SetTrigger("Parrying");
+        }
     }
 
     public void TriggerParry()

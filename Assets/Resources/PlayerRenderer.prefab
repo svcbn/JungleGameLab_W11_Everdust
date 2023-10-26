@@ -241,6 +241,7 @@ MonoBehaviour:
   pokeCooltime: 0.5
   hitboxDuration: 0.1
   _attackVfx: {fileID: 977066372678192106}
+  pokeStopTime: 0.2
 --- !u!61 &6318439881578945817
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10157,6 +10158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4509220661846234377}
   - component: {fileID: 4509220661846234376}
+  - component: {fileID: 6141362664427388598}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -10234,6 +10236,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &6141362664427388598
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4509220661846234378}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.71304345}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.99130434, y: 1.4260869}
+    newSize: {x: 1.1478261, y: 1.4260869}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.99130434, y: 1.4260869}
+  m_EdgeRadius: 0
 --- !u!1 &4509220662286137550
 GameObject:
   m_ObjectHideFlags: 0
@@ -10247,7 +10275,7 @@ GameObject:
   - component: {fileID: 4509220662286137586}
   m_Layer: 7
   m_Name: PlayerRenderer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

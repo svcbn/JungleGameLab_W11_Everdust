@@ -27,7 +27,7 @@ namespace Myd.Platform
         [SerializeField]
         private SceneCamera gameCamera;
         //플레이어
-        Player player;
+        public Player player { get; private set;}
 
         Texture2D cursorTexture;
 
@@ -130,6 +130,7 @@ namespace Myd.Platform
         public IEffectControl EffectControl { get=>this.sceneEffectManager; }
 
         public ISoundControl SoundControl { get; }
+
         
     }
 
