@@ -12,41 +12,41 @@ namespace Myd.Platform
         [Header("코요테 타임 활성화")]
         public bool EnableJumpGrace;
         [Header("벽 점프 활성화")]
-        [Tooltip("지구력을 소모하지 않아도 되는 테크닉")]
+        [Tooltip("一个可以不消耗耐力的技巧")]
         public bool EnableWallBoost;
 
-        [Header("수평방향 파라미터")]
-        [Tooltip("최대 수평 속도")]
+        [Header("水平方向参数")]
+        [Tooltip("最大水平速度")]
         public int MaxRun;
-        [Tooltip("수평방향가속도")]
+        [Tooltip("水平方向加速度")]
         public int RunAccel;
-        [Tooltip("수평방향감속도")]
+        [Tooltip("水平方向减速度")]
         public int RunReduce;
         [Space]
-        [Header("수직 방향 매개 변수")]
-        [Tooltip("중력 가속도")]
-        public float Gravity; //중력
-        [Tooltip("속도가 이 임계값보다 작으면 중력이 절반으로 감소합니다.값이 작을수록 체공 시간이 길어지고, 0은 닫힘을 나타냅니다.")]
+        [Header("竖直方向参数")]
+        [Tooltip("重力加速度")]
+        public float Gravity; //重力
+        [Tooltip("当速度小于该阈值时，重力减半。值越小，滞空时间越长，0表示关闭")]
         [Range(0, 9)]
         public float HalfGravThreshold;
-        [Tooltip("최대 낙하 속도(대역 방향, 위는 양)")]
-        public float MaxFall; //보통최대낙하속도
-        [Tooltip("급강하의 최대속도(대역방향, 위로는 정)")]
-        public float FastMaxFall;  //고속 최대 낙하 속도
-        [Tooltip("낙하->급속하강 가속도")]
-        public float FastMaxAccel; //급강하 가속도
+        [Tooltip("下落的最大速度（带方向，向上为正）")]
+        public float MaxFall; //普通最大下落速度
+        [Tooltip("急速下落的最大速度（带方向，向上为正）")]
+        public float FastMaxFall;  //快速最大下落速度
+        [Tooltip("下落->急速下坠加速度")]
+        public float FastMaxAccel; //快速下落加速度
 
         [Space]
-        [Header("점프 매개변수")]
-        [Tooltip("최대 점프 속도")]
+        [Header("跳跃参数")]
+        [Tooltip("最大跳跃速度")]
         public float JumpSpeed;
-        [Tooltip("점프 지속시간(점프시 점프버튼[VarJumpTime]초간 계속 반응하여 점프 최고높이에 영향을 미칩니다)")]
+        [Tooltip("跳跃持续时间（跳起时,会持续响应跳跃按键[VarJumpTime]秒,影响跳跃的最高高度）")]
         public float VarJumpTime;
-        [Tooltip("점프 수평 방향, 수평 방향 감속도")]
+        [Tooltip("跳跃水平方向，水平方向减速度")]
         public float JumpHBoost;
-        [Tooltip("코요테 시간(플랫폼을 떠날 때 점프에 응답할 수 있는 시간)")]
+        [Tooltip("土狼时间（离开平台时，还能响应跳跃的时间）")]
         public float JumpGraceTime;
-        [Tooltip("위로 이동하는데 장애가 있는 좌우 보정 픽셀")]
+        [Tooltip("向上运动遇到障碍的左右校正像素")]
         public int UpwardCornerCorrection;
 
         [Header("Dash冲刺参数")]
@@ -115,7 +115,7 @@ namespace Myd.Platform
 
         public void ReloadParams()
         {
-            Debug.Log("=======모든 Player 설정 매개 변수 업데이트");
+            Debug.Log("=======更新所有Player配置参数");
             Constants.MaxRun = MaxRun;
             Constants.RunAccel = RunAccel;
             Constants.RunReduce = RunReduce;

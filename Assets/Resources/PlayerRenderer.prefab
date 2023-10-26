@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPoke: 1
-  pokeCooltime: 0.1
+  pokeCooltime: 0.5
   hitboxDuration: 0.1
   _attackVfx: {fileID: 977066372678192106}
 --- !u!61 &6318439881578945817
