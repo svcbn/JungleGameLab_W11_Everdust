@@ -94,7 +94,7 @@ namespace Myd.Platform
 
         public void Ripple(Vector3 position)
         {
-            this.vfxRippleEffect.Ripple(position);
+            //this.vfxRippleEffect.Ripple(position);
         }
 
         public void CameraShake(Vector2 dir)
