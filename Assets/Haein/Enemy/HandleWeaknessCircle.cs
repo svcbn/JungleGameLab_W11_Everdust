@@ -3,23 +3,27 @@ using UnityEngine;
 
 public class HandleWeaknessCircle : MonoBehaviour
 {
-    enum WEAKTYPE
+    public enum WEAKTYPE
     {
-        ALWAYS,
+        ALWAYS = 100,
         DISTANCE,
-        PARRYING
+        ONLYCHARGING,
+        CONTINUOUSWEAKNESS,
     }
     
     public bool isFlip = false;
     public GameObject weaknessCircle;
     private SpriteRenderer spriteRenderer;
     private Animator weaknessCircleAnimator;
-    private int weaknessCircleType = (int)WEAKTYPE.DISTANCE;
-
+    public int weaknessCircleType = (int)WEAKTYPE.DISTANCE;
+    public int currentWeaknessNum = 0;
+    public Vector3 originalCirclePos;
+    
     private void Start()
     {
         weaknessCircleAnimator = weaknessCircle.GetComponent<Animator>();
         weaknessCircle.GetComponent<SpriteRenderer>().flipX = isFlip;
+        originalCirclePos = weaknessCircle.transform.localPosition;
     }
 
     private void Update()
@@ -43,7 +47,11 @@ public class HandleWeaknessCircle : MonoBehaviour
                     weaknessCircle.SetActive(false);
                 }
             }
-            else if (weaknessCircleType == (int)WEAKTYPE.PARRYING)
+            else if (weaknessCircleType == (int)WEAKTYPE.ONLYCHARGING)
+            {
+                
+            }
+            else
             {
                 
             }
@@ -67,5 +75,15 @@ public class HandleWeaknessCircle : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void ChangeWeaknessPosition()
+    {
+        weaknessCircle.transform.localPosition = new Vector3(weaknessCircle.transform.localPosition.x, weaknessCircle.transform.localPosition.y - .3f, weaknessCircle.transform.localPosition.z);
+    }
+    
+    public void ResetWeaknessPosition()
+    {
+        weaknessCircle.transform.localPosition = originalCirclePos;
     }
 }
