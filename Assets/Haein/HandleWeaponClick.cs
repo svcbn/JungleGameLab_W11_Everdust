@@ -32,7 +32,12 @@ public class HandleWeaponClick : MonoBehaviour
         _attackVfxOffset = _attackVfx.transform.localPosition;
         _attackVfxRotation = _attackVfx.transform.localRotation;
         _playerController = Game.Instance.GetPlayer().GetPlayerController();
+    }
+
+    private void Start()
+    {
         _parry = PlayerManager.Instance.player.GetComponentInChildren<ParryingTest>();
+
     }
 
     void Update()
@@ -121,34 +126,38 @@ public class HandleWeaponClick : MonoBehaviour
             }
         }
 
-        Collider2D[] parryables = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("Parryable"));
-        
-        if(parryables.Length > 0)
+        //Collider2D[] parryables = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("Parryable"));
+
+        //if(parryables.Length > 0)
+        //{
+
+        //    foreach(var collider in parryables)
+        //    {
+
+        //    }
+        //}
+        if (allProjectileCols.Length > 0)
         {
             _parry.TriggerParry();
 
-            foreach(var collider in parryables)
+            for (int i = 0; i < allProjectileCols.Length; i++)
             {
-
-            }
-        }
-
-        for (int i = 0; i < allProjectileCols.Length; i++)
-        {
-            if (allProjectileCols[i] != null)
-            {
-                Projectile projectile = allProjectileCols[i].GetComponent<Projectile>();
-                projectile.TakeHit();
-                SetPokeTimerToZero();
-                for (int j = i; j < allProjectileCols.Length; j++)
+                if (allProjectileCols[i] != null)
                 {
-                    if (allProjectileCols[j].transform.root.GetComponent<Projectile>() == projectile)
+                    Projectile projectile = allProjectileCols[i].GetComponent<Projectile>();
+                    projectile.TakeHit();
+                    SetPokeTimerToZero();
+                    for (int j = i; j < allProjectileCols.Length; j++)
                     {
-                        allProjectileCols[j] = null;
+                        if (allProjectileCols[j].transform.root.GetComponent<Projectile>() == projectile)
+                        {
+                            allProjectileCols[j] = null;
+                        }
                     }
+                    StartCoroutine(StopFalling(pokeStopTime));
                 }
-                StartCoroutine(StopFalling(pokeStopTime));
             }
+
         }
     }
 
