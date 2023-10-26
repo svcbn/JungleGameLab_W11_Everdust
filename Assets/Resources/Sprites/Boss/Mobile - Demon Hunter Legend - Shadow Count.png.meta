@@ -1,0 +1,1033 @@
+fileFormatVersion: 2
+guid: e973d4cb19435a64883819be0e1dc5db
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 10
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 419
+        width: 38
+        height: 81
+      alignment: 9
+      pivot: {x: 0.514, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcd6d4ebdf6422f45b09467c3ab3a8b6
+      internalID: -2031592432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_1
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 419
+        width: 41
+        height: 81
+      alignment: 9
+      pivot: {x: 0.548, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1947a88c9d62b94cbe88d0cb85c65a5
+      internalID: -1052793911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_2
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 419
+        width: 44
+        height: 81
+      alignment: 9
+      pivot: {x: 0.579, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ba4b8dbd3e00fc418c02d3a04f9298b
+      internalID: -2081039096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_3
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 420
+        width: 71
+        height: 81
+      alignment: 9
+      pivot: {x: 0.721586, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7696728d2dfe0144bc495c1f1b06090
+      internalID: -164845926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_4
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 419
+        width: 70
+        height: 81
+      alignment: 9
+      pivot: {x: 0.5443957, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ded18f49615c4ff4baf4b813417baacc
+      internalID: 615559628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_5
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 419
+        width: 70
+        height: 81
+      alignment: 9
+      pivot: {x: 0.5416212, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ae74b499efd3954bb9bbe5e7dd05fb8
+      internalID: 976023520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_6
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 325
+        width: 50
+        height: 81
+      alignment: 9
+      pivot: {x: 0.29646304, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7cca112327d87c4fb54cb6ca5f6edf7
+      internalID: -226989060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_7
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 325
+        width: 71
+        height: 81
+      alignment: 9
+      pivot: {x: 0.718587, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75cd59eb56da87442860e306ed95f337
+      internalID: -680708614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_8
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 325
+        width: 97
+        height: 81
+      alignment: 9
+      pivot: {x: 0.32951167, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3f7a422e79a93e4eace66881830025b
+      internalID: 1191783007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_9
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 325
+        width: 50
+        height: 81
+      alignment: 9
+      pivot: {x: 0.32190552, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 048124d31340d524f8581d38888fdcef
+      internalID: -2116528254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_10
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 214
+        width: 70
+        height: 81
+      alignment: 9
+      pivot: {x: 0.72162265, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aaf9b62f89d5244db0f7be1cc610806
+      internalID: 1242413136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_25
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 116
+        width: 61
+        height: 81
+      alignment: 9
+      pivot: {x: 0.8012118, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5ec44612292e7d4e8223440940be9f7
+      internalID: -1356468766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_12
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 214
+        width: 72
+        height: 81
+      alignment: 9
+      pivot: {x: 0.70812565, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 258dd32b2b52fef4c8f23ecc09f2f68c
+      internalID: -2032308940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_13
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 214
+        width: 89
+        height: 81
+      alignment: 9
+      pivot: {x: 0.28905427, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e774cddc937285840918779feddfd3ee
+      internalID: 2050322105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_14
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 214
+        width: 50
+        height: 81
+      alignment: 9
+      pivot: {x: 0.6304242, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bc30a8f62ba8754cb71d9e4e7f8062a
+      internalID: -987299615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_15
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 214
+        width: 49
+        height: 81
+      alignment: 9
+      pivot: {x: 0.7261757, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30bd17b30860d4e41bfa43fdf1a85cb9
+      internalID: 561760605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_16
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 214
+        width: 81
+        height: 81
+      alignment: 9
+      pivot: {x: 0.62228847, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bec156205739db4faca4e601617b890
+      internalID: 143712762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_17
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 214
+        width: 70
+        height: 81
+      alignment: 9
+      pivot: {x: 0.66690326, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf9fbda5f94b90a4fb5483cad7e6e306
+      internalID: -2144068626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_18
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 214
+        width: 70
+        height: 81
+      alignment: 9
+      pivot: {x: 0.68504554, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e9c410a46ab2554eb8e031825fa174f
+      internalID: 538147684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_19
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 214
+        width: 50
+        height: 81
+      alignment: 9
+      pivot: {x: 0.312052, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cd2f160a81205f4a8a0e278c0efcc9f
+      internalID: -569058006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_20
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 214
+        width: 62
+        height: 81
+      alignment: 9
+      pivot: {x: 0.788268, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74e290ed58a2e63468cb3ee377281ba3
+      internalID: 1841173495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_21
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 213
+        width: 78
+        height: 81
+      alignment: 9
+      pivot: {x: 0.22705704, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca0cd867625a2204ea02a182414ab1fd
+      internalID: 2078742872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_22
+      rect:
+        serializedVersion: 2
+        x: 905
+        y: 213
+        width: 90
+        height: 81
+      alignment: 9
+      pivot: {x: 0.29849312, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9634e2363821fa54f9d2b4c1824d4e7d
+      internalID: -1620954011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_23
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 214
+        width: 83
+        height: 81
+      alignment: 9
+      pivot: {x: 0.23083203, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5da3c2255af03634a9d125fd911e5399
+      internalID: -927120129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_24
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 116
+        width: 60
+        height: 81
+      alignment: 9
+      pivot: {x: 0.76157296, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75efc1c5eeddf0a4e8b7256eebb0af5f
+      internalID: 1490478653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_81
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 10
+        width: 52
+        height: 178
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ac0a188198bd8e4dbac045794a5490d
+      internalID: 1426224959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_28
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 121
+        width: 34
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca02b5a9c511be647bbab779ad18d8d7
+      internalID: -771716175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_29
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 121
+        width: 34
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eb256c1c34c3804e95be0c61d0278e1
+      internalID: 1362480956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_83
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 11
+        width: 60
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37646dda5f2620243b9df79e35fbd497
+      internalID: 729083686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_27
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 17
+        width: 41
+        height: 81
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b9b258909008bc499bd7095230e66c5
+      internalID: -798277297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_82
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 10
+        width: 58
+        height: 108
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5384458797f80d46b4919f20b4ae1d7
+      internalID: -529941168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_84
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 10
+        width: 59
+        height: 82
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebd470bcf5a8f124386fedfabba6ca7b
+      internalID: 1093982421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_34
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 70
+        width: 31
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bda6972f518d4fa49953f3a25b668033
+      internalID: 1997780202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_35
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 69
+        width: 27
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 717eec90ee5baf14eb2f5d444a2aa7b1
+      internalID: -377974121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_37
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 70
+        width: 33
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bae429fff7befac4ba31b5bfe1362e70
+      internalID: 1105689569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_80
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 10
+        width: 50
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c467ae655c91e4c4dad610164068da28
+      internalID: -1347140532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_85
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 10
+        width: 74
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e929702bb2032145a2f7b3ada72a358
+      internalID: 274022202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_11
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 214
+        width: 71
+        height: 81
+      alignment: 9
+      pivot: {x: 0.72720253, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82457c0b10934bb46a92c526ce1a02a1
+      internalID: 50872411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Demon Hunter Legend - Shadow Count_26
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 116
+        width: 31
+        height: 81
+      alignment: 9
+      pivot: {x: 0.7963532, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c7bb36e56b713a4093fa993649c8de0
+      internalID: -1605877646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Mobile - Demon Hunter Legend - Shadow Count_0: -2031592432
+      Mobile - Demon Hunter Legend - Shadow Count_1: -1052793911
+      Mobile - Demon Hunter Legend - Shadow Count_10: 1242413136
+      Mobile - Demon Hunter Legend - Shadow Count_11: -1356468766
+      Mobile - Demon Hunter Legend - Shadow Count_12: 2050322105
+      Mobile - Demon Hunter Legend - Shadow Count_13: -987299615
+      Mobile - Demon Hunter Legend - Shadow Count_14: 561760605
+      Mobile - Demon Hunter Legend - Shadow Count_15: 143712762
+      Mobile - Demon Hunter Legend - Shadow Count_16: -2144068626
+      Mobile - Demon Hunter Legend - Shadow Count_17: 538147684
+      Mobile - Demon Hunter Legend - Shadow Count_18: -569058006
+      Mobile - Demon Hunter Legend - Shadow Count_19: -2081039096
+      Mobile - Demon Hunter Legend - Shadow Count_2: 1841173495
+      Mobile - Demon Hunter Legend - Shadow Count_20: 2078742872
+      Mobile - Demon Hunter Legend - Shadow Count_21: -1620954011
+      Mobile - Demon Hunter Legend - Shadow Count_22: -927120129
+      Mobile - Demon Hunter Legend - Shadow Count_23: 1490478653
+      Mobile - Demon Hunter Legend - Shadow Count_24: 1426224959
+      Mobile - Demon Hunter Legend - Shadow Count_25: -1356468766
+      Mobile - Demon Hunter Legend - Shadow Count_26: -1605877646
+      Mobile - Demon Hunter Legend - Shadow Count_27: -798277297
+      Mobile - Demon Hunter Legend - Shadow Count_28: -771716175
+      Mobile - Demon Hunter Legend - Shadow Count_29: 1362480956
+      Mobile - Demon Hunter Legend - Shadow Count_3: -798277297
+      Mobile - Demon Hunter Legend - Shadow Count_33: 1997780202
+      Mobile - Demon Hunter Legend - Shadow Count_34: -377974121
+      Mobile - Demon Hunter Legend - Shadow Count_35: -231542982
+      Mobile - Demon Hunter Legend - Shadow Count_36: 1105689569
+      Mobile - Demon Hunter Legend - Shadow Count_37: -1347140532
+      Mobile - Demon Hunter Legend - Shadow Count_4: 1797502077
+      Mobile - Demon Hunter Legend - Shadow Count_42: -616148936
+      Mobile - Demon Hunter Legend - Shadow Count_43: -2141075009
+      Mobile - Demon Hunter Legend - Shadow Count_44: 1625119500
+      Mobile - Demon Hunter Legend - Shadow Count_45: 1997868570
+      Mobile - Demon Hunter Legend - Shadow Count_46: 1048317148
+      Mobile - Demon Hunter Legend - Shadow Count_47: -229623444
+      Mobile - Demon Hunter Legend - Shadow Count_48: -2043278443
+      Mobile - Demon Hunter Legend - Shadow Count_49: 976023520
+      Mobile - Demon Hunter Legend - Shadow Count_5: 197388858
+      Mobile - Demon Hunter Legend - Shadow Count_50: -1976291335
+      Mobile - Demon Hunter Legend - Shadow Count_51: 1886926283
+      Mobile - Demon Hunter Legend - Shadow Count_52: -1699287432
+      Mobile - Demon Hunter Legend - Shadow Count_53: -720395793
+      Mobile - Demon Hunter Legend - Shadow Count_54: 490896731
+      Mobile - Demon Hunter Legend - Shadow Count_55: -1605877646
+      Mobile - Demon Hunter Legend - Shadow Count_6: -680708614
+      Mobile - Demon Hunter Legend - Shadow Count_7: 1191783007
+      Mobile - Demon Hunter Legend - Shadow Count_8: -2116528254
+      Mobile - Demon Hunter Legend - Shadow Count_80: -1347140532
+      Mobile - Demon Hunter Legend - Shadow Count_81: 1426224959
+      Mobile - Demon Hunter Legend - Shadow Count_82: -529941168
+      Mobile - Demon Hunter Legend - Shadow Count_83: 729083686
+      Mobile - Demon Hunter Legend - Shadow Count_84: 1093982421
+      Mobile - Demon Hunter Legend - Shadow Count_85: 274022202
+      Mobile - Demon Hunter Legend - Shadow Count_9: 50872411
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
