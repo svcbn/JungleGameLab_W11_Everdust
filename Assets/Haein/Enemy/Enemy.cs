@@ -4,6 +4,7 @@ public abstract class Enemy : MonoBehaviour
 {
     public int maxHp = 100;
     public GameObject weaknessCircle;
+    private DamageFlash _damageFlash;
 
     protected int _curHp;
     protected float _hitDelay = 0f;
@@ -13,7 +14,7 @@ public abstract class Enemy : MonoBehaviour
     protected virtual void Awake()
     {
         _handleWeaknessCircle = GetComponent<HandleWeaknessCircle>();
-
+        _damageFlash = GetComponent<DamageFlash>();
         _curHp = maxHp;
     }
 
@@ -25,21 +26,39 @@ public abstract class Enemy : MonoBehaviour
         }
     }
     
-    /// <summary>
-    ///ÀÌ ÀûÀÌ µ¥¹ÌÁö¸¦ ÀÔ´Â´Ù. ÇÃ·¹ÀÌ¾î ÂÊ¿¡¼­ È£ÃâÇÒ °Í.
-    /// </summary>
     /// <param name="hitWeakness"></param>
     public void TakeHit(bool hitWeakness = false)
     {
+        if (TryGetComponent(out HandleWeaknessCircle weaknessCircle))
+        {
+            if (!weaknessCircle.IsWeaknessAttacked())
+            {
+                hitWeakness = false;
+            }
+        }
         int dmg = hitWeakness ? WeaponStats.damage * WeaponStats.criticalMultiplier : WeaponStats.damage;
-
-        Hit(dmg);
+        Hit(dmg, hitWeakness);
     }
 
-    private void Hit(int _damage)
+    private void Hit(int _damage, bool _hitWeakness)
     {
         _hitDelay = 0.3f;
         _curHp -= _damage;
+        
+        //í°ìƒ‰ìœ¼ë¡œ ë²ˆì©ì´ëŠ” ì‰ì´ë”
+        _damageFlash.CallDamageFlash();
+        
+        //ë°ë¯¸ì§€ í…ìŠ¤íŠ¸
+        float xOffset = Random.Range(-0.5f, 0.5f);
+        float yOffset = Random.Range(0f, 3f);
+
+        Vector3 positionWithRandomOffset = transform.position + new Vector3(xOffset, yOffset, 0f);
+
+        GameObject damageTextPrefab = Resources.Load<GameObject>("Prefabs/UI/DamageText");
+        GameObject damageText = Instantiate(damageTextPrefab, positionWithRandomOffset, Quaternion.identity);
+        damageText.GetComponent<MoveAndDestroy>()._text = "-" + _damage.ToString();
+        if (!_hitWeakness) damageText.GetComponent<TextMesh>().color = Color.white;
+        
         print($"{name} HP: {_curHp} (-{_damage})");
         if (_curHp <= 0)
         {
