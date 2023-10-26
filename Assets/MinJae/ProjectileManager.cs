@@ -12,11 +12,11 @@ public class ProjectileManager : MonoBehaviour
 
     public GameObject magicCirclePrefab;
 
-    List<Vector3> offSets = new List<Vector3>{
-                                new Vector3(3,3,0),
-                                new Vector3(3,-3,0),
-                                new Vector3(-3,-3,0),
-                                new Vector3(-3,3,0) };
+    [SerializeField]private List<Vector3> offSetsProj = new List<Vector3>{
+                                                            new Vector3(3,3,0),
+                                                            new Vector3(3,-3,0),
+                                                            new Vector3(-3,-3,0),
+                                                            new Vector3(-3,3,0) };
     List<GameObject> magicCircles = new List<GameObject>();
 
 
@@ -79,7 +79,7 @@ public class ProjectileManager : MonoBehaviour
         
         int idx = (allProjCnt-1) % 4;
 
-        magicCircle.GetComponent<MagicCircle>().Init(this, player, offSets[idx]);
+        magicCircle.GetComponent<MagicCircle>().Init(this, player, offSetsProj[idx]);
         magicCircles.Add(magicCircle);
         
     }
