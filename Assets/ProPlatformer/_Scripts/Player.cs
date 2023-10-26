@@ -25,6 +25,8 @@ namespace Myd.Platform
             this.gameContext = gameContext;
         }
 
+        public PlayerController GetPlayerController() => playerController;
+
         //플레이어 엔터티 로드
         public void Reload(Bounds bounds, Vector2 startPosition)
         {
