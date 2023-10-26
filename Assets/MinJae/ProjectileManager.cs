@@ -53,6 +53,13 @@ public class ProjectileManager : MonoBehaviour
                 return;
             }
 
+            Enemy.TryGetComponent<MagicMissile>(out MagicMissile magicMissile);
+            if(magicMissile == null)
+            {
+                Debug.Log(" No <MagicMissile> Component  in Enmey ");
+                return;
+            }
+
             Enemy.GetComponent<MagicMissile>().Init();
             Enemy.GetComponent<MagicMissile>().Execute();
         }
