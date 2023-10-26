@@ -23,8 +23,8 @@ MonoBehaviour:
   MaxFall: -16
   FastMaxFall: -24
   FastMaxAccel: 30
-  JumpSpeed: 10.5
-  VarJumpTime: 0.2
+  JumpSpeed: 28
+  VarJumpTime: 0
   JumpHBoost: 4
   JumpGraceTime: 0.1
   UpwardCornerCorrection: 4
