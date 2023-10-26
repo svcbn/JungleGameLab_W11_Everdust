@@ -47,6 +47,14 @@ public abstract class Enemy : MonoBehaviour
             {
                 hitWeakness = false;
             }
+            if (hitWeakness)
+            {
+                if (weaknessCircle.weaknessCircleType == (int)HandleWeaknessCircle.WEAKTYPE.CONTINUOUSWEAKNESS)
+                {
+                    weaknessCircle.currentWeaknessNum++;
+                    _handleWeaknessCircle.ChangeWeaknessPosition();
+                }
+            }
         }
         int dmg = hitWeakness ? WeaponStats.damage * WeaponStats.criticalMultiplier : WeaponStats.damage;
         Hit(dmg, hitWeakness);

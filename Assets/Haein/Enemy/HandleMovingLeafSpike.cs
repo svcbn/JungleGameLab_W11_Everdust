@@ -52,7 +52,6 @@ public class HandleMovingLeafSpike : Projectile
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.gameObject.name);
         if (other.CompareTag("LeafSpike"))
         {
             HandleCollision();

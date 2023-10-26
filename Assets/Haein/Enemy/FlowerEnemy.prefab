@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 9083051239377326274}
   - component: {fileID: 9083051239377326275}
   - component: {fileID: 3760139198721885507}
+  - component: {fileID: 3339639380183628662}
   - component: {fileID: 5015153470781628271}
   - component: {fileID: 501871726944074957}
   - component: {fileID: -3014988115421080086}
@@ -326,6 +327,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.75, y: 1}
   m_Direction: 0
+--- !u!114 &3339639380183628662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9083051239377326277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 716e0743825863e478a77b7596489d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &5015153470781628271
 Rigidbody2D:
   serializedVersion: 4
@@ -359,7 +372,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03112dad2956d5542b47871b6c0c67b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 100
   weaknessCircle: {fileID: 9083051239014995821}
 --- !u!95 &-3014988115421080086
 Animator:
