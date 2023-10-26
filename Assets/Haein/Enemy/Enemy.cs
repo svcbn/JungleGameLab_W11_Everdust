@@ -54,11 +54,14 @@ public abstract class Enemy : MonoBehaviour
 
     private void Hit(int _damage, bool _hitWeakness)
     {
+        string damageStr = _curHp.ToString();
         _hitDelay = 0.3f;
         _curHp -= _damage;
+        if(_curHp > 0)
+            damageStr = _damage.ToString();
         
         //흰색으로 번쩍이는 쉐이더
-        // _damageFlash.CallDamageFlash();
+        _damageFlash.CallDamageFlash();
         
         //데미지 텍스트
         float xOffset = Random.Range(-0.5f, 0.5f);
@@ -68,7 +71,7 @@ public abstract class Enemy : MonoBehaviour
 
         GameObject damageTextPrefab = Resources.Load<GameObject>("Prefabs/UI/DamageText");
         GameObject damageText = Instantiate(damageTextPrefab, positionWithRandomOffset, Quaternion.identity);
-        damageText.GetComponent<MoveAndDestroy>()._text = "-" + _damage.ToString();
+        damageText.GetComponent<MoveAndDestroy>()._text = "-" + damageStr;
         if (!_hitWeakness) damageText.GetComponent<TextMesh>().color = Color.white;
         
         print($"{name} HP: {_curHp} (-{_damage})");
