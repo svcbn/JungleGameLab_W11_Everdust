@@ -4,6 +4,7 @@ using Myd.Common;
 using Myd.Platform.Core;
 using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace Myd.Platform
 {
@@ -32,6 +33,8 @@ namespace Myd.Platform
 
         EGameState gameState;
 
+        ProjectileManager projectileManager;
+
         void Awake()
         {
             Instance = this;
@@ -59,6 +62,9 @@ namespace Myd.Platform
             player.Reload(level.Bounds, level.StartPosition);
             this.gameState = EGameState.Play;
 
+            projectileManager = GetComponentInChildren<ProjectileManager>();
+            projectileManager.Init(player);
+
 
             yield return null;
         }
@@ -77,7 +83,10 @@ namespace Myd.Platform
                     gameCamera.SetCameraPosition(player.GetCameraPosition());
                 }
             }
+
         }
+
+
 
         #region 冻帧
         private float freezeTime;

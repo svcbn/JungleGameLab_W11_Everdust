@@ -80,6 +80,12 @@ namespace Myd.Platform
             }
             return playerController.GetCameraPosition();
         }
+
+        public Vector3 GetPlayerPosition()
+        {
+            return playerRenderer.transform.position;
+
+        }
     }
 
 }
