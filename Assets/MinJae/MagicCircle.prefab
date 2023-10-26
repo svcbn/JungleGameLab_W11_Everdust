@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4315446772450325209}
   - component: {fileID: 3144999779287377294}
   - component: {fileID: 2497334458158035376}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MagicCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34a3bd03db81e94a989524251b65598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eta: 1
+  shakeMagnitude: 0.1
 --- !u!50 &2497334458158035376
 Rigidbody2D:
   serializedVersion: 4
