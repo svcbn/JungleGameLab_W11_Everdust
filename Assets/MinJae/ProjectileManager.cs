@@ -12,11 +12,11 @@ public class ProjectileManager : MonoBehaviour
 
     public GameObject magicCirclePrefab;
 
-    List<Vector3> offSets = new List<Vector3>{
-                                new Vector3(3,3,0),
-                                new Vector3(3,-3,0),
-                                new Vector3(-3,-3,0),
-                                new Vector3(-3,3,0) };
+    [SerializeField]private List<Vector3> offSetsProj = new List<Vector3>{
+                                                            new Vector3(3,3,0),
+                                                            new Vector3(3,-3,0),
+                                                            new Vector3(-3,-3,0),
+                                                            new Vector3(-3,3,0) };
     List<GameObject> magicCircles = new List<GameObject>();
 
 
@@ -38,7 +38,7 @@ public class ProjectileManager : MonoBehaviour
     {
         if( Input.GetKeyDown(KeyCode.Q) ) // for test
         {
-            Debug.Log("Q");
+            Debug.Log("Down Key Q");
 
             DisplayProjectile();
         }
@@ -50,6 +50,13 @@ public class ProjectileManager : MonoBehaviour
             if(Enemy == null)
             {
                 Debug.Log(" Enemy is null ");
+                return;
+            }
+
+            Enemy.TryGetComponent<MagicMissile>(out MagicMissile magicMissile);
+            if(magicMissile == null)
+            {
+                Debug.Log(" No <MagicMissile> Component  in Enmey ");
                 return;
             }
 
@@ -79,7 +86,7 @@ public class ProjectileManager : MonoBehaviour
         
         int idx = (allProjCnt-1) % 4;
 
-        magicCircle.GetComponent<MagicCircle>().Init(this, player, offSets[idx]);
+        magicCircle.GetComponent<MagicCircle>().Init(this, player, offSetsProj[idx]);
         magicCircles.Add(magicCircle);
         
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Myd.Platform;
 
 public class HandleWeaponClick : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class HandleWeaponClick : MonoBehaviour
     public float pokeCooltime;
     [Tooltip("찌르기 시 몇 초간 콜라이더가 켜져 있어야 하는가?")] public float hitboxDuration;
     [SerializeField] private ParticleSystem _attackVfx;
+
+    // attack stop time
+    public float pokeStopTime = 0.2f;
 
     private float _pokeTimer = 0f;
     private Animator _animator; // Animator 컴포넌트를 참조하기 위한 변수
@@ -83,6 +87,7 @@ public class HandleWeaponClick : MonoBehaviour
                         }
                     }
                 }
+                StartCoroutine(StopFalling(pokeStopTime));
             }
         }
         //콜라이더 별 일반 타격 실행. 행렬에 동일 몬스터 전부 삭제
@@ -101,8 +106,21 @@ public class HandleWeaponClick : MonoBehaviour
                         allEnemyCols[j] = null;
                     }
                 }
+                StartCoroutine(StopFalling(pokeStopTime));
             }
         }
 
+    }
+
+    IEnumerator StopFalling(float stopTime){
+        float time = 0;
+        while(true){
+            Game.Instance.player.ResetSpeedY();
+            time += Time.deltaTime;
+            if(time >= stopTime){
+                break;
+            }
+            yield return null;
+        }
     }
 }
