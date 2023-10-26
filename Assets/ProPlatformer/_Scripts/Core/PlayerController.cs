@@ -59,6 +59,7 @@ namespace Myd.Platform
 
         public bool CanHit { get; set; }
 
+
         public PlayerController(ISpriteControl spriteControl, IEffectControl effectControl)
         {
             this.SpriteControl = spriteControl;
@@ -373,7 +374,6 @@ namespace Myd.Platform
 
         public bool RefillDash()
         {
-            // todo : dash timer 초기화해주기
             if (this.dashes < Constants.MaxDashes)
             {
                 this.dashes = Constants.MaxDashes;
