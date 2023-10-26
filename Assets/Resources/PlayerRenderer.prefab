@@ -241,6 +241,7 @@ MonoBehaviour:
   pokeCooltime: 0.5
   hitboxDuration: 0.1
   _attackVfx: {fileID: 977066372678192106}
+  pokeStopTime: 0.2
 --- !u!61 &6318439881578945817
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10057,6 +10058,7 @@ GameObject:
   - component: {fileID: 4504645364552950415}
   - component: {fileID: 3892882469290394015}
   - component: {fileID: 4183734233264335789}
+  - component: {fileID: 5135997469097116091}
   m_Layer: 9
   m_Name: WeaponContainer
   m_TagString: Weapon
@@ -10133,6 +10135,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.33677825, y: 4.866147}
   m_EdgeRadius: 0
+--- !u!114 &5135997469097116091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3787729132456843751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3eac3a537844de44ba1ced67264c88d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  _parryingTime: 0.2
 --- !u!1 &4509220661846234378
 GameObject:
   m_ObjectHideFlags: 0
@@ -10143,9 +10159,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4509220661846234377}
   - component: {fileID: 4509220661846234376}
+  - component: {fileID: 6141362664427388598}
   m_Layer: 0
   m_Name: Sprite
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10188,7 +10205,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e381251ece2031a4784f3189d7e7e5f0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10220,6 +10237,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &6141362664427388598
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4509220661846234378}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.71304345}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.99130434, y: 1.4260869}
+    newSize: {x: 1.1478261, y: 1.4260869}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.99130434, y: 1.4260869}
+  m_EdgeRadius: 0
 --- !u!1 &4509220662286137550
 GameObject:
   m_ObjectHideFlags: 0
@@ -10231,9 +10274,11 @@ GameObject:
   - component: {fileID: 4509220662286137549}
   - component: {fileID: 4509220662286137548}
   - component: {fileID: 4509220662286137586}
+  - component: {fileID: 7032165208231429492}
+  - component: {fileID: 255598151312069971}
   m_Layer: 7
   m_Name: PlayerRenderer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10289,6 +10334,32 @@ MonoBehaviour:
   EnableTrailEffect: 1
   trailEffect: {fileID: 4509220662320803713}
   HeadMount: {fileID: 4509220662379779468}
+--- !u!114 &7032165208231429492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4509220662286137550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd6ad4b508dd7e4c8df32a6ef250310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flashColor: {r: 1, g: 1, b: 1, a: 1}
+  _flashTime: 0.25
+--- !u!114 &255598151312069971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4509220662286137550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99ef6b29078d89e4f90237e167a5d4c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4509220662320803713
 GameObject:
   m_ObjectHideFlags: 0

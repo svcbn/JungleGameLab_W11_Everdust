@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using Myd.Platform;
+using Sirenix.OdinInspector.Editor.Validation;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MagicCircle : MonoBehaviour
+public class MagicCircle : Enemy
 {
     ProjectileManager projM;
 
@@ -25,6 +26,8 @@ public class MagicCircle : MonoBehaviour
 
     private Vector3 originalPosition;
 
+    private bool isInit = false;
+
 	private void LoadDataSO()
 	{
 		string pathDataSO = "Data/MagicCircleData"; // in Resource folder
@@ -38,9 +41,10 @@ public class MagicCircle : MonoBehaviour
 		}
 	}
 
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start();
+        MaxHp = 1;
     }
 
     public void Init(ProjectileManager projM_, Player player_, Vector3 posOffset_)
@@ -54,11 +58,13 @@ public class MagicCircle : MonoBehaviour
         player    = player_;
         posOffset = posOffset_;
 
+        isInit = true;
     }
-
-
-    void Update()
+    protected override void Update()
     {
+        base.Update();
+        if(!isInit) return;
+
         startTimer += Time.deltaTime;
 
         playerPos = player.GetPlayerPosition();

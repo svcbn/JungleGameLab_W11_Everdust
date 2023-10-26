@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 7856125624765333940}
   - component: {fileID: 7856125624765333943}
   - component: {fileID: 7856125624765333942}
-  m_Layer: 0
+  - component: {fileID: 9062107181894727181}
+  - component: {fileID: 6833150915907719786}
+  m_Layer: 8
   m_Name: Proj_MagicMissle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +121,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -163,3 +165,30 @@ MonoBehaviour:
   refindRadius: 20
   owner: {fileID: 0}
   damage: 0
+--- !u!114 &9062107181894727181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7856125624765333937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5338f5235fdb2b74195c161c150ab8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaknessCircle: {fileID: 0}
+--- !u!114 &6833150915907719786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7856125624765333937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd6ad4b508dd7e4c8df32a6ef250310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flashColor: {r: 1, g: 1, b: 1, a: 1}
+  _flashTime: 0.25
