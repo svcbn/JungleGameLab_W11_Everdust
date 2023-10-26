@@ -35,6 +35,8 @@ namespace Myd.Platform
 
         ProjectileManager projectileManager;
 
+        public Player GetPlayer() => player;
+
         void Awake()
         {
             Instance = this;

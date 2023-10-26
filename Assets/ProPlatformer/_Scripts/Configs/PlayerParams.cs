@@ -115,7 +115,7 @@ namespace Myd.Platform
 
         public void ReloadParams()
         {
-            Debug.Log("=======更新所有Player配置参数");
+            Debug.Log("=======모든 Player 설정 매개 변수 업데이트");
             Constants.MaxRun = MaxRun;
             Constants.RunAccel = RunAccel;
             Constants.RunReduce = RunReduce;

@@ -1,3 +1,4 @@
+using Myd.Platform;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,8 @@ public class HandleWeaponClick : MonoBehaviour
     private Transform _spearRoot;
     private Vector2 _attackVfxOffset;
     private Quaternion _attackVfxRotation;
+    private PlayerController _playerController;
+    private ParryingTest _parry;
 
     void Awake()
     {
@@ -28,6 +31,13 @@ public class HandleWeaponClick : MonoBehaviour
         _spearRoot = transform.parent;
         _attackVfxOffset = _attackVfx.transform.localPosition;
         _attackVfxRotation = _attackVfx.transform.localRotation;
+        _playerController = Game.Instance.GetPlayer().GetPlayerController();
+    }
+
+    private void Start()
+    {
+        _parry = PlayerManager.Instance.player.GetComponentInChildren<ParryingTest>();
+
     }
 
     void Update()
@@ -59,6 +69,11 @@ public class HandleWeaponClick : MonoBehaviour
         }
     }
 
+    public void SetPokeTimerToZero()
+    {
+        _pokeTimer = 0f;
+    }
+    
     void SpearHitCheck()
     {
         Vector2 center = (Vector2)_spearRoot.position + (Vector2) (transform.rotation * _hitBox.offset);
@@ -66,6 +81,7 @@ public class HandleWeaponClick : MonoBehaviour
         float angle = _hitBox.transform.rotation.eulerAngles.z;
 
         Collider2D[] allEnemyCols = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("Enemy"));
+        Collider2D[] allProjectileCols = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("EnemyProjectile"));
         //콜라이더 중 약점 있으면 약점 타격 실행. 행렬에 동일 몬스터 전부 삭제.
         for (int i = 0; i < allEnemyCols.Length; i++)
         {
@@ -111,6 +127,39 @@ public class HandleWeaponClick : MonoBehaviour
             }
         }
 
+        //Collider2D[] parryables = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("Parryable"));
+
+        //if(parryables.Length > 0)
+        //{
+
+        //    foreach(var collider in parryables)
+        //    {
+
+        //    }
+        //}
+        if (allProjectileCols.Length > 0)
+        {
+            _parry.TriggerParry();
+
+            for (int i = 0; i < allProjectileCols.Length; i++)
+            {
+                if (allProjectileCols[i] != null)
+                {
+                    Projectile projectile = allProjectileCols[i].GetComponent<Projectile>();
+                    projectile.TakeHit();
+                    SetPokeTimerToZero();
+                    for (int j = i; j < allProjectileCols.Length; j++)
+                    {
+                        if (allProjectileCols[j].transform.root.GetComponent<Projectile>() == projectile)
+                        {
+                            allProjectileCols[j] = null;
+                        }
+                    }
+                    StartCoroutine(StopFalling(pokeStopTime));
+                }
+            }
+
+        }
     }
 
     IEnumerator StopFalling(float stopTime){
