@@ -1,3 +1,4 @@
+using Myd.Platform;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,8 @@ public class HandleWeaponClick : MonoBehaviour
     private Transform _spearRoot;
     private Vector2 _attackVfxOffset;
     private Quaternion _attackVfxRotation;
+    private PlayerController _playerController;
+    private ParryingTest _parry;
 
     void Awake()
     {
@@ -24,6 +27,8 @@ public class HandleWeaponClick : MonoBehaviour
         _spearRoot = transform.parent;
         _attackVfxOffset = _attackVfx.transform.localPosition;
         _attackVfxRotation = _attackVfx.transform.localRotation;
+        _playerController = Game.Instance.GetPlayer().GetPlayerController();
+        _parry = PlayerManager.Instance.player.GetComponentInChildren<ParryingTest>();
     }
 
     void Update()
@@ -101,6 +106,18 @@ public class HandleWeaponClick : MonoBehaviour
                         allEnemyCols[j] = null;
                     }
                 }
+            }
+        }
+
+        Collider2D[] parryables = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("Parryable"));
+        
+        if(parryables.Length > 0)
+        {
+            _parry.TriggerParry();
+
+            foreach(var collider in parryables)
+            {
+
             }
         }
 
