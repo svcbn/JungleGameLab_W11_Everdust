@@ -38,7 +38,7 @@ public class ProjectileManager : MonoBehaviour
     {
         if( Input.GetKeyDown(KeyCode.Q) ) // for test
         {
-            Debug.Log("Q");
+            Debug.Log("Down Key Q");
 
             DisplayProjectile();
         }
