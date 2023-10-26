@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e5d303fc-effd-4bd6-a27e-787eef776571" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.W10_Test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.W10_Test/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/FlowerEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/FlowerEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/HandleAttackEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/HandleAttackEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AnimationEffects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AnimationEffects.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/HandleMovingLeafSpike.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/HandleMovingLeafSpike.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/PlayerRenderer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/PlayerRenderer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sprites/Boss/Boss.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Sprites/Boss/Boss.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sprites/Boss/Boss_3Hit.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Sprites/Boss/Boss_3Hit.anim" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +23,13 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/DestroySeconds.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/HandleAttackEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/HandleBossHitbox.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/HandleMovingLeafSpike.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/Projectile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/MoveAndDestroy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Haein/PlayerStats.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.8.9/Runtime/Core/CameraState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.8.9/Runtime/Core/Predictor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -101,7 +108,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1698301712530</updated>
-      <workItem from="1698301715025" duration="9028000" />
+      <workItem from="1698301715025" duration="12400000" />
     </task>
     <servers />
   </component>

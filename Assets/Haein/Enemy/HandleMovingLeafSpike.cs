@@ -61,6 +61,7 @@ public class HandleMovingLeafSpike : Projectile
         if (other.CompareTag("Player"))
         {
             //플레이어 데미지 스크립트 추가
+            PlayerManager.Instance.player.GetComponent<PlayerStats>().Hit(10);
             HandleCollision();
         }
     }
