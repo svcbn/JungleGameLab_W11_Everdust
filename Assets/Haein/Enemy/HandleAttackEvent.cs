@@ -7,6 +7,7 @@ public class HandleAttackEvent : MonoBehaviour
     public GameObject _hitBox;
     public GameObject _attackBox;
     public GameObject movingLeafSpike;
+    private int createNum = 2;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,29 +34,32 @@ public class HandleAttackEvent : MonoBehaviour
     
     public void CreateMovingProjectile()
     {
-        Debug.Log("CreateMovingProjectile");
-        int createNum = 2;
-        float distance = 5f;
         if (movingLeafSpike == null) return;
+        createNum = 2;
+        InvokeRepeating("CreateProjectile", 0f, 0.5f);
+
+    }
+
+    private void CreateProjectile()
+    {
+        float distance = 5f;
+        if (createNum <= 0)
+        {
+            CancelInvoke("CreateProjectile");
+            return;
+        }
+        
+        float angle = (createNum - 1) * (360f / 2); // 2로 나누어 180도 회전
+        float radians = angle * Mathf.Deg2Rad;
+        
+        float xOffset = Mathf.Cos(radians) * distance;
+        float zOffset = Mathf.Sin(radians) * distance;
         Transform playerTransform = PlayerManager.Instance.player.transform;
         Vector3 playerPosition = playerTransform.position;
-
-        for (int i = 0; i < createNum; i++)
-        {
-            // 원형 경로 계산
-            float angle = i * (360f / createNum);
-            float radians = angle * Mathf.Deg2Rad;
-
-            // X와 Z 위치를 계산하여 새로운 위치를 설정
-            float xOffset = Mathf.Cos(radians) * distance;
-            float zOffset = Mathf.Sin(radians) * distance;
-            Vector3 spawnPosition = playerPosition + new Vector3(xOffset, 0f, zOffset);
-
-            // movingLeafSpike를 생성하고 위치를 설정
-            GameObject newProjectile = Instantiate(movingLeafSpike, spawnPosition, Quaternion.identity);
-
-            // 추가 설정이 필요한 경우, 예를 들어 방향 설정 또는 속도 설정
-            // newProjectile.GetComponent<MovingLeafSpikeScript>().SetDirectionAndSpeed(...);
-        }
+        Vector3 spawnPosition = playerPosition + new Vector3(xOffset, 0f, zOffset);
+        
+        GameObject newProjectile = Instantiate(movingLeafSpike, spawnPosition, Quaternion.identity);
+        createNum--;
     }
+
 }

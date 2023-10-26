@@ -7,11 +7,7 @@
     <list default="true" id="e5d303fc-effd-4bd6-a27e-787eef776571" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.W10_Test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.W10_Test/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/FlowerEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/FlowerEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/MovingLeafSpike.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/MovingLeafSpike.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/HaeinMain.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/HaeinMain.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PlayerRenderer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/PlayerRenderer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/HandleAttackEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/HandleAttackEvent.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +101,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1698301712530</updated>
-      <workItem from="1698301715025" duration="7616000" />
+      <workItem from="1698301715025" duration="9028000" />
     </task>
     <servers />
   </component>
