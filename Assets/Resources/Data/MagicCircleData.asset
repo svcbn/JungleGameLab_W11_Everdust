@@ -19,12 +19,13 @@ MonoBehaviour:
   _beforeDelay: 0
   _afterDelay: 0
   _damage: 0
-  missilePrefab: {fileID: 0}
+  missilePrefab: {fileID: 4315446772450325211, guid: f049426809135524e9545248a8d2d37f, type: 3}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   duration: 0
-  missileCount: 0
+  missileCount: 1
   shotTime: 1
+  destroyTime: 2
   shakeMagnitude: 0.1
-  moveSpeed: 20
+  moveSpeed: 10
