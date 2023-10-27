@@ -25,13 +25,20 @@ public class InversWeightedRandom
         float randomNum = UnityEngine.Random.Range(0, weights.Sum());
         float currentNum = 0;
 
+        bool upperCount = true;
         for(int i = 0 ; i < count.Length; ++i){
             if(currentNum <= randomNum && randomNum < currentNum + weights[i]){
                 count[i] += 1;
+                if(count[i] < 2) upperCount = false;
                 weights[i] = 1.0f / count[i];
                 return i;
             }
             currentNum += weights[i];
+        }
+        if(upperCount){
+            for(int i = 0 ; i < count.Length; ++i){
+                count[i] -= 2;
+            }
         }
 
         Debug.Log("Some Error Occur");
