@@ -25,7 +25,7 @@ MonoBehaviour:
     m_Bits: 128
   duration: 0
   missileCount: 1
-  shotTime: 1
+  shotTime: 2
   destroyTime: 4
   shakeMagnitude: 0.1
   moveSpeed: 10

@@ -38,7 +38,7 @@ public abstract class Projectile : MonoBehaviour
         
         if (Vector3.Magnitude(transform.position) > 200f) // 룸 밖으로 나갔을 시 제거
         {
-            Destroy(gameObject);
+            EraseProjectile();
         }
     }
     
@@ -73,7 +73,7 @@ public abstract class Projectile : MonoBehaviour
         print($"{name} HP: {_curHp} (-{_damage})");
         if (_curHp <= 0)
         {
-            Destroy(gameObject);
+            EraseProjectile();
         }
     }
 
@@ -89,7 +89,12 @@ public abstract class Projectile : MonoBehaviour
     
     private void HandleCollision()
     {
-        Destroy(gameObject);
+        EraseProjectile();
     }
     
+
+    public virtual void EraseProjectile()
+    {
+        Destroy(gameObject);
+    }
 }
