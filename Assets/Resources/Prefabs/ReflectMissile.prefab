@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2497334458158035376}
   - component: {fileID: 3818170303008172756}
   - component: {fileID: 3519685159366434390}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: ReflectMissile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,8 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899a043c68004994591213be351731a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaknessCircle: {fileID: 0}
-  lifeTime: 5
+  attackLifeTime: 2
   attackPower: 20
 --- !u!50 &2497334458158035376
 Rigidbody2D:

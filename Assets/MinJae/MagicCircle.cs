@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MagicCircle : Enemy
+public class MagicCircle : Projectile
 {
     ProjectileManager projM;
 
@@ -100,9 +100,8 @@ public class MagicCircle : Enemy
         }
     }
 
-    void MoveShoot(){
-
-
+    void MoveShoot()
+    {
         transform.position = Vector3.MoveTowards(transform.position, targetPos, _data.moveSpeed * Time.deltaTime);
 
         if(transform.position == targetPos)

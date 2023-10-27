@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Missile : Enemy
+public class Missile : Projectile
 {
     protected override void Start()
     {
