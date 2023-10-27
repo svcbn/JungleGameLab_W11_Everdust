@@ -8,6 +8,8 @@ public class Enemy_ContinuousWeakness : Enemy
     private bool isCharging = false;
     private float canChargeDelay = 0f;
     public GameObject magicMirror;
+
+    public GameObject weaknessCircle;
     // Start is called before the first frame update
     protected override void Awake()
     {
@@ -27,6 +29,8 @@ public class Enemy_ContinuousWeakness : Enemy
         if (!isCharging && canChargeDelay <= 0f)
         {
             isCharging = true;
+            magicMirror.SetActive(true);
+            weaknessCircle.SetActive(true);
             StartCoroutine(Charging());
         }
         if (GetComponent<HandleWeaknessCircle>().currentWeaknessNum >= 3)
@@ -41,9 +45,8 @@ public class Enemy_ContinuousWeakness : Enemy
     
     IEnumerator Charging()
     {
-        magicMirror.SetActive(true);
-        weaknessCircle.SetActive(true);
         yield return new WaitForSeconds(3f);
+        Debug.Log("쏘기");
         GetComponentInChildren<HandleAttackEvent>().CreateMovingProjectile();
         isCharging = false;
         weaknessCircle.SetActive(false);

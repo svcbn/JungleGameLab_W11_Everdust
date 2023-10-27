@@ -28,6 +28,8 @@ namespace Myd.Platform
         [SerializeField]
         public SpriteRenderer hairSprite02;
 
+        public GameObject ChainEffect;
+
         private Vector2 scale;
         private Vector2 currSpriteScale;
 

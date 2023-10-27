@@ -25,6 +25,7 @@ namespace Myd.Platform
             this.gameContext = gameContext;
         }
 
+        public PlayerRenderer GetPlayer() => playerRenderer;
         public PlayerController GetPlayerController() => playerController;
 
         //플레이어 엔터티 로드
@@ -46,7 +47,10 @@ namespace Myd.Platform
 
         public void Update(float deltaTime)
         {
-            playerController.Update(deltaTime);
+            if (PlayerManager.Instance.canMove)
+            {
+                playerController.Update(deltaTime);
+            }
             Render();
         }
 

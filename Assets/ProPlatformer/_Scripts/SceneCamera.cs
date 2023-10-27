@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Myd.Platform
 {
     /// <summary>
-    /// ÉãÏñ»ú
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public class SceneCamera : MonoBehaviour, ICamera
     {
@@ -36,7 +36,7 @@ namespace Myd.Platform
 
         public void SetCameraPosition(Vector2 cameraPosition)
         {
-            this.mainCamera.transform.position = new Vector3(cameraPosition.x+offset.x, cameraPosition.y + offset.y, -10);
+            this.mainCamera.transform.position = new Vector3(cameraPosition.x+offset.x, cameraPosition.y + offset.y - 4f, -10);
         }
 
         public void Shake(Vector2 dir, float duration)

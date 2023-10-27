@@ -20,14 +20,14 @@ public class FlowerEnemy : Enemy
         weaknessCircle = GetComponentInChildren<HandleWeaknessCircleAnimation>().gameObject;
         circlePos = weaknessCircle.transform.localPosition;
         animator = GetComponentInChildren<Animator>();
-        attackMode = Random.Range(0, 2);
+        attackMode = 0;
     }
     
     protected override void Update()
     {
         base.Update();
         //move X
-        if (canFlip)
+        if (canFlip && Mathf.Abs(PlayerManager.Instance.player.transform.position.y - transform.position.y) < 2f)
         {
             moveDir = spriteRenderer.flipX ? 1 : -1;
             transform.Translate(moveDir * moveSpeed * Time.deltaTime, 0f, 0f);
@@ -95,6 +95,6 @@ public class FlowerEnemy : Enemy
     {
         yield return new WaitForSeconds(2.5f);
         canFlip = true;
-        attackMode = Random.Range(0, 2);
+        attackMode = attackMode == 0 ? 1 : 0;
     }
 }
