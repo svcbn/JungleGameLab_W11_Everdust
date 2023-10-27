@@ -11,13 +11,13 @@ public class ProjectileManager : MonoBehaviour
     
 
     public GameObject magicCirclePrefab;
+    List<GameObject> magicCircles = new List<GameObject>();
 
     [SerializeField]private List<Vector3> offSetsProj = new List<Vector3>{
                                                             new Vector3(3,3,0),
                                                             new Vector3(3,-3,0),
                                                             new Vector3(-3,-3,0),
                                                             new Vector3(-3,3,0) };
-    List<GameObject> magicCircles = new List<GameObject>();
 
 
     int activeProjectileCount = 0;
@@ -40,7 +40,7 @@ public class ProjectileManager : MonoBehaviour
         {
             Debug.Log("Down Key Q");
 
-            DisplayProjectile();
+            StartCoroutine(DisplayProjectileCO(waitTime:0.1f));
         }
 
         if( Input.GetKeyDown(KeyCode.R) ) // for test
@@ -67,6 +67,23 @@ public class ProjectileManager : MonoBehaviour
     }
 
 
+    IEnumerator DisplayProjectileCO( float waitTime = 0.5f)
+    {
+
+        Debug.Log("DisplayProjectileCO");
+
+
+        for(int i=0; i<4; i++)
+        {
+            DisplayProjectile();
+            yield return new WaitForSeconds(waitTime);
+        }
+
+    }
+
+
+    // todo: 생기는 순서 랜덤으로.
+    // 구체간의 소환시간 파라미터 설정가능하도록
     void DisplayProjectile()
     {
         if( activeProjectileCount >= 4 ){ return; }

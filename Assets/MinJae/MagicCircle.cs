@@ -33,8 +33,7 @@ public class MagicCircle : Projectile
 		string pathDataSO = "Data/MagicCircleData"; // in Resource folder
 		_data = Resources.Load<MagicCircleData>(pathDataSO);
 
-		if(_data == null)
-		{
+		if(_data == null){
 			Debug.LogWarning(" Data Load Fail ");
 		}else{
 			Debug.Log(" Data Load Success ");
@@ -46,6 +45,7 @@ public class MagicCircle : Projectile
         base.Start();
         MaxHp = 1;
     }
+
 
     public void Init(ProjectileManager projM_, Player player_, Vector3 posOffset_)
     {
@@ -100,9 +100,8 @@ public class MagicCircle : Projectile
         }
     }
 
-    void MoveShoot(){
-
-
+    void MoveShoot()
+    {
         transform.position = Vector3.MoveTowards(transform.position, targetPos, _data.moveSpeed * Time.deltaTime);
 
         if(transform.position == targetPos)
