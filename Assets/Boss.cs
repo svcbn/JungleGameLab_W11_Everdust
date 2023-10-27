@@ -10,6 +10,8 @@ public class Boss : Enemy
     [SerializeField] private SpriteRenderer _spriteEchoRenderer;
     [SerializeField] private Anticipation[] _3hitAnticipations;
     [SerializeField] private Anticipation[] _3hitVer2;
+    [SerializeField] private EnemyMeleeHitBox[] _hitBoxes = new EnemyMeleeHitBox[3];
+
 
     private SpriteRenderer _ownSpriteRenderer;
     private Animator _animator;
@@ -108,6 +110,9 @@ public class Boss : Enemy
             _teleportCR = StartCoroutine(CR_Teleport(tInfo.startDelay, tInfo.duration, tInfo.relativePositionFromPlayer, tInfo.shouldFlip));
         }
 
+        //히트박스
+        _hitBoxes[index].ActivateHitBox(_3hitAnticipations[index].time + _3hitAnticipations[index].hitboxDelayOffset);
+
         //애니메이션 멈췄다 재생
         float originalSpeed = _animator.speed;
         _animator.speed = 0;
@@ -133,6 +138,9 @@ public class Boss : Enemy
             if (_teleportCR != null) StopCoroutine(_teleportCR);
             _teleportCR = StartCoroutine(CR_Teleport(tInfo.startDelay, tInfo.duration, tInfo.relativePositionFromPlayer, tInfo.shouldFlip));
         }
+
+        //히트박스
+        _hitBoxes[index].ActivateHitBox(_3hitVer2[index].time + _3hitVer2[index].hitboxDelayOffset);
 
         //애니메이션 멈췄다 재생
         float originalSpeed = _animator.speed;
@@ -208,6 +216,8 @@ public struct Anticipation
 {
     public Sprite sprite;
     public float time;
+    public float hitboxDelayOffset;
+    public int damage;
     public TeleportInfo teleportInfo;
 }
 

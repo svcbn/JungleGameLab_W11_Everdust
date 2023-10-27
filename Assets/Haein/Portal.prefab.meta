@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Haein/Portal.prefab.meta
+guid: 3b72d34e172cd334485cc7e6c0c7f673
+========
 guid: 9e71a8c91e27c6f4e8ca36bb3002a677
+>>>>>>>> main:Assets/Resources/Prefabs/3HIt.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

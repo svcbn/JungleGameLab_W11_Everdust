@@ -15,6 +15,8 @@ public class MagicCircle : Projectile
 
 	private MagicCircleData _data;
 
+    [SerializeField]private GameObject redbox;
+
     [SerializeField]private TMP_Text textOrder;
 
     Transform player;
@@ -33,6 +35,8 @@ public class MagicCircle : Projectile
     private Vector3 shootDirection;
     
     private bool isInit = false;
+
+    bool isBlinking = false;
 
 	private void LoadDataSO()
 	{
@@ -60,13 +64,16 @@ public class MagicCircle : Projectile
 		{
 			LoadDataSO();
 		}
+        textOrder.text = (order + 1).ToString() ;
 
         projM     = projM_;
         posOffset = posOffset_;
 
-        textOrder.text = order.ToString();
+
+        SetRedboxAngle(posOffset_);
 
 
+        redbox.SetActive(false);
 
         isInit = true;
     }
@@ -99,11 +106,12 @@ public class MagicCircle : Projectile
         {
             shootTimer += Time.deltaTime;
             Shake();
+            BlinkRedBox();
 
             if(shootTimer > _data.shotTime)
             {
                 waitTileShoot = false;
-
+                redbox.SetActive(false);
             }
         }
         else
@@ -113,12 +121,16 @@ public class MagicCircle : Projectile
         }
 
 
+
+
         if(startTimer > _data.destroyTime)
         {
             EraseProjectile();
         }
 
     }
+
+
 
 
     void MoveShoot()
@@ -145,5 +157,35 @@ public class MagicCircle : Projectile
     {
         projM.EraseProjectile(gameObject);
     }
+
+    void BlinkRedBox() // 깜박이는 레드 박스
+    {
+        isBlinking = !isBlinking; // 상태 토글
+        redbox.SetActive(isBlinking);
+
+    }
+
+    void SetRedboxAngle(Vector3 posOffset_)
+    {
+        if(posOffset_ == new Vector3(-3,-3,0))
+        {
+            redbox.transform.position += new Vector3(1,1,0);
+            redbox.transform.rotation = Quaternion.Euler(0,0,-135);
+        }else if(posOffset_ == new Vector3(-3,3,0))
+        {
+            redbox.transform.position += new Vector3(1,-1,0);
+            redbox.transform.rotation = Quaternion.Euler(0,0,-45);
+            
+        }else if(posOffset_ == new Vector3(3,-3,0))
+        {
+        redbox.transform.position += new Vector3(-1,1,0);
+            redbox.transform.rotation = Quaternion.Euler(0,0,-45);
+        }else if(posOffset_ == new Vector3(3,3,0))
+        {
+            redbox.transform.position += new Vector3(-1,-1,0);
+            redbox.transform.rotation = Quaternion.Euler(0,0,-135);
+        }
+    }
+
 }
 
