@@ -26,8 +26,6 @@ public class ParryingTest : MonoBehaviour
             _isParry = value;
             if(_isParry )
             {
-                // when doing parry
-                // animator.SetTrigger("Parrying");
                 parryingEffect.Clear();
                 parryingEffect.transform.position = parryPosition.position;
                 parryingEffect.startRotation3D = new Vector3(0, 0, parryAngle );
@@ -35,8 +33,7 @@ public class ParryingTest : MonoBehaviour
             }
             else
             {
-                // when end of parry
-                
+
             }
         }
     }
