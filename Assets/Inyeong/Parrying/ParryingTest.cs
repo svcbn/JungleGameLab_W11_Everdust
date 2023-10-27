@@ -60,15 +60,15 @@ public class ParryingTest : MonoBehaviour
 
     IEnumerator Parry()
     {
-        animator.SetTrigger("Parrying");
+        //animator.SetTrigger("Parrying");
 
         IsParry = true;
-        Debug.Log("parryOn");
+        //Debug.Log("parryOn");
 
         yield return parriyngTime;
 
         IsParry = false;
-        Debug.Log("parryOff");
+        //Debug.Log("parryOff");
     }
 
     

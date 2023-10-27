@@ -13,7 +13,7 @@ public abstract class Enemy : MonoBehaviour
                 _curHp = value;
         }
     }
-    public GameObject weaknessCircle;
+    protected GameObject weaknessCircle;
     private DamageFlash _damageFlash;
 
     protected int _curHp;
