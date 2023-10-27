@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5d303fc-effd-4bd6-a27e-787eef776571" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Boss.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Boss.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Haein/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/PlayerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.W10_Test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.W10_Test/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Inyeong/Laser/Laser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Inyeong/Laser/Laser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/HaeinBoss.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/HaeinBoss.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +26,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/HandleBossHitbox.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/HandleMovingLeafSpike.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/Projectile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Haein/HandleLaser.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Haein/HandleLaserPattern.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/MoveAndDestroy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/PlayerStats.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/PortalController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -114,7 +117,7 @@
       <option name="presentableId" value="Default" />
       <updated>1698301712530</updated>
       <workItem from="1698301715025" duration="16070000" />
-      <workItem from="1698381187464" duration="13480000" />
+      <workItem from="1698381187464" duration="18648000" />
     </task>
     <servers />
   </component>
