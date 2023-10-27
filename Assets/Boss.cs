@@ -36,7 +36,7 @@ public class Boss : Enemy
     private const float _echoBrightness = .6f;
     private const float _echoAlpha = .5f;
     private const float _spriteMaxScale = 1.5f;
-    private const float _anticipationCutoffTime = .15f; //½ºÇÁ¶óÀÌÆ® ¿¡ÄÚ°¡ ³¡³ª±â ¸î ÃÊ Àü¿¡ ¾Ö´Ï¸ŞÀÌ¼ÇÀÌ Àç»ıµÉ °ÍÀÎÁö.
+    private const float _anticipationCutoffTime = .15f; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 
     protected override void Awake()
     {
@@ -57,7 +57,7 @@ public class Boss : Enemy
             case BossState.Peaceful:
                 break;
             case BossState.BattleIdle:
-                //TODO: ·£´ıÀ¸·Î ÆĞÅÏ ½ÇÇà
+                //TODO: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 break;
             case BossState.InPattern:
                 break;
@@ -94,15 +94,15 @@ public class Boss : Enemy
 
     public IEnumerator CR_3HitAnticipation(int index)
     {
-        //½ºÇÁ¶óÀÌÆ® ¸ÂÃß±â
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ß±ï¿½
         _spriteEchoRenderer.sprite = _3hitAnticipations[index].sprite;
         _spriteEchoRenderer.flipX = _ownSpriteRenderer.flipX;
         _spriteEchoRenderer.enabled = true;
 
-        //Å©±â ¾Ö´Ï¸ŞÀÌ¼Ç
+        //Å©ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
         _spriteEchoRenderer.transform.DOScale(_spriteMaxScale, _3hitAnticipations[index].time + _anticipationCutoffTime).OnComplete(SpriteEchoEnded);
 
-        //¼ø°£ÀÌµ¿ ÇØ¾ßÇÏ¸é ½ÇÇà
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Ø¾ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½
         TeleportInfo tInfo = _3hitAnticipations[index].teleportInfo;
         if (tInfo.duration > 0)
         {
@@ -110,10 +110,10 @@ public class Boss : Enemy
             _teleportCR = StartCoroutine(CR_Teleport(tInfo.startDelay, tInfo.duration, tInfo.relativePositionFromPlayer, tInfo.shouldFlip));
         }
 
-        //È÷Æ®¹Ú½º
+        //ï¿½ï¿½Æ®ï¿½Ú½ï¿½
         _hitBoxes[index].ActivateHitBox(_3hitAnticipations[index].time + _3hitAnticipations[index].hitboxDelayOffset);
 
-        //¾Ö´Ï¸ŞÀÌ¼Ç ¸ØÃè´Ù Àç»ı
+        //ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         float originalSpeed = _animator.speed;
         _animator.speed = 0;
         yield return new WaitForSeconds(_3hitAnticipations[index].time);
@@ -123,15 +123,15 @@ public class Boss : Enemy
 
     public IEnumerator CR_3HitVer2(int index)
     {
-        //½ºÇÁ¶óÀÌÆ® ¸ÂÃß±â
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ß±ï¿½
         _spriteEchoRenderer.sprite = _3hitVer2[index].sprite;
         _spriteEchoRenderer.flipX = _ownSpriteRenderer.flipX;
         _spriteEchoRenderer.enabled = true;
 
-        //Å©±â ¾Ö´Ï¸ŞÀÌ¼Ç
+        //Å©ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
         _spriteEchoRenderer.transform.DOScale(_spriteMaxScale, _3hitVer2[index].time + _anticipationCutoffTime).OnComplete(SpriteEchoEnded);
 
-        //¼ø°£ÀÌµ¿ ÇØ¾ßÇÏ¸é ½ÇÇà
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Ø¾ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½
         TeleportInfo tInfo = _3hitVer2[index].teleportInfo;
         if (tInfo.duration > 0)
         {
@@ -139,10 +139,10 @@ public class Boss : Enemy
             _teleportCR = StartCoroutine(CR_Teleport(tInfo.startDelay, tInfo.duration, tInfo.relativePositionFromPlayer, tInfo.shouldFlip));
         }
 
-        //È÷Æ®¹Ú½º
+        //ï¿½ï¿½Æ®ï¿½Ú½ï¿½
         _hitBoxes[index].ActivateHitBox(_3hitVer2[index].time + _3hitVer2[index].hitboxDelayOffset);
 
-        //¾Ö´Ï¸ŞÀÌ¼Ç ¸ØÃè´Ù Àç»ı
+        //ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         float originalSpeed = _animator.speed;
         _animator.speed = 0;
         yield return new WaitForSeconds(_3hitVer2[index].time);
@@ -154,7 +154,7 @@ public class Boss : Enemy
     {
         yield return new WaitForSeconds(startDelay);
 
-        //¼ø°£ÀÌµ¿ »ç¶óÁö´Â ÀÌÆåÆ®
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
         float timer = 0;
         transform.DOScaleY(1.3f, duration);
         while (timer < duration)
@@ -165,13 +165,13 @@ public class Boss : Enemy
             yield return null;
         }
 
-        //½ÇÁ¦ Æ÷Áö¼Ç ÀÌµ¿
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         Vector2 teleportOffset = _ownSpriteRenderer.flipX ? targetPosition : new Vector2 (-1 * targetPosition.x, targetPosition.y);
         transform.position = (Vector2) Player.position + teleportOffset;
         if (shouldFlip) _ownSpriteRenderer.flipX = !_ownSpriteRenderer.flipX;
         _spriteEchoRenderer.flipX = _ownSpriteRenderer.flipX;
 
-        //¼ø°£ÀÌµ¿ »ı±â´Â ÀÌÆåÆ®
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
         transform.DOScaleY(1f, duration);
         while (timer > 0)
         {
@@ -185,12 +185,16 @@ public class Boss : Enemy
 
     public IEnumerator CR_Cast1()
     {
-        //Åõ»çÃ¼ 4°³ ¼ÒÈ¯
+        //ï¿½ï¿½ï¿½ï¿½Ã¼ 4ï¿½ï¿½ ï¿½ï¿½È¯
         _projManager.Start4ProjAttack();
-        //¾Ö´Ï¸ŞÀÌ¼Ç ¸ØÃß±â
+        //ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ß±ï¿½
         float originalAnimSpd = _animator.speed;
         _animator.speed = 0f;
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(1.5f);
+        //í”Œë ˆì´ì–´ ì†ë°•ì‹œí‚´
+        PlayerManager.Instance.ShowText("ì†ë°•ë¨!");
+        PlayerManager.Instance.SetPlayerBond(3f);
+        yield return new WaitForSeconds(2.5f);
         _animator.speed = originalAnimSpd;
     }
 
@@ -226,7 +230,7 @@ public struct TeleportInfo
 {
     public float startDelay;
     public float duration;
-    [Tooltip("º¸½º°¡ ¿ŞÂÊÀ» º¸°í ÀÖÀ» ¶§ ±âÁØ, ÇÃ·¹ÀÌ¾î ´ëºñ ¾î´À À§Ä¡·Î ¼ø°£ÀÌµ¿ ÇØ¾ßÇÏ´Â°¡.")] public Vector2 relativePositionFromPlayer;
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Ø¾ï¿½ï¿½Ï´Â°ï¿½.")] public Vector2 relativePositionFromPlayer;
     public bool shouldFlip;
 }
 
