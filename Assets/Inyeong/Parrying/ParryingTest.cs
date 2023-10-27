@@ -52,7 +52,7 @@ public class ParryingTest : MonoBehaviour
 
     public void TriggerParry()
     {
-        // Á¶°Ç
+        // ï¿½ï¿½ï¿½ï¿½
 
         StartCoroutine(Parry());
         
@@ -60,7 +60,7 @@ public class ParryingTest : MonoBehaviour
 
     IEnumerator Parry()
     {
-        //animator.SetTrigger("Parrying");
+        animator.SetTrigger("Parrying");
 
         IsParry = true;
         //Debug.Log("parryOn");

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ReflectMissile : Projectile
 {
-    [SerializeField] float lifeTime = 3f;
+    [SerializeField] float attackLifeTime = 3f;
     [SerializeField] float attackPower = 1f;
 
     Rigidbody2D _rigid;
@@ -15,7 +15,6 @@ public class ReflectMissile : Projectile
     {
         base.Start();
         MaxHp = 100;
-        StartCoroutine(CountLifeTime());
     }
     
     protected override void Update()
@@ -32,6 +31,7 @@ public class ReflectMissile : Projectile
         Vector3 direction =  new Vector3(Mathf.Sin(Mathf.Deg2Rad * angle), Mathf.Cos(Mathf.Deg2Rad * angle), 0);
         Debug.Log(direction);
         _rigid.velocity = attackPower * direction;
+        StartCoroutine(CountLifeTime());
         
     }
 
@@ -40,7 +40,7 @@ public class ReflectMissile : Projectile
         float timer = 0;
         while(true){
             timer += Time.deltaTime;
-            if(timer >= lifeTime)
+            if(timer >= attackLifeTime)
                 Destroy(gameObject);
             yield return null;
         }
