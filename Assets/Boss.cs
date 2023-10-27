@@ -2,6 +2,7 @@ using DG.Tweening;
 using Myd.Platform;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Boss : Enemy
@@ -14,7 +15,21 @@ public class Boss : Enemy
     private Animator _animator;
     private UnityEngine.Coroutine _teleportCR;
     private BossState _state = BossState.Peaceful;
+    private bool canFlip = true;
+    private Transform _player;
+    private ProjectileManager _projManager;
 
+    public Transform Player
+    {
+        get 
+        {
+            if (_player == null)
+            {
+                if (FindObjectOfType<PlayerRenderer>() is PlayerRenderer p) _player = p.transform;
+            }
+            return _player; 
+        }
+    }
 
     private const float _echoBrightness = .6f;
     private const float _echoAlpha = .5f;
@@ -26,6 +41,7 @@ public class Boss : Enemy
         base.Awake();
         _ownSpriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
+        _projManager = FindObjectOfType<ProjectileManager>();
 
         _spriteEchoRenderer.enabled = false;
         _spriteEchoRenderer.color = new Color(_echoBrightness, _echoBrightness, _echoBrightness, _echoAlpha);
@@ -45,6 +61,14 @@ public class Boss : Enemy
                 break;
             default:
                 break;
+        }
+
+        if (canFlip)
+        {
+            if (Player != null)
+            {
+                _ownSpriteRenderer.flipX = Player.position.x < transform.position.x;
+            }
         }
     }
 
@@ -135,7 +159,7 @@ public class Boss : Enemy
 
         //실제 포지션 이동
         Vector2 teleportOffset = _ownSpriteRenderer.flipX ? targetPosition : new Vector2 (-1 * targetPosition.x, targetPosition.y);
-        transform.position = (Vector2) FindObjectOfType<PlayerRenderer>().transform.position + teleportOffset;
+        transform.position = (Vector2) Player.position + teleportOffset;
         if (shouldFlip) _ownSpriteRenderer.flipX = !_ownSpriteRenderer.flipX;
         _spriteEchoRenderer.flipX = _ownSpriteRenderer.flipX;
 
@@ -154,6 +178,7 @@ public class Boss : Enemy
     public IEnumerator CR_Cast1()
     {
         //투사체 4개 소환
+        _projManager.Start4ProjAttack();
         //애니메이션 멈추기
         float originalAnimSpd = _animator.speed;
         _animator.speed = 0f;
@@ -165,6 +190,16 @@ public class Boss : Enemy
     {
         _spriteEchoRenderer.enabled = false;
         _spriteEchoRenderer.transform.DOScale(1, 0.01f);
+    }
+
+    private void AE_CanFlip()
+    {
+        canFlip = true;
+    }
+
+    private void AE_CanNotFlip()
+    {
+        canFlip = false;
     }
 }
 
