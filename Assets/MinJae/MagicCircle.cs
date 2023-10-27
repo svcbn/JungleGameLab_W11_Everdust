@@ -15,7 +15,7 @@ public class MagicCircle : Projectile
 
     [SerializeField]private TMP_Text textOrder;
 
-    Player player;
+    Transform player;
     Vector3 playerPos;
     Vector3 targetPos;
     Vector3 posOffset;
@@ -47,6 +47,7 @@ public class MagicCircle : Projectile
     {
         base.Start();
         MaxHp = 1;
+        player = FindObjectOfType<PlayerRenderer>().transform;
     }
 
 
@@ -58,7 +59,7 @@ public class MagicCircle : Projectile
 		}
 
         projM     = projM_;
-        player    = player_;
+        //player    = player_;
         posOffset = posOffset_;
 
         textOrder.text = order.ToString();
@@ -72,7 +73,7 @@ public class MagicCircle : Projectile
 
         startTimer += Time.deltaTime;
 
-        playerPos = player.GetPlayerPosition();
+        playerPos = player.position;
 
         if(followPlayer){
             
