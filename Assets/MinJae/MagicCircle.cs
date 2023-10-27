@@ -53,7 +53,7 @@ public class MagicCircle : Projectile
     }
 
 
-    public void Init(ProjectileManager projM_, Player player_, Vector3 posOffset_, int order)
+    public void Init(ProjectileManager projM_, Vector3 posOffset_, int order)
     {
 		if(_data == null )
 		{
@@ -61,7 +61,6 @@ public class MagicCircle : Projectile
 		}
 
         projM     = projM_;
-        //player    = player_;
         posOffset = posOffset_;
 
         textOrder.text = order.ToString();
