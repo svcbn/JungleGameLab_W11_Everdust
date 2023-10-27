@@ -19,7 +19,6 @@ public class LightTrigger : Trigger
         else _spriteRenderer.color = offTriggerColor; 
     }
     public override void OnTrigger() {
-         Debug.Log("ontrigger");
         _spriteRenderer.color = onTriggerColor;
         isOnTrigger = true;
     }

@@ -83,7 +83,6 @@ public class HandleWeaponClick : MonoBehaviour
         Collider2D[] allEnemyCols = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("Enemy"));
         Collider2D[] allProjectileCols = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("EnemyProjectile"));
         Collider2D[] allTriggers = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("Trigger"));
-        _parry.TriggerParry();
         
         //콜라이더 중 약점 있으면 약점 타격 실행. 행렬에 동일 몬스터 전부 삭제.
         for (int i = 0; i < allEnemyCols.Length; i++)
@@ -144,7 +143,7 @@ public class HandleWeaponClick : MonoBehaviour
         //}
         if (allProjectileCols.Length > 0)
         {
-            _parry.TriggerParry();
+            _parry.TriggerParry(- angle);
 
             for (int i = 0; i < allProjectileCols.Length; i++)
             {
@@ -166,7 +165,6 @@ public class HandleWeaponClick : MonoBehaviour
 
         }
         // Triggers
-        Debug.Log(allTriggers.Length);
         if (allTriggers.Length > 0)
         {
 

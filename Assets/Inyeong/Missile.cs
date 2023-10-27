@@ -8,10 +8,11 @@ using UnityEngine.AI;
 
 public class Missile : Projectile
 {
+    public int hp = 1;
     protected override void Start()
     {
         base.Start();
-        MaxHp = 1;
+        MaxHp = hp;
     }
 
 }
