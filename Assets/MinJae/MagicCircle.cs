@@ -30,7 +30,8 @@ public class MagicCircle : Projectile
     float shootTimer = 0;
 
     private Vector3 originalPosition;
-
+    private Vector3 shootDirection;
+    
     private bool isInit = false;
 
 	private void LoadDataSO()
@@ -65,6 +66,8 @@ public class MagicCircle : Projectile
 
         textOrder.text = order.ToString();
 
+
+
         isInit = true;
     }
     protected override void Update()
@@ -89,6 +92,8 @@ public class MagicCircle : Projectile
                 
                 originalPosition = transform.position;
 
+                shootDirection = (targetPos - transform.position).normalized;
+
             }
         }else if(waitTileShoot)
         {
@@ -98,11 +103,12 @@ public class MagicCircle : Projectile
             if(shootTimer > _data.shotTime)
             {
                 waitTileShoot = false;
+
             }
         }
         else
         {
-            // targetPos 으로 돌격 
+            // shootDirection 으로 돌격 
             MoveShoot();
         }
 
@@ -114,16 +120,21 @@ public class MagicCircle : Projectile
 
     }
 
+
     void MoveShoot()
     {
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, _data.moveSpeed * Time.deltaTime);
+        Vector3 nextPosition = transform.position + shootDirection * _data.moveSpeed * Time.deltaTime;
 
-        if(transform.position == targetPos)
+        if (Vector3.Distance(transform.position, nextPosition) >= _data.shootDistance)
         {
             EraseProjectile();
         }
+        else
+        {
+            transform.position = nextPosition;
+            
+        }
     }
-
 
    void Shake()
     {
