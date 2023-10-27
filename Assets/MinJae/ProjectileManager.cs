@@ -37,8 +37,6 @@ public class ProjectileManager : MonoBehaviour
         if( Input.GetKeyDown(KeyCode.R) ) // for test
         {
             Debug.Log("Down Key R ");
-
-            return;
             if(Enemy == null)
             {
                 Debug.Log(" Enemy is null ");

@@ -27,12 +27,12 @@ public class GuidedBulletMover : Mover
 
     public float refindRadius = 20f;
 
-    public GameObject owner;
+    public FlowerEnemy owner;
     public int damage;
 
-    public void Init(GameObject _owner, int _damage)
+    public void Init(FlowerEnemy _owner, int _damage)
     {
-        owner = _owner;
+        owner  = _owner;
         damage = _damage;
 
         reta = 1 / eta;
@@ -82,9 +82,9 @@ public class GuidedBulletMover : Mover
         foreach (var col in t)
         {
             Debug.Log($"GuidedBulletMover: {col.gameObject.name}");
-            if (col.gameObject != owner) // Owner is the self gameObject
+
+            if( !CheckIfOwner(col) )
             {
-                
                 validTargets.Add(col);
             }
         }
@@ -99,6 +99,23 @@ public class GuidedBulletMover : Mover
             Destroy(gameObject);
         }
         //Collider2d[] Physics2D.OverlapCircle(transform.position, 7f);
+    }
+
+    // Collider가 Owner 인지 체크
+    bool CheckIfOwner(Collider2D col)
+    {
+        //if (col.GetComponent<Character>() != Owner)
+        if (col.GetComponent<Enemy>() == owner){
+            return true;
+        }
+        if (col.GetComponent<FlowerEnemy>() == owner){
+            return true;
+        }
+        if (col.GetComponent<Boss>() == owner){
+            return true;
+        }
+
+        return false;
     }
 
     public override void MovePhase0() // 멈추기까지
