@@ -59,7 +59,6 @@ public class Boss : Enemy
     protected override void Update()
     {
         base.Update();
-
         if (canFlip)
         {
             if (Player != null)
@@ -190,7 +189,9 @@ public class Boss : Enemy
     public IEnumerator CR_Cast1()
     {
         //����ü 4�� ��ȯ
+        //_projManager.CanUse4ProjAttack();
         _projManager.Start4ProjAttack();
+        
         //�ִϸ��̼� ���߱�
         float originalAnimSpd = _animator.speed;
         _animator.speed = 0f;
