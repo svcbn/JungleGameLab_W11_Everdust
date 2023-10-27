@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class EnemyBullet : Projectile
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int moveDir = 1;
 
-    // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        
+        base.Update();
+        transform.Translate(moveDir * 30f * Time.deltaTime, 0f, 0f);
     }
 }

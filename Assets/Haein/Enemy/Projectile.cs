@@ -35,17 +35,15 @@ public abstract class Projectile : MonoBehaviour
         {
             _hitDelay -= Time.deltaTime;
         }
+        
+        if (Vector3.Magnitude(transform.position) > 200f) // 룸 밖으로 나갔을 시 제거
+        {
+            Destroy(gameObject);
+        }
     }
     
     public virtual void TakeHit(bool hitWeakness = false, float attackAngle = 0f)
     {
-        if (TryGetComponent(out HandleWeaknessCircle weaknessCircle))
-        {
-            if (!weaknessCircle.IsWeaknessAttacked())
-            {
-                hitWeakness = false;
-            }
-        }
         int dmg = hitWeakness ? WeaponStats.damage * WeaponStats.criticalMultiplier : WeaponStats.damage;
         Hit(dmg, hitWeakness);
     }
@@ -79,4 +77,19 @@ public abstract class Projectile : MonoBehaviour
         }
     }
 
+    protected virtual void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            //플레이어 데미지 스크립트 추가
+            PlayerManager.Instance.player.GetComponent<PlayerStats>().Hit(10);
+            HandleCollision();
+        }
+    }
+    
+    private void HandleCollision()
+    {
+        Destroy(gameObject);
+    }
+    
 }
