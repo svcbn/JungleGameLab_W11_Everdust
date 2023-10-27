@@ -2,7 +2,6 @@ using Myd.Platform;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Myd.Platform;
 
 public class HandleWeaponClick : MonoBehaviour
 {
@@ -83,7 +82,8 @@ public class HandleWeaponClick : MonoBehaviour
         Collider2D[] allEnemyCols = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("Enemy"));
         Collider2D[] allProjectileCols = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("EnemyProjectile"));
         Collider2D[] allTriggers = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("Trigger"));
-        
+        Collider2D[] allMeleeCols = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("EnemyMelee"));
+
         //콜라이더 중 약점 있으면 약점 타격 실행. 행렬에 동일 몬스터 전부 삭제.
         for (int i = 0; i < allEnemyCols.Length; i++)
         {
@@ -131,16 +131,15 @@ public class HandleWeaponClick : MonoBehaviour
             }
         }
 
-        //Collider2D[] parryables = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("Parryable"));
+        if (allMeleeCols.Length > 0)
+        {
+            foreach (var hitbox in allMeleeCols)
+            {
+                var _script = hitbox.GetComponent<EnemyMeleeHitBox>();
+                _script.TryGetParried(-angle);
+            }
+        }
 
-        //if(parryables.Length > 0)
-        //{
-
-        //    foreach(var collider in parryables)
-        //    {
-
-        //    }
-        //}
         if (allProjectileCols.Length > 0)
         {
             _parry.TriggerParry(- angle);
