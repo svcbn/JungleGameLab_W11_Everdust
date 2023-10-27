@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour
 {
     public GameObject player;
     public bool canMove = true;
-    public float bondTime = 2f;
+    private float bondTime = 0f;
     
     private static PlayerManager instance = null;
 
@@ -52,16 +52,22 @@ public class PlayerManager : MonoBehaviour
                 canMove = true;
             }
         }
-        
-        #if UNITY_EDITOR // 속박 테스트
-            
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            bondTime = 2f;
-        }
-        
-        #endif
+    }
+
+    public void SetPlayerBond(float time)
+    {
+        bondTime = time;
     }
     
+    public void ShowText(string str)
+    {
+        if (player != null)
+        {
+            Vector3 positionWithRandomOffset = player.transform.position + new Vector3(0f, 2f, -1f);
+            GameObject damageTextPrefab = Resources.Load<GameObject>("Prefabs/UI/DamageText");
+            GameObject damageText = Instantiate(damageTextPrefab, positionWithRandomOffset, Quaternion.identity);
+            damageText.GetComponent<MoveAndDestroy>()._text = str;
+        }
+    }
     
 }
