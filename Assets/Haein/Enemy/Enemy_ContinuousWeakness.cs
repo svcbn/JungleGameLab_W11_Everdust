@@ -9,7 +9,7 @@ public class Enemy_ContinuousWeakness : Enemy
     private float canChargeDelay = 0f;
     public GameObject magicMirror;
     // Start is called before the first frame update
-    void Awake()
+    protected override void Awake()
     {
         base.Awake();
         MaxHp = 200;
@@ -17,7 +17,7 @@ public class Enemy_ContinuousWeakness : Enemy
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         base.Update();
         if (canChargeDelay > 0f)

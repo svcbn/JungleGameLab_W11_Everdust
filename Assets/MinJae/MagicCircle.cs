@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MagicCircle : Enemy
+public class MagicCircle : Projectile
 {
     ProjectileManager projM;
 

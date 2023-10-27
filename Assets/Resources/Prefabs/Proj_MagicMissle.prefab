@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7856125624765333942}
   - component: {fileID: 9062107181894727181}
   - component: {fileID: 6833150915907719786}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Proj_MagicMissle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5338f5235fdb2b74195c161c150ab8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaknessCircle: {fileID: 0}
 --- !u!114 &6833150915907719786
 MonoBehaviour:
   m_ObjectHideFlags: 0

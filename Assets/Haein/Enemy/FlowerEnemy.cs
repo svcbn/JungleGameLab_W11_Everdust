@@ -6,7 +6,7 @@ public class FlowerEnemy : Enemy
 {
     private bool canFlip = true;
     private SpriteRenderer spriteRenderer;
-    private GameObject weaknessCircle;
+    //private GameObject weaknessCircle;
     private Vector3 circlePos;
     private Animator animator;
     private int attackMode;
