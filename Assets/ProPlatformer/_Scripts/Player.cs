@@ -25,6 +25,7 @@ namespace Myd.Platform
             this.gameContext = gameContext;
         }
 
+        public PlayerRenderer GetPlayer() => playerRenderer;
         public PlayerController GetPlayerController() => playerController;
 
         //플레이어 엔터티 로드
