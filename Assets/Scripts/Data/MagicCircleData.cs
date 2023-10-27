@@ -46,7 +46,10 @@ public class MagicCircleData : ScriptableObject
     
 
     public float shotTime; 
+	public float destroyTime;
+
     public float shakeMagnitude; // 떨림의 강도
 
     public float moveSpeed;
+	
 }

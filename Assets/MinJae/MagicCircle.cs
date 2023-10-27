@@ -4,13 +4,16 @@ using Myd.Platform;
 using Sirenix.OdinInspector.Editor.Validation;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
+using UnityEngine.UI;
+using TMPro;
 
 public class MagicCircle : Projectile
 {
     ProjectileManager projM;
 
 	private MagicCircleData _data;
+
+    [SerializeField]private TMP_Text textOrder;
 
     Player player;
     Vector3 playerPos;
@@ -47,7 +50,7 @@ public class MagicCircle : Projectile
     }
 
 
-    public void Init(ProjectileManager projM_, Player player_, Vector3 posOffset_)
+    public void Init(ProjectileManager projM_, Player player_, Vector3 posOffset_, int order)
     {
 		if(_data == null )
 		{
@@ -57,6 +60,8 @@ public class MagicCircle : Projectile
         projM     = projM_;
         player    = player_;
         posOffset = posOffset_;
+
+        textOrder.text = order.ToString();
 
         isInit = true;
     }
@@ -98,6 +103,13 @@ public class MagicCircle : Projectile
             // targetPos 으로 돌격 
             MoveShoot();
         }
+
+
+        if(startTimer > _data.destroyTime)
+        {
+            projM.EraseProjectile(gameObject);
+        }
+
     }
 
     void MoveShoot()

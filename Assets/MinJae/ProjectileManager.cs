@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Myd.Platform;
@@ -12,16 +13,16 @@ public class ProjectileManager : MonoBehaviour
 
     public GameObject magicCirclePrefab;
     List<GameObject> magicCircles = new List<GameObject>();
-
-    [SerializeField]private List<Vector3> offSetsProj = new List<Vector3>{
-                                                            new Vector3(3,3,0),
-                                                            new Vector3(3,-3,0),
-                                                            new Vector3(-3,-3,0),
-                                                            new Vector3(-3,3,0) };
-
-
     int activeProjectileCount = 0;
-    static int allProjCnt = 0;
+
+    public float timeBetweenProj = 0.3f;
+
+    [SerializeField]
+    private List<Vector3> offSetsProj = new List<Vector3>{
+                                            new Vector3(3,3,0),
+                                            new Vector3(3,-3,0),
+                                            new Vector3(-3,-3,0),
+                                            new Vector3(-3,3,0) };
 
     public void Init(Player player_)
     {
@@ -29,18 +30,12 @@ public class ProjectileManager : MonoBehaviour
     }
 
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         if( Input.GetKeyDown(KeyCode.Q) ) // for test
         {
             Debug.Log("Down Key Q");
-
-            StartCoroutine(DisplayProjectileCO(waitTime:0.1f));
+            Start4ProjAttack();
         }
 
         if( Input.GetKeyDown(KeyCode.R) ) // for test
@@ -66,46 +61,37 @@ public class ProjectileManager : MonoBehaviour
 
     }
 
-
-    IEnumerator DisplayProjectileCO( float waitTime = 0.5f)
+    // Use this function 
+    public void Start4ProjAttack()
     {
+        StartCoroutine(DisplayProjectileCO(timeBetweenProj));
+    }
 
+
+    IEnumerator DisplayProjectileCO( float timeBetweenProj = 0.5f)
+    {
         Debug.Log("DisplayProjectileCO");
+        if(magicCirclePrefab == null) { Debug.LogWarning(" magicCirclePrefab is null "); yield break; }
+        
+        List<Vector3> randomOrderVs = Shuffle(offSetsProj);
 
-
-        for(int i=0; i<4; i++)
+        for(int i=0; i<randomOrderVs.Count; i++)
         {
-            DisplayProjectile();
-            yield return new WaitForSeconds(waitTime);
+            if( activeProjectileCount >= randomOrderVs.Count ){ break; }
+            activeProjectileCount++;
+
+            DisplayProjectile(randomOrderVs[i], order: i);
+            yield return new WaitForSeconds(timeBetweenProj);
         }
 
     }
 
-
-    // todo: 생기는 순서 랜덤으로.
-    // 구체간의 소환시간 파라미터 설정가능하도록
-    void DisplayProjectile()
+    void DisplayProjectile(Vector3 posOffset, int order)
     {
-        if( activeProjectileCount >= 4 ){ return; }
-
-        activeProjectileCount++;
-        allProjCnt++;
-
-
-        if(magicCirclePrefab == null)
-        {
-            Debug.Log(" magicCirclePrefab is null ");
-            return;
-        }
-
         GameObject magicCircle = Instantiate(magicCirclePrefab);
 
-        
-        int idx = (allProjCnt-1) % 4;
-
-        magicCircle.GetComponent<MagicCircle>().Init(this, player, offSetsProj[idx]);
+        magicCircle.GetComponent<MagicCircle>().Init(this, player, posOffset, order);
         magicCircles.Add(magicCircle);
-        
     }
 
     public void EraseProjectile(GameObject magicCircle)
@@ -115,4 +101,21 @@ public class ProjectileManager : MonoBehaviour
         Destroy(magicCircle);
     }
 
+
+    public List<Vector3> Shuffle(List<Vector3> vList)
+    {
+        System.Random rand = new System.Random();
+
+        List<Vector3> newVList = new List<Vector3>(vList);
+
+        for (int i = newVList.Count - 1; i > 0; i--)
+        {
+            int j = rand.Next(i + 1);
+            Vector3 temp = newVList[i];
+            newVList[i] = newVList[j];
+            newVList[j] = temp;
+        }
+
+        return newVList;
+    }
 }

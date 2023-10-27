@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlowerEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 9083051239377326277, guid: 04577702e38d71c4b9e9eb0b01c5407a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04577702e38d71c4b9e9eb0b01c5407a, type: 3}
 --- !u!1 &144048658
@@ -1907,25 +1911,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1069858861 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9083051239377326277, guid: 04577702e38d71c4b9e9eb0b01c5407a, type: 3}
-  m_PrefabInstance: {fileID: 45924829}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1069858867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1069858861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fd6ad4b508dd7e4c8df32a6ef250310, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _flashColor: {r: 1, g: 1, b: 1, a: 1}
-  _flashTime: 0.25
 --- !u!1 &1302055663
 GameObject:
   m_ObjectHideFlags: 0
