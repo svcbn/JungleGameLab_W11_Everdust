@@ -3,12 +3,12 @@ using UnityEngine.Networking.Types;
 
 public abstract class Enemy : MonoBehaviour
 {
-    private int maxHp;
+    [SerializeField] private int _maxHp = 100;
     public int MaxHp{
-        get { return maxHp; }
+        get { return _maxHp; }
         set 
         { 
-            maxHp = value;
+            _maxHp = value;
             if(value < _curHp)
                 _curHp = value;
         }
@@ -25,7 +25,6 @@ public abstract class Enemy : MonoBehaviour
     {
         _handleWeaknessCircle = GetComponent<HandleWeaknessCircle>();
         _damageFlash = GetComponent<DamageFlash>();
-        MaxHp = 100;
         _curHp = MaxHp;
     }
     

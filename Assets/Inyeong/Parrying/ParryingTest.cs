@@ -24,10 +24,12 @@ public class ParryingTest : MonoBehaviour
             if(_isParry )
             {
                 // when doing parry
+                animator.SetTrigger("Parrying");
             }
             else
             {
                 // when end of parry
+                
             }
         }
     }
@@ -43,17 +45,14 @@ public class ParryingTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    animator.SetTrigger("Parrying");
-        //}
+        
     }
 
     public void TriggerParry()
     {
-        // ����
-
+        // 조건
         StartCoroutine(Parry());
         
     }

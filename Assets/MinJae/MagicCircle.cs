@@ -4,7 +4,8 @@ using Myd.Platform;
 using Sirenix.OdinInspector.Editor.Validation;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
+using UnityEngine.UI;
+using TMPro;
 
 public class MagicCircle : Projectile
 {
@@ -12,7 +13,9 @@ public class MagicCircle : Projectile
 
 	private MagicCircleData _data;
 
-    Player player;
+    [SerializeField]private TMP_Text textOrder;
+
+    Transform player;
     Vector3 playerPos;
     Vector3 targetPos;
     Vector3 posOffset;
@@ -33,8 +36,7 @@ public class MagicCircle : Projectile
 		string pathDataSO = "Data/MagicCircleData"; // in Resource folder
 		_data = Resources.Load<MagicCircleData>(pathDataSO);
 
-		if(_data == null)
-		{
+		if(_data == null){
 			Debug.LogWarning(" Data Load Fail ");
 		}else{
 			Debug.Log(" Data Load Success ");
@@ -45,9 +47,11 @@ public class MagicCircle : Projectile
     {
         base.Start();
         MaxHp = 1;
+        player = FindObjectOfType<PlayerRenderer>().transform;
     }
 
-    public void Init(ProjectileManager projM_, Player player_, Vector3 posOffset_)
+
+    public void Init(ProjectileManager projM_, Player player_, Vector3 posOffset_, int order)
     {
 		if(_data == null )
 		{
@@ -55,8 +59,10 @@ public class MagicCircle : Projectile
 		}
 
         projM     = projM_;
-        player    = player_;
+        //player    = player_;
         posOffset = posOffset_;
+
+        textOrder.text = order.ToString();
 
         isInit = true;
     }
@@ -67,7 +73,7 @@ public class MagicCircle : Projectile
 
         startTimer += Time.deltaTime;
 
-        playerPos = player.GetPlayerPosition();
+        playerPos = player.position;
 
         if(followPlayer){
             
@@ -98,11 +104,17 @@ public class MagicCircle : Projectile
             // targetPos 으로 돌격 
             MoveShoot();
         }
+
+
+        if(startTimer > _data.destroyTime)
+        {
+            projM.EraseProjectile(gameObject);
+        }
+
     }
 
-    void MoveShoot(){
-
-
+    void MoveShoot()
+    {
         transform.position = Vector3.MoveTowards(transform.position, targetPos, _data.moveSpeed * Time.deltaTime);
 
         if(transform.position == targetPos)

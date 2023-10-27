@@ -52,6 +52,9 @@ TagManager:
   - name: Projectile
     uniqueID: 4083716251
     locked: 0
+  - name: ProjectileText
+    uniqueID: 2947828843
+    locked: 0
   - name: EffectForgeground
     uniqueID: 3098838959
     locked: 0
