@@ -143,7 +143,7 @@ public class HandleWeaponClick : MonoBehaviour
         //}
         if (allProjectileCols.Length > 0)
         {
-            _parry.TriggerParry();
+            _parry.TriggerParry(- angle);
 
             for (int i = 0; i < allProjectileCols.Length; i++)
             {
@@ -165,7 +165,6 @@ public class HandleWeaponClick : MonoBehaviour
 
         }
         // Triggers
-        //Debug.Log(allTriggers.Length);
         if (allTriggers.Length > 0)
         {
 
