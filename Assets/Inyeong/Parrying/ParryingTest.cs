@@ -59,7 +59,6 @@ public class ParryingTest : MonoBehaviour
 
     IEnumerator Parry()
     {
-        animator.SetTrigger("Parrying");
 
         IsParry = true;
         //Debug.Log("parryOn");
