@@ -46,7 +46,10 @@ namespace Myd.Platform
 
         public void Update(float deltaTime)
         {
-            playerController.Update(deltaTime);
+            if (PlayerManager.Instance.canMove)
+            {
+                playerController.Update(deltaTime);
+            }
             Render();
         }
 

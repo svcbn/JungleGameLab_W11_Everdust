@@ -6,12 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="e5d303fc-effd-4bd6-a27e-787eef776571" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.W10_Test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.W10_Test/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer-URP-Package-2021.2+.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer-URP-Package.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/EnemyCannonShooter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/EnemyCannonShooter.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/FlowerAttackBox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/FlowerAttackBox.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/FlowerEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/FlowerEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/Enemy_ContinuousWeakness.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/Enemy_ContinuousWeakness.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/FlowerEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/FlowerEnemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Haein/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/PlayerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Haein/PlayerStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/PlayerStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/HaeinBoss.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/HaeinBoss.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/HaeinBoss.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/HaeinBoss.unity.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/HaeinMain.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/HaeinMain.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProPlatformer/_Scripts/GameInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProPlatformer/_Scripts/GameInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProPlatformer/_Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProPlatformer/_Scripts/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProPlatformer/_Scripts/PlayerRenderer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProPlatformer/_Scripts/PlayerRenderer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/PlayerRenderer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/PlayerRenderer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/3HIt.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/3HIt.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/DamageText.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/DamageText.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +126,7 @@
       <option name="presentableId" value="Default" />
       <updated>1698301712530</updated>
       <workItem from="1698301715025" duration="16070000" />
-      <workItem from="1698381187464" duration="8052000" />
+      <workItem from="1698381187464" duration="11904000" />
     </task>
     <servers />
   </component>
