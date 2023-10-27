@@ -39,14 +39,17 @@ public class MagicCircleData : ScriptableObject
 
     [Header("Detail")]
 
-	public GuidedBulletMover missilePrefab;
+	public GameObject missilePrefab;
     public LayerMask targetLayer; // Player Layer
     public float duration;
     public int missileCount;
     
 
     public float shotTime; 
+	public float destroyTime;
+
     public float shakeMagnitude; // 떨림의 강도
 
     public float moveSpeed;
+	
 }

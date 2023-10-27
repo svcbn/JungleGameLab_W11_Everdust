@@ -1,23 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Myd.Platform;
 
 public class PlayerStats : MonoBehaviour
 {
     private int maxHp = 100;
     private int curHp;
+    PlayerController playerController;
 
     void Start()
     {
         curHp = maxHp;
+        playerController = Game.Instance.player.GetPlayerController();
     }
     void Update()
     {
-        
+
     }
 
     public void Hit(int damage)
     {
+        if (!playerController.CanHit) return;
+
         GetComponent<DamageFlash>().CallDamageFlash();
         
         //데미지 텍스트

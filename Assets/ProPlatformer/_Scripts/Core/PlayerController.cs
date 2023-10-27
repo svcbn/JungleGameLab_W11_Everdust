@@ -502,13 +502,13 @@ namespace Myd.Platform
             }
         }
 
-        public void Hit()
-        {
-            if (!CanHit) return;
-            // 여기서 피격
-            Debug.Log("Hit");
+        //public void Hit()
+        //{
+        //    if (!CanHit) return;
+        //    // 여기서 피격
+        //    Debug.Log("Hit");
 
-        }
+        //}
 
         // iy
         public void ResetSpeedY()
