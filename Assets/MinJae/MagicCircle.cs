@@ -35,7 +35,6 @@ public class MagicCircle : Projectile
     private Vector3 shootDirection;
     
     private bool isInit = false;
-    private bool isShowRedbox = false;
 
     bool isBlinking = false;
 
@@ -65,7 +64,7 @@ public class MagicCircle : Projectile
 		{
 			LoadDataSO();
 		}
-        textOrder.text = order.ToString();
+        textOrder.text = (order + 1).ToString() ;
 
         projM     = projM_;
         posOffset = posOffset_;

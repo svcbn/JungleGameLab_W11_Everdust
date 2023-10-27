@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 2497334458158035376}
   - component: {fileID: 3818170303008172756}
   - component: {fileID: 3519685159366434390}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Proj_MagicCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
