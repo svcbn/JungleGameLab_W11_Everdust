@@ -6,6 +6,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Sirenix.OdinInspector;
+
 
 public class MagicCircle : Projectile
 {
@@ -16,8 +18,8 @@ public class MagicCircle : Projectile
     [SerializeField]private TMP_Text textOrder;
 
     Transform player;
-    Vector3 playerPos;
-    Vector3 targetPos;
+    [ReadOnly][SerializeField]private Vector3 playerPos;
+    [ReadOnly][SerializeField]private Vector3 targetPos;
     Vector3 posOffset;
 
     bool followPlayer  = true;
