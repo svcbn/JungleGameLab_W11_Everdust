@@ -48,6 +48,24 @@ public class Boss : Enemy
         }
     }
 
+    private void AE_StartRandomPattern()
+    {
+        int numOfPatterns = 3;
+        int index = Random.Range(0, numOfPatterns);
+        switch (index)
+        {
+            case 0:
+                _animator.Play("Boss_3Hit");
+                break;
+            case 1:
+                _animator.Play("Boss_3HitVer2");
+                break;
+            case 2:
+                _animator.Play("Boss_Cast");
+                break;
+        }
+    }
+
     public IEnumerator CR_3HitAnticipation(int index)
     {
         //스프라이트 맞추기
@@ -131,6 +149,16 @@ public class Boss : Enemy
             yield return null;
         }
         _ownSpriteRenderer.sharedMaterial.SetFloat("_FadeAmount", -1);
+    }
+
+    public IEnumerator CR_Cast1()
+    {
+        //투사체 4개 소환
+        //애니메이션 멈추기
+        float originalAnimSpd = _animator.speed;
+        _animator.speed = 0f;
+        yield return new WaitForSeconds(4f);
+        _animator.speed = originalAnimSpd;
     }
 
     private void SpriteEchoEnded()

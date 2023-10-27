@@ -100,9 +100,8 @@ public class MagicCircle : Projectile
         }
     }
 
-    void MoveShoot(){
-
-
+    void MoveShoot()
+    {
         transform.position = Vector3.MoveTowards(transform.position, targetPos, _data.moveSpeed * Time.deltaTime);
 
         if(transform.position == targetPos)
