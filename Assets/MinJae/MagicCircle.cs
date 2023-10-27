@@ -6,6 +6,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Sirenix.OdinInspector;
+
 
 public class MagicCircle : Projectile
 {
@@ -16,8 +18,8 @@ public class MagicCircle : Projectile
     [SerializeField]private TMP_Text textOrder;
 
     Transform player;
-    Vector3 playerPos;
-    Vector3 targetPos;
+    [ReadOnly][SerializeField]private Vector3 playerPos;
+    [ReadOnly][SerializeField]private Vector3 targetPos;
     Vector3 posOffset;
 
     bool followPlayer  = true;
@@ -28,7 +30,8 @@ public class MagicCircle : Projectile
     float shootTimer = 0;
 
     private Vector3 originalPosition;
-
+    private Vector3 shootDirection;
+    
     private bool isInit = false;
 
 	private void LoadDataSO()
@@ -51,7 +54,7 @@ public class MagicCircle : Projectile
     }
 
 
-    public void Init(ProjectileManager projM_, Player player_, Vector3 posOffset_, int order)
+    public void Init(ProjectileManager projM_, Vector3 posOffset_, int order)
     {
 		if(_data == null )
 		{
@@ -59,10 +62,11 @@ public class MagicCircle : Projectile
 		}
 
         projM     = projM_;
-        //player    = player_;
         posOffset = posOffset_;
 
         textOrder.text = order.ToString();
+
+
 
         isInit = true;
     }
@@ -88,6 +92,8 @@ public class MagicCircle : Projectile
                 
                 originalPosition = transform.position;
 
+                shootDirection = (targetPos - transform.position).normalized;
+
             }
         }else if(waitTileShoot)
         {
@@ -97,11 +103,12 @@ public class MagicCircle : Projectile
             if(shootTimer > _data.shotTime)
             {
                 waitTileShoot = false;
+
             }
         }
         else
         {
-            // targetPos 으로 돌격 
+            // shootDirection 으로 돌격 
             MoveShoot();
         }
 
@@ -113,16 +120,21 @@ public class MagicCircle : Projectile
 
     }
 
+
     void MoveShoot()
     {
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, _data.moveSpeed * Time.deltaTime);
+        Vector3 nextPosition = transform.position + shootDirection * _data.moveSpeed * Time.deltaTime;
 
-        if(transform.position == targetPos)
+        if (Vector3.Distance(transform.position, nextPosition) >= _data.shootDistance)
         {
             EraseProjectile();
         }
+        else
+        {
+            transform.position = nextPosition;
+            
+        }
     }
-
 
    void Shake()
     {

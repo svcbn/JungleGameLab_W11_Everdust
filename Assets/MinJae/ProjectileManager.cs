@@ -7,8 +7,6 @@ using Sirenix.OdinInspector;
 
 public class ProjectileManager : MonoBehaviour
 {
-    Player player;
-
     public GameObject Enemy;
     
 
@@ -26,12 +24,6 @@ public class ProjectileManager : MonoBehaviour
                                             new Vector3(-3,3,0) };
 
     bool is4ProjAttacking;
-
-    public void Init(Player player_)
-    {
-        player = player_;
-    }
-
 
     void Update()
     {
@@ -96,7 +88,7 @@ public class ProjectileManager : MonoBehaviour
     {
         GameObject magicCircle = Instantiate(magicCirclePrefab);
 
-        magicCircle.GetComponent<MagicCircle>().Init(this, player, posOffset, order);
+        magicCircle.GetComponent<MagicCircle>().Init(this, posOffset, order);
         magicCircles.Add(magicCircle);
     }
 

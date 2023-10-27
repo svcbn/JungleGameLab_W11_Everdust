@@ -44,7 +44,7 @@ public class MagicCircleData : ScriptableObject
     public float duration;
     public int missileCount;
     
-
+	public float shootDistance;
     public float shotTime; 
 	public float destroyTime;
 
