@@ -65,8 +65,6 @@ namespace Myd.Platform
             this.gameState = EGameState.Play;
 
             projectileManager = GetComponentInChildren<ProjectileManager>();
-            projectileManager.Init(player);
-
 
             yield return null;
         }

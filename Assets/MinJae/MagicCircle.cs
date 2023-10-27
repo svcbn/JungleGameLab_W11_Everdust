@@ -6,6 +6,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Sirenix.OdinInspector;
+
 
 public class MagicCircle : Projectile
 {
@@ -13,11 +15,13 @@ public class MagicCircle : Projectile
 
 	private MagicCircleData _data;
 
+    [SerializeField]private GameObject redbox;
+
     [SerializeField]private TMP_Text textOrder;
 
     Transform player;
-    Vector3 playerPos;
-    Vector3 targetPos;
+    [ReadOnly][SerializeField]private Vector3 playerPos;
+    [ReadOnly][SerializeField]private Vector3 targetPos;
     Vector3 posOffset;
 
     bool followPlayer  = true;
@@ -28,8 +32,11 @@ public class MagicCircle : Projectile
     float shootTimer = 0;
 
     private Vector3 originalPosition;
-
+    private Vector3 shootDirection;
+    
     private bool isInit = false;
+
+    bool isBlinking = false;
 
 	private void LoadDataSO()
 	{
@@ -51,18 +58,22 @@ public class MagicCircle : Projectile
     }
 
 
-    public void Init(ProjectileManager projM_, Player player_, Vector3 posOffset_, int order)
+    public void Init(ProjectileManager projM_, Vector3 posOffset_, int order)
     {
 		if(_data == null )
 		{
 			LoadDataSO();
 		}
+        textOrder.text = (order + 1).ToString() ;
 
         projM     = projM_;
-        //player    = player_;
         posOffset = posOffset_;
 
-        textOrder.text = order.ToString();
+
+        SetRedboxAngle(posOffset_);
+
+
+        redbox.SetActive(false);
 
         isInit = true;
     }
@@ -88,22 +99,28 @@ public class MagicCircle : Projectile
                 
                 originalPosition = transform.position;
 
+                shootDirection = (targetPos - transform.position).normalized;
+
             }
         }else if(waitTileShoot)
         {
             shootTimer += Time.deltaTime;
             Shake();
+            BlinkRedBox();
 
             if(shootTimer > _data.shotTime)
             {
                 waitTileShoot = false;
+                redbox.SetActive(false);
             }
         }
         else
         {
-            // targetPos 으로 돌격 
+            // shootDirection 으로 돌격 
             MoveShoot();
         }
+
+
 
 
         if(startTimer > _data.destroyTime)
@@ -113,16 +130,23 @@ public class MagicCircle : Projectile
 
     }
 
+
+
+
     void MoveShoot()
     {
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, _data.moveSpeed * Time.deltaTime);
+        Vector3 nextPosition = transform.position + shootDirection * _data.moveSpeed * Time.deltaTime;
 
-        if(transform.position == targetPos)
+        if (Vector3.Distance(transform.position, nextPosition) >= _data.shootDistance)
         {
             EraseProjectile();
         }
+        else
+        {
+            transform.position = nextPosition;
+            
+        }
     }
-
 
    void Shake()
     {
@@ -133,5 +157,35 @@ public class MagicCircle : Projectile
     {
         projM.EraseProjectile(gameObject);
     }
+
+    void BlinkRedBox() // 깜박이는 레드 박스
+    {
+        isBlinking = !isBlinking; // 상태 토글
+        redbox.SetActive(isBlinking);
+
+    }
+
+    void SetRedboxAngle(Vector3 posOffset_)
+    {
+        if(posOffset_ == new Vector3(-3,-3,0))
+        {
+            redbox.transform.position += new Vector3(1,1,0);
+            redbox.transform.rotation = Quaternion.Euler(0,0,-135);
+        }else if(posOffset_ == new Vector3(-3,3,0))
+        {
+            redbox.transform.position += new Vector3(1,-1,0);
+            redbox.transform.rotation = Quaternion.Euler(0,0,-45);
+            
+        }else if(posOffset_ == new Vector3(3,-3,0))
+        {
+        redbox.transform.position += new Vector3(-1,1,0);
+            redbox.transform.rotation = Quaternion.Euler(0,0,-45);
+        }else if(posOffset_ == new Vector3(3,3,0))
+        {
+            redbox.transform.position += new Vector3(-1,-1,0);
+            redbox.transform.rotation = Quaternion.Euler(0,0,-135);
+        }
+    }
+
 }
 
