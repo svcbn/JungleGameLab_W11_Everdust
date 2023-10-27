@@ -54,8 +54,6 @@ public abstract class Projectile : MonoBehaviour
         _curHp -= _damage;
         //흰색으로 번쩍이는 쉐이더
         _damageFlash.CallDamageFlash();
-        
-        print($"{name} HP: {_curHp} (-{_damage})");
         if (_curHp <= 0)
         {
             EraseProjectile();
