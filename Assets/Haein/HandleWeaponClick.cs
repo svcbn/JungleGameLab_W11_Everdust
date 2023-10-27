@@ -151,8 +151,7 @@ public class HandleWeaponClick : MonoBehaviour
                 if (allProjectileCols[i] != null)
                 {
                     Projectile projectile = allProjectileCols[i].GetComponent<Projectile>();
-                    projectile.gameObject.SetActive(false);
-                    Destroy(projectile.gameObject);
+                    projectile.TakeHit(false, angle);
                     SetPokeTimerToZero();
                     for (int j = i; j < allProjectileCols.Length; j++)
                     {
