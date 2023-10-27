@@ -26,7 +26,7 @@ MonoBehaviour:
   duration: 0
   missileCount: 1
   shootDistance: 10
-  shotTime: 2
+  shotTime: 0.3
   destroyTime: 8
   shakeMagnitude: 0.1
-  moveSpeed: 10
+  moveSpeed: 20

@@ -46,3 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemy: {fileID: 9083051239377326277, guid: 04577702e38d71c4b9e9eb0b01c5407a, type: 3}
   magicCirclePrefab: {fileID: 4315446772450325211, guid: f049426809135524e9545248a8d2d37f, type: 3}
+  activeProjectileCount: 0
+  timeBetweenProj: 0.3
+  _projectileOffsetDistance: 7
