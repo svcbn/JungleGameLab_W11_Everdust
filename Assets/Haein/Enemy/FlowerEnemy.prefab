@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e381251ece2031a4784f3189d7e7e5f0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -150,7 +150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9083051239014995821}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.125, y: 0.342, z: 0}
+  m_LocalPosition: {x: 0.209, y: 0.342, z: 0}
   m_LocalScale: {x: 0.33, y: 0.33, z: 0.33}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -272,7 +272,8 @@ GameObject:
   - component: {fileID: 3339639380183628662}
   - component: {fileID: 5015153470781628271}
   - component: {fileID: 501871726944074957}
-  - component: {fileID: -3014988115421080086}
+  - component: {fileID: 315928846}
+  - component: {fileID: 315928847}
   m_Layer: 8
   m_Name: FlowerEnemy
   m_TagString: Untagged
@@ -311,6 +312,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFlip: 0
   weaknessCircle: {fileID: 9083051239014995821}
+  weaknessCircleType: 104
+  currentWeaknessNum: 0
+  originalCirclePos: {x: 0, y: 0, z: 0}
+  appearDelay: 0
 --- !u!70 &3760139198721885507
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -334,11 +339,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9083051239377326277}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 716e0743825863e478a77b7596489d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxHp: 100
+  magicMirror: {fileID: 0}
 --- !u!50 &5015153470781628271
 Rigidbody2D:
   serializedVersion: 4
@@ -372,25 +379,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03112dad2956d5542b47871b6c0c67b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaknessCircle: {fileID: 9083051239014995821}
---- !u!95 &-3014988115421080086
-Animator:
-  serializedVersion: 5
+  _maxHp: 100
+--- !u!114 &315928846
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9083051239377326277}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0cc9d8fda3d207546a3fb9c5c6ce8582, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab1579a5d68385a45a2c49f1bbd15ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &315928847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9083051239377326277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd6ad4b508dd7e4c8df32a6ef250310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flashColor: {r: 1, g: 1, b: 1, a: 1}
+  _flashTime: 0.25
