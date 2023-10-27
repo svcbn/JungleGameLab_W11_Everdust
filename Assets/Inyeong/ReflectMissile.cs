@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class ReflectMissile : Enemy
+public class ReflectMissile : Projectile
 {
     [SerializeField] float lifeTime = 3f;
     [SerializeField] float attackPower = 1f;

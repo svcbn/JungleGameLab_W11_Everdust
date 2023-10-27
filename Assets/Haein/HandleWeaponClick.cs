@@ -96,7 +96,7 @@ public class HandleWeaponClick : MonoBehaviour
                     {
                         //약점 데미지 주기
                         Enemy enemy = allEnemyCols[i].transform.root.GetComponent<Enemy>();
-                        enemy.TakeHit(true, angle);
+                        enemy.TakeHit(true);
                         //행렬에 동일 몬스터 전부 삭제
                         for (int j = i; j < allEnemyCols.Length; j++)
                         {
@@ -117,7 +117,7 @@ public class HandleWeaponClick : MonoBehaviour
             {
                 //일반 데미지 주기
                 Enemy enemy = allEnemyCols[i].transform.root.GetComponent<Enemy>();
-                enemy.TakeHit(false, angle);
+                enemy.TakeHit(false);
                 //행렬에 동일 몬스터 전부 삭제
                 for (int j = i; j < allEnemyCols.Length; j++)
                 {
@@ -148,7 +148,7 @@ public class HandleWeaponClick : MonoBehaviour
                 if (allProjectileCols[i] != null)
                 {
                     Projectile projectile = allProjectileCols[i].GetComponent<Projectile>();
-                    projectile.TakeHit();
+                    projectile.TakeHit(false, angle);
                     SetPokeTimerToZero();
                     for (int j = i; j < allProjectileCols.Length; j++)
                     {
