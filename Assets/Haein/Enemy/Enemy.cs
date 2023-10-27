@@ -81,7 +81,7 @@ public abstract class Enemy : MonoBehaviour
         damageText.GetComponent<MoveAndDestroy>()._text = "-" + damageStr;
         if (!_hitWeakness) damageText.GetComponent<TextMesh>().color = Color.white;
         
-        print($"{name} HP: {_curHp} (-{_damage})");
+        //print($"{name} HP: {_curHp} (-{_damage})");
         if (_curHp <= 0)
         {
             Destroy(gameObject);

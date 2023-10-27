@@ -166,7 +166,7 @@ public class HandleWeaponClick : MonoBehaviour
 
         }
         // Triggers
-        Debug.Log(allTriggers.Length);
+        //Debug.Log(allTriggers.Length);
         if (allTriggers.Length > 0)
         {
 

@@ -57,7 +57,7 @@ public class EnemyMeleeHitBox : MonoBehaviour
                 {
                     if (playerCols[i].GetComponent<PlayerStats>() is PlayerStats stat)
                     {
-                        Debug.Log("Hit");
+                        //Debug.Log("Hit");
                         stat.Hit(Damage);
                     }
                 }
