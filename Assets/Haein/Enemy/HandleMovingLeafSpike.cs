@@ -44,24 +44,4 @@ public class HandleMovingLeafSpike : Projectile
                 });
         }
     }
-    
-    private void HandleCollision()
-    {
-        Destroy(gameObject);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("LeafSpike"))
-        {
-            HandleCollision();
-        }
-        
-        if (other.CompareTag("Player"))
-        {
-            //플레이어 데미지 스크립트 추가
-            PlayerManager.Instance.player.GetComponent<PlayerStats>().Hit(10);
-            HandleCollision();
-        }
-    }
 }

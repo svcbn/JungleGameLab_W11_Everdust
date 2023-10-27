@@ -126,8 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b36e81e26770c54c86dcf30b8d9a94d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 1000
-  weaknessCircle: {fileID: 0}
+  _maxHp: 1000
   _spriteEchoRenderer: {fileID: 2392805498989573733}
   _3hitAnticipations:
   - sprite: {fileID: 1242413136, guid: e973d4cb19435a64883819be0e1dc5db, type: 3}
@@ -237,8 +236,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.42, y: 2.88}
-  m_Size: {x: 3.08, y: 6.13}
+  m_Offset: {x: 0.41999996, y: 2.969615}
+  m_Size: {x: 3.08, y: 5.9507704}
   m_Direction: 0
 --- !u!114 &2392805497272351633
 MonoBehaviour:

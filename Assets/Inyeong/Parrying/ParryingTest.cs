@@ -52,8 +52,7 @@ public class ParryingTest : MonoBehaviour
 
     public void TriggerParry()
     {
-        // ����
-
+        // 조건
         StartCoroutine(Parry());
         
     }

@@ -6,13 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="e5d303fc-effd-4bd6-a27e-787eef776571" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.W10_Test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.W10_Test/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/FlowerEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/FlowerEnemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer-URP-Package-2021.2+.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer-URP-Package.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/EnemyBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/EnemyBullet.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/HandleMovingLeafSpike.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/HandleMovingLeafSpike.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/HandleWeaknessCircle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/HandleWeaknessCircle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Haein/PlayerStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/PlayerStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/Projectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/Projectile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Haein/EnemyCannonShooter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/EnemyCannonShooter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Haein/HandleWeaponClick.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/HandleWeaponClick.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/HaeinMain.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/HaeinMain.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PlayerRenderer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/PlayerRenderer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/EnemyBullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/EnemyBullet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/EnemyBullet.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/EnemyBullet.prefab.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +27,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/DestroySeconds.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/EnemyBullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/Enemy_ContinuousWeakness.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/HandleAttackEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/HandleBossHitbox.cs" root0="FORCE_HIGHLIGHTING" />
@@ -33,41 +37,43 @@
     <setting file="file://$PROJECT_DIR$/Assets/Haein/PlayerStats.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.8.9/Runtime/Core/CameraState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.8.9/Runtime/Core/Predictor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.2.6/Unity.Mathematics/Noise/noise4D.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/UI/LayoutPropertiesPreview.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Graphic.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Editor/EventSystem/InterceptedEventsPreviewTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Editor/UnityEvent/UnityEventInvoke.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2XI1JPfvEwNgt3usXvkJDb310oh" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Haein",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Haein&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\Jungle\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Jungle\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache",
-      "C:\\Users\\Jungle\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\Jungle\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Jungle\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Jungle\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Standalone Player.Start Unity">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity 2021.3.27f1\Editor\Unity.exe" />
@@ -115,6 +121,7 @@
       <option name="presentableId" value="Default" />
       <updated>1698301712530</updated>
       <workItem from="1698301715025" duration="16070000" />
+      <workItem from="1698381187464" duration="5396000" />
     </task>
     <servers />
   </component>
