@@ -42,9 +42,9 @@ public abstract class Enemy : MonoBehaviour
     {
         if (TryGetComponent(out HandleWeaknessCircle weaknessCircle))
         {
-            if (!weaknessCircle.IsWeaknessAttacked())
+            if (!weaknessCircle.IsWeaknessAttacked() && hitWeakness)
             {
-                hitWeakness = false;
+                return;
             }
             if (hitWeakness)
             {
