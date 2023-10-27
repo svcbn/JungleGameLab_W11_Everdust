@@ -8,14 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.W10_Test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.W10_Test/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer-URP-Package-2021.2+.unitypackage.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/AllIn1SpriteShader/2DRenderer-URP-Package.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/EnemyBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/EnemyBullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/HandleMovingLeafSpike.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/HandleMovingLeafSpike.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/Projectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/Projectile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Haein/EnemyCannonShooter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/EnemyCannonShooter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Haein/HandleWeaponClick.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/HandleWeaponClick.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/EnemyCannonShooter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/EnemyCannonShooter.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/FlowerAttackBox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/FlowerAttackBox.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/FlowerEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/FlowerEnemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/HaeinMain.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/HaeinMain.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/EnemyBullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/EnemyBullet.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/EnemyBullet.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/EnemyBullet.prefab.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,12 +25,14 @@
     <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/DestroySeconds.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/EnemyBullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/Enemy_ContinuousWeakness.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/FlowerAttackbox.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/HandleAttackEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/HandleBossHitbox.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/HandleMovingLeafSpike.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/Enemy/Projectile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/MoveAndDestroy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Haein/PlayerStats.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Haein/PortalController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.8.9/Runtime/Core/CameraState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.8.9/Runtime/Core/Predictor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.2.6/Unity.Mathematics/Noise/noise4D.cs" root0="SKIP_HIGHLIGHTING" />
@@ -121,7 +119,7 @@
       <option name="presentableId" value="Default" />
       <updated>1698301712530</updated>
       <workItem from="1698301715025" duration="16070000" />
-      <workItem from="1698381187464" duration="5396000" />
+      <workItem from="1698381187464" duration="8052000" />
     </task>
     <servers />
   </component>
