@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Myd.Platform;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class ProjectileManager : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class ProjectileManager : MonoBehaviour
 
     public GameObject magicCirclePrefab;
     List<GameObject> magicCircles = new List<GameObject>();
-    int activeProjectileCount = 0;
+    [ReadOnly][SerializeField]private int activeProjectileCount = 0;
 
     public float timeBetweenProj = 0.3f;
 
@@ -23,6 +24,8 @@ public class ProjectileManager : MonoBehaviour
                                             new Vector3(3,-3,0),
                                             new Vector3(-3,-3,0),
                                             new Vector3(-3,3,0) };
+
+    bool is4ProjAttacking;
 
     public void Init(Player player_)
     {
@@ -42,6 +45,7 @@ public class ProjectileManager : MonoBehaviour
         {
             Debug.Log("Down Key R ");
 
+            return;
             if(Enemy == null)
             {
                 Debug.Log(" Enemy is null ");
@@ -49,7 +53,7 @@ public class ProjectileManager : MonoBehaviour
             }
 
             Enemy.TryGetComponent<MagicMissile>(out MagicMissile magicMissile);
-            if(magicMissile == null)
+            if(magicMissile == null)    
             {
                 Debug.Log(" No <MagicMissile> Component  in Enmey ");
                 return;
@@ -64,8 +68,11 @@ public class ProjectileManager : MonoBehaviour
     // Use this function 
     public void Start4ProjAttack()
     {
+        if(is4ProjAttacking){ return; }
+        is4ProjAttacking = true;
         StartCoroutine(DisplayProjectileCO(timeBetweenProj));
     }
+
 
 
     IEnumerator DisplayProjectileCO( float timeBetweenProj = 0.5f)
@@ -83,7 +90,6 @@ public class ProjectileManager : MonoBehaviour
             DisplayProjectile(randomOrderVs[i], order: i);
             yield return new WaitForSeconds(timeBetweenProj);
         }
-
     }
 
     void DisplayProjectile(Vector3 posOffset, int order)
@@ -98,6 +104,13 @@ public class ProjectileManager : MonoBehaviour
     {
         magicCircles.Remove(magicCircle);
         activeProjectileCount--;
+
+        if( activeProjectileCount == 0){ 
+            Debug.Log( $" activeProjectileCount : {activeProjectileCount}" );
+            is4ProjAttacking = false; 
+
+        }
+
         Destroy(magicCircle);
     }
 
