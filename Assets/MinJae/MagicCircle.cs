@@ -108,7 +108,7 @@ public class MagicCircle : Projectile
 
         if(startTimer > _data.destroyTime)
         {
-            projM.EraseProjectile(gameObject);
+            EraseProjectile();
         }
 
     }
@@ -119,7 +119,7 @@ public class MagicCircle : Projectile
 
         if(transform.position == targetPos)
         {
-            projM.EraseProjectile(gameObject);
+            EraseProjectile();
         }
     }
 
@@ -129,5 +129,9 @@ public class MagicCircle : Projectile
         transform.position = originalPosition + Random.insideUnitSphere * _data.shakeMagnitude;
     }
 
+    public override void EraseProjectile()
+    {
+        projM.EraseProjectile(gameObject);
+    }
 }
 
