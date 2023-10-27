@@ -9,6 +9,7 @@ public class HandleWeaknessCircle : MonoBehaviour
         DISTANCE,
         ONLYCHARGING,
         CONTINUOUSWEAKNESS,
+        DISTANCEDELAY,
     }
     
     public bool isFlip = false;
@@ -18,6 +19,7 @@ public class HandleWeaknessCircle : MonoBehaviour
     public int weaknessCircleType = (int)WEAKTYPE.DISTANCE;
     public int currentWeaknessNum = 0;
     public Vector3 originalCirclePos;
+    public float appearDelay = 0f;
     
     private void Start()
     {
@@ -50,6 +52,30 @@ public class HandleWeaknessCircle : MonoBehaviour
             else if (weaknessCircleType == (int)WEAKTYPE.ONLYCHARGING)
             {
                 
+            }
+            else if (weaknessCircleType == (int)WEAKTYPE.DISTANCEDELAY)
+            {
+                if (appearDelay > 0f)
+                {
+                    appearDelay -= Time.deltaTime;
+                }
+
+                if (appearDelay <= 0f)
+                {
+                    float distance = Vector3.Distance(PlayerManager.Instance.player.transform.position, transform.position);
+                    if (distance < 15f)
+                    {
+                        weaknessCircle.SetActive(true);
+                    }
+                    else
+                    {
+                        weaknessCircle.SetActive(false);
+                    }
+                }
+                else
+                {
+                    weaknessCircle.SetActive(false);
+                }
             }
             else
             {
