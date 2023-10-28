@@ -346,6 +346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHp: 100
   magicMirror: {fileID: 0}
+  weaknessCircle: {fileID: 0}
 --- !u!50 &5015153470781628271
 Rigidbody2D:
   serializedVersion: 4

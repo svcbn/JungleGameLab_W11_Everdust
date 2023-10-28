@@ -2,7 +2,6 @@ using Myd.Platform;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Myd.Platform;
 
 public class HandleWeaponClick : MonoBehaviour
 {
@@ -83,7 +82,8 @@ public class HandleWeaponClick : MonoBehaviour
         Collider2D[] allEnemyCols = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("Enemy"));
         Collider2D[] allProjectileCols = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("EnemyProjectile"));
         Collider2D[] allTriggers = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("Trigger"));
-        
+        Collider2D[] allMeleeCols = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("EnemyMelee"));
+
         //콜라이더 중 약점 있으면 약점 타격 실행. 행렬에 동일 몬스터 전부 삭제.
         for (int i = 0; i < allEnemyCols.Length; i++)
         {
@@ -91,20 +91,17 @@ public class HandleWeaponClick : MonoBehaviour
             {
                 if (allEnemyCols[i].GetComponent<HandleWeaknessCircleAnimation>() is HandleWeaknessCircleAnimation weakness)
                 {
-                    if (true) //TODO: 약점 방향 체크
+                    //약점 데미지 주기
+                    Enemy enemy = allEnemyCols[i].transform.root.GetComponent<Enemy>();
+                    enemy.TakeHit(true);
+                    SetPokeTimerToZero();
+                    enemy.GetComponent<HandleWeaknessCircle>().appearDelay = 1f;
+                    //행렬에 동일 몬스터 전부 삭제
+                    for (int j = i; j < allEnemyCols.Length; j++)
                     {
-                        //약점 데미지 주기
-                        Enemy enemy = allEnemyCols[i].transform.root.GetComponent<Enemy>();
-                        enemy.TakeHit(true);
-                        SetPokeTimerToZero();
-                        enemy.GetComponent<HandleWeaknessCircle>().appearDelay = 1f;
-                        //행렬에 동일 몬스터 전부 삭제
-                        for (int j = i; j < allEnemyCols.Length; j++)
+                        if (allEnemyCols[j].GetComponentInChildren<HandleWeaknessCircleAnimation>() == weakness)
                         {
-                            if (allEnemyCols[j].GetComponentInChildren<HandleWeaknessCircleAnimation>() == weakness)
-                            {
-                                allEnemyCols[j] = null;
-                            }
+                            allEnemyCols[j] = null;
                         }
                     }
                 }
@@ -122,6 +119,7 @@ public class HandleWeaponClick : MonoBehaviour
                 //행렬에 동일 몬스터 전부 삭제
                 for (int j = i; j < allEnemyCols.Length; j++)
                 {
+                    //TODO: nullReferenceException 해결
                     if (allEnemyCols[j].transform.root.GetComponent<Enemy>() == enemy)
                     {
                         allEnemyCols[j] = null;
@@ -131,16 +129,15 @@ public class HandleWeaponClick : MonoBehaviour
             }
         }
 
-        //Collider2D[] parryables = Physics2D.OverlapBoxAll(center, size, angle, LayerMask.GetMask("Parryable"));
+        if (allMeleeCols.Length > 0)
+        {
+            foreach (var hitbox in allMeleeCols)
+            {
+                var _script = hitbox.GetComponent<EnemyMeleeHitBox>();
+                _script.TryGetParried(-angle);
+            }
+        }
 
-        //if(parryables.Length > 0)
-        //{
-
-        //    foreach(var collider in parryables)
-        //    {
-
-        //    }
-        //}
         if (allProjectileCols.Length > 0)
         {
             _parry.TriggerParry(- angle);
@@ -150,7 +147,8 @@ public class HandleWeaponClick : MonoBehaviour
                 if (allProjectileCols[i] != null)
                 {
                     Projectile projectile = allProjectileCols[i].GetComponent<Projectile>();
-                    projectile.TakeHit(false, angle);
+                    projectile.gameObject.SetActive(false);
+                    Destroy(projectile.gameObject);
                     SetPokeTimerToZero();
                     for (int j = i; j < allProjectileCols.Length; j++)
                     {

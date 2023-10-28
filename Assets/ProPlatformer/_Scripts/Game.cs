@@ -49,6 +49,8 @@ namespace Myd.Platform
 
             Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
 
+            player.Reload(level.Bounds, level.StartPosition);
+
         }
 
         //void Start()
@@ -61,7 +63,6 @@ namespace Myd.Platform
             yield return null;
 
             //플레이어 로드
-            player.Reload(level.Bounds, level.StartPosition);
             this.gameState = EGameState.Play;
 
             projectileManager = GetComponentInChildren<ProjectileManager>();

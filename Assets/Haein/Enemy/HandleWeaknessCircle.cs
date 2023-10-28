@@ -20,11 +20,14 @@ public class HandleWeaknessCircle : MonoBehaviour
     public int currentWeaknessNum = 0;
     public Vector3 originalCirclePos;
     public float appearDelay = 0f;
+
+    public Vector2[] weaknessCirclePosArr;
     
     private void Start()
     {
         weaknessCircleAnimator = weaknessCircle.GetComponent<Animator>();
         weaknessCircle.GetComponent<SpriteRenderer>().flipX = isFlip;
+        ChangeWeaknessPosition();
         originalCirclePos = weaknessCircle.transform.localPosition;
     }
 
@@ -105,11 +108,47 @@ public class HandleWeaknessCircle : MonoBehaviour
 
     public void ChangeWeaknessPosition()
     {
-        weaknessCircle.transform.localPosition = new Vector3(weaknessCircle.transform.localPosition.x, weaknessCircle.transform.localPosition.y - .3f, weaknessCircle.transform.localPosition.z);
+        if (currentWeaknessNum > weaknessCirclePosArr.Length - 1 && weaknessCirclePosArr.Length > 0)
+        {
+            if (TryGetComponent(out Boss b))
+            {
+                b.CancelMagicCircle();
+            }
+            ResetWeaknessPosition();
+            return;
+        }
+
+        if (TryGetComponent(out Boss _boss))
+        {
+            if (currentWeaknessNum == 0 && !_boss.GetComponent<Boss>().GetCurrentFlipXIsTurnedOn())
+            {
+                Vector3 _scale = weaknessCircle.transform.parent.localScale;
+                _scale.x *= -1;
+                isFlip = true;
+                weaknessCircle.transform.parent.localScale = _scale;
+            }
+            
+            if (currentWeaknessNum == 1)
+            {
+                isFlip = !isFlip;
+            }
+        }
+        
+        Vector3 targetPos = weaknessCirclePosArr[currentWeaknessNum];
+        /*
+        if (_boss is not null)
+        {
+            targetPos = spriteRenderer.flipX == false
+                ? new Vector3(targetPos.x * -1, targetPos.y, targetPos.z)
+                : targetPos;
+        }
+        */
+        weaknessCircle.transform.localPosition = targetPos;
     }
     
     public void ResetWeaknessPosition()
     {
-        weaknessCircle.transform.localPosition = originalCirclePos;
+        currentWeaknessNum = 0;
+        weaknessCircle.transform.localPosition = weaknessCirclePosArr[0];
     }
 }

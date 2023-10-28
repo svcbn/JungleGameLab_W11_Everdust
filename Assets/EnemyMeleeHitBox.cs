@@ -1,15 +1,18 @@
+using Myd.Platform;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMeleeHitBox : MonoBehaviour
 {
-    public static float parryTime = 0.1f;
+    public static float parryTime = 0.3f;
 
     private float _timer;
     private BoxCollider2D _collider;
     private Vector2 _startingOffset;
     private bool _isParried = false;
+    private ParryingTest _parry;
+
 
     public float Timer
     {
@@ -26,15 +29,24 @@ public class EnemyMeleeHitBox : MonoBehaviour
         Timer = delay;
     }
 
-    public void TryGetParried()
+    public void TryGetParried(float angle)
     {
-        if (Timer < parryTime) _isParried = true;
+        if (Timer < parryTime && Timer > 0)
+        {
+            _isParried = true;
+            _parry.TriggerParry(angle);
+        }
     }
 
     private void Awake()
     {
         _collider = GetComponent<BoxCollider2D>();
         _startingOffset = transform.localPosition;
+    }
+
+    private void Start()
+    {
+        _parry = PlayerManager.Instance.player.GetComponentInChildren<ParryingTest>();
     }
 
     private void Update()
@@ -63,6 +75,7 @@ public class EnemyMeleeHitBox : MonoBehaviour
                 }
             }
         }
+        //Debug.Log(_isParried);
     }
 
 }
