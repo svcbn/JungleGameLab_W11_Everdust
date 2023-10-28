@@ -119,8 +119,7 @@ public class HandleWeaponClick : MonoBehaviour
                 //행렬에 동일 몬스터 전부 삭제
                 for (int j = i; j < allEnemyCols.Length; j++)
                 {
-                    //TODO: nullReferenceException 해결
-                    if (allEnemyCols[j].transform.root.GetComponent<Enemy>() == enemy)
+                    if (allEnemyCols[j]?.transform.root.GetComponent<Enemy>() == enemy)
                     {
                         allEnemyCols[j] = null;
                     }
