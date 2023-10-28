@@ -15,7 +15,7 @@ public class Boss : Enemy
     [SerializeField] private GameObject _magicCircle;
     [SerializeField] private Transform _magicCirclePreview;
     [SerializeField] private ParticleSystem _magicCircleExplosion;
-
+    [SerializeField] private GameObject _stunStar;
 
     private SpriteRenderer _ownSpriteRenderer;
     private Animator _animator;
@@ -64,14 +64,18 @@ public class Boss : Enemy
         {
             if (Player != null)
             {
-                _ownSpriteRenderer.flipX = Player.position.x < transform.position.x;
+                //if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Boss_Cast 2")) //원형 마법진 곻격 중에는 플립하지 않음
+                {
+                    _ownSpriteRenderer.flipX = Player.position.x < transform.position.x;
+                }
             }
         }
     }
 
     private void AE_StartRandomPattern()
     {
-        int numOfPatterns = 3;
+        _stunStar.SetActive(false);
+        int numOfPatterns = 4;
         int index = UnityEngine.Random.Range(0, numOfPatterns);
         switch (index)
         {
@@ -84,9 +88,12 @@ public class Boss : Enemy
             case 2:
                 _animator.Play("Boss_Cast");
                 break;
+            case 3:
+                _animator.Play("Boss_Cast 2");
+                break;
         }
     }
-
+    
     public IEnumerator CR_3HitAnticipation(int index)
     {
         //��������Ʈ ���߱�
@@ -206,9 +213,9 @@ public class Boss : Enemy
         //애니메이션 멈추기
         float originalSpeed = _animator.speed;
         _animator.speed = 0;
-
-        //TODO: 약점 표시
-
+        
+        GetComponent<HandleWeaknessCircle>().weaknessCircle.SetActive(true);
+        
         //최종 범위 표시
         _magicCircle.SetActive(true);
         //진행도 표시
@@ -231,7 +238,8 @@ public class Boss : Enemy
         _magicCirclePreview.localScale = Vector3.zero;
 
         //TODO: 약점 비활성화 및 초기화
-
+        GetComponent<HandleWeaknessCircle>().weaknessCircle.SetActive(false);
+        GetComponent<HandleWeaknessCircle>().ResetWeaknessPosition();
 
         //애니메이션 재생
         _animator.speed = originalSpeed;
@@ -246,12 +254,14 @@ public class Boss : Enemy
 
     public void CancelMagicCircle()
     {
+        GetComponent<HandleWeaknessCircle>().weaknessCircle.SetActive(false);
+        GetComponent<HandleWeaknessCircle>().ResetWeaknessPosition();
         //코루틴 정지
         if (_magicCircleCR != null) StopCoroutine(_magicCircleCR);
         //표시 효과들 끄기
         _magicCircle.SetActive(false);
         _magicCirclePreview.localScale = Vector3.zero;
-        //TODO: 기절 애니메이션 재생 (애니메이션 속도 돌려놓기?)
+        _stunStar.SetActive(true);
         _animator.speed = 1f;
     }
 
@@ -269,6 +279,11 @@ public class Boss : Enemy
     private void AE_CanNotFlip()
     {
         canFlip = false;
+    }
+    
+    public bool GetCurrentFlipXIsTurnedOn()
+    {
+        return _spriteEchoRenderer.flipX;
     }
 }
 

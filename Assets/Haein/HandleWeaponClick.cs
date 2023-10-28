@@ -91,20 +91,17 @@ public class HandleWeaponClick : MonoBehaviour
             {
                 if (allEnemyCols[i].GetComponent<HandleWeaknessCircleAnimation>() is HandleWeaknessCircleAnimation weakness)
                 {
-                    if (true) //TODO: 약점 방향 체크
+                    //약점 데미지 주기
+                    Enemy enemy = allEnemyCols[i].transform.root.GetComponent<Enemy>();
+                    enemy.TakeHit(true);
+                    SetPokeTimerToZero();
+                    enemy.GetComponent<HandleWeaknessCircle>().appearDelay = 1f;
+                    //행렬에 동일 몬스터 전부 삭제
+                    for (int j = i; j < allEnemyCols.Length; j++)
                     {
-                        //약점 데미지 주기
-                        Enemy enemy = allEnemyCols[i].transform.root.GetComponent<Enemy>();
-                        enemy.TakeHit(true);
-                        SetPokeTimerToZero();
-                        enemy.GetComponent<HandleWeaknessCircle>().appearDelay = 1f;
-                        //행렬에 동일 몬스터 전부 삭제
-                        for (int j = i; j < allEnemyCols.Length; j++)
+                        if (allEnemyCols[j].GetComponentInChildren<HandleWeaknessCircleAnimation>() == weakness)
                         {
-                            if (allEnemyCols[j].GetComponentInChildren<HandleWeaknessCircleAnimation>() == weakness)
-                            {
-                                allEnemyCols[j] = null;
-                            }
+                            allEnemyCols[j] = null;
                         }
                     }
                 }
@@ -122,6 +119,7 @@ public class HandleWeaponClick : MonoBehaviour
                 //행렬에 동일 몬스터 전부 삭제
                 for (int j = i; j < allEnemyCols.Length; j++)
                 {
+                    //TODO: nullReferenceException 해결
                     if (allEnemyCols[j].transform.root.GetComponent<Enemy>() == enemy)
                     {
                         allEnemyCols[j] = null;
