@@ -48,4 +48,4 @@ MonoBehaviour:
   magicCirclePrefab: {fileID: 4315446772450325211, guid: f049426809135524e9545248a8d2d37f, type: 3}
   activeProjectileCount: 0
   timeBetweenProj: 0.3
-  _projectileOffsetDistance: 7
+  _projectileOffsetDistance: 6.7

@@ -135,7 +135,8 @@ public class Boss : Enemy
         }
 
         //��Ʈ�ڽ�
-        _hitBoxes[index].ActivateHitBox(_3hitVer2[index].time + _3hitVer2[index].hitboxDelayOffset);
+        int hitBoxIndex = index == 2 ? 0 : index;
+        _hitBoxes[hitBoxIndex].ActivateHitBox(_3hitVer2[index].time + _3hitVer2[index].hitboxDelayOffset);
 
         //�ִϸ��̼� ����� ���
         float originalSpeed = _animator.speed;
@@ -149,7 +150,7 @@ public class Boss : Enemy
     {
         yield return new WaitForSeconds(startDelay);
 
-        //�����̵� ������� ����Ʈ
+        //순간이동 사라지는 효과.
         float timer = 0;
         transform.DOScaleY(1.3f, duration);
         while (timer < duration)
@@ -167,7 +168,7 @@ public class Boss : Enemy
         if (shouldFlip) _ownSpriteRenderer.flipX = !_ownSpriteRenderer.flipX;
         _spriteEchoRenderer.flipX = _ownSpriteRenderer.flipX;
 
-        //�����̵� ����� ����Ʈ
+        //순간이동 나타나는 효과.
         transform.DOScaleY(1f, duration);
         while (timer > 0)
         {
@@ -186,11 +187,10 @@ public class Boss : Enemy
         //�ִϸ��̼� ���߱�
         float originalAnimSpd = _animator.speed;
         _animator.speed = 0f;
-        yield return new WaitForSeconds(1.5f);
         //플레이어 속박시킴
         PlayerManager.Instance.ShowText("속박됨!");
         PlayerManager.Instance.SetPlayerBond(3f);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(4f);
         _animator.speed = originalAnimSpd;
     }
 
