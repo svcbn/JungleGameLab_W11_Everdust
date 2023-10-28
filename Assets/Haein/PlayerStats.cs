@@ -35,6 +35,7 @@ public class PlayerStats : MonoBehaviour
         damageText.GetComponent<MoveAndDestroy>()._text = "-" + damage;
         
         curHp -= damage;
+        TakeHitEffect.Play();
         if (curHp <= 0)
         {
             Die();
