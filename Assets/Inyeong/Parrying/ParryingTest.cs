@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using DG.Tweening;
 
 public class ParryingTest : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class ParryingTest : MonoBehaviour
     private bool _isParry = false;
 
     float parryAngle = 0f;
+    GameObject parryBoss = null;
     public bool IsParry
     {
         get
@@ -30,6 +32,17 @@ public class ParryingTest : MonoBehaviour
                 parryingEffect.transform.position = parryPosition.position;
                 parryingEffect.startRotation3D = new Vector3(0, 0, parryAngle );
                 parryingEffect.Play();
+                
+                if(parryBoss != null){
+                    float deltaDist = 5;
+                    float deltaTime = 0.5f;
+                    if(parryPosition.position.x <= parryBoss.transform.position.x){
+                        parryBoss.transform.DOMoveX(parryBoss.transform.position.x + deltaDist, deltaTime);
+                    }
+                    else{
+                        parryBoss.transform.DOMoveX(parryBoss.transform.position.x - deltaDist, deltaTime);
+                    }
+                }
             }
             else
             {
@@ -56,9 +69,10 @@ public class ParryingTest : MonoBehaviour
         
     }
 
-    public void TriggerParry(float angle)
+    public void TriggerParry(float angle, GameObject boss = null)
     {
         parryAngle = angle *Mathf.Deg2Rad ;
+        parryBoss = boss;
         // 조건
         StartCoroutine(Parry());
         

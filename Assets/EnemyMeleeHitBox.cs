@@ -29,12 +29,12 @@ public class EnemyMeleeHitBox : MonoBehaviour
         Timer = delay;
     }
 
-    public void TryGetParried(float angle)
+    public void TryGetParried(float angle, GameObject boss = null)
     {
         if (Timer < parryTime && Timer > 0)
         {
             _isParried = true;
-            _parry.TriggerParry(angle);
+            _parry.TriggerParry(angle, boss);
         }
     }
 
@@ -62,7 +62,7 @@ public class EnemyMeleeHitBox : MonoBehaviour
                     _isParried = false;
                     return;
                 }
-                //Å¸°Ý ÆÇÁ¤ ¼ø°£.
+                //Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
                 Vector2 offset = transform.parent.GetComponent<SpriteRenderer>().flipX ? _startingOffset + _collider.offset : new Vector2 ((_startingOffset.x + _collider.offset.x) * -1 , _startingOffset.y + _collider.offset.y);
                 Collider2D[] playerCols = Physics2D.OverlapBoxAll((Vector2) transform.position + offset, _collider.size, LayerMask.GetMask("Player"));
                 for (int i = 0; i < playerCols.Length; i++)
