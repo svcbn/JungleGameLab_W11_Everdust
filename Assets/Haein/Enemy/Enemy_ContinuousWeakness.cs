@@ -46,7 +46,6 @@ public class Enemy_ContinuousWeakness : Enemy
     IEnumerator Charging()
     {
         yield return new WaitForSeconds(3f);
-        Debug.Log("쏘기");
         GetComponentInChildren<HandleAttackEvent>().CreateMovingProjectile();
         isCharging = false;
         weaknessCircle.SetActive(false);
