@@ -5477,7 +5477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHp: 1000
-  _spriteEchoRenderer: {fileID: 2392805498989573733}
+  spriteEchoRenderer: {fileID: 2392805498989573733}
   _3hitAnticipations:
   - sprite: {fileID: 1242413136, guid: e973d4cb19435a64883819be0e1dc5db, type: 3}
     time: 0.4

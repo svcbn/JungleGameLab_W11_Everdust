@@ -764,6 +764,63 @@ Material:
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShineColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
+--- !u!1001 &1367307430
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1653267222711464732, guid: 0f85fa2484c94be45b8a643826ddf53a, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653267222711464732, guid: 0f85fa2484c94be45b8a643826ddf53a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -24.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653267222711464732, guid: 0f85fa2484c94be45b8a643826ddf53a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653267222711464732, guid: 0f85fa2484c94be45b8a643826ddf53a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653267222711464732, guid: 0f85fa2484c94be45b8a643826ddf53a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653267222711464732, guid: 0f85fa2484c94be45b8a643826ddf53a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653267222711464732, guid: 0f85fa2484c94be45b8a643826ddf53a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653267222711464732, guid: 0f85fa2484c94be45b8a643826ddf53a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653267222711464732, guid: 0f85fa2484c94be45b8a643826ddf53a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653267222711464732, guid: 0f85fa2484c94be45b8a643826ddf53a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653267222711464732, guid: 0f85fa2484c94be45b8a643826ddf53a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653267222711464733, guid: 0f85fa2484c94be45b8a643826ddf53a, type: 3}
+      propertyPath: m_Name
+      value: LaserMaker_PlaceAtLevelCenter
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0f85fa2484c94be45b8a643826ddf53a, type: 3}
 --- !u!1 &1414521959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,7 +1521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2392805497980416640, guid: 5872c1efe69757447b3e8e6d1d5bb3e0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -30.8
+      value: -23.9
       objectReference: {fileID: 0}
     - target: {fileID: 2392805497980416640, guid: 5872c1efe69757447b3e8e6d1d5bb3e0, type: 3}
       propertyPath: m_LocalPosition.y

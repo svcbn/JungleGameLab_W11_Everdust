@@ -1,14 +1,12 @@
 using DG.Tweening;
 using Myd.Platform;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Boss : Enemy
 {
-    [SerializeField] private SpriteRenderer _spriteEchoRenderer;
+    [SerializeField] private SpriteRenderer spriteEchoRenderer;
     [SerializeField] private Anticipation[] _3hitAnticipations;
     [SerializeField] private Anticipation[] _3hitVer2;
     [SerializeField] private EnemyMeleeHitBox[] _hitBoxes = new EnemyMeleeHitBox[3];
@@ -20,28 +18,27 @@ public class Boss : Enemy
     private SpriteRenderer _ownSpriteRenderer;
     private Animator _animator;
     private UnityEngine.Coroutine _teleportCR;
-    private bool canFlip = true;
+    private bool _canFlip = true;
     private Transform _player;
     private ProjectileManager _projManager;
     private UnityEngine.Coroutine _magicCircleCR;
+    private HandleLaserPattern _handleLaserPattern;
 
     public Transform Player
     {
         get
         {
-            if (_player == null)
-            {
-                if (FindObjectOfType<PlayerRenderer>() is PlayerRenderer p) _player = p.transform;
-            }
+            if (_player is not null) return _player;
+            if (FindObjectOfType<PlayerRenderer>() is PlayerRenderer p) _player = p.transform;
             return _player;
         }
     }
 
-    private const float _echoBrightness = .6f;
-    private const float _echoAlpha = .5f;
-    private const float _spriteMaxScale = 1.5f;
-    private const float _anticipationCutoffTime = .15f; //스프라이트 에코가 끝나기 몇 초 전에 애니메이션이 재생될 것인지.
-    private const float _magicCircleTime = 7f;
+    private const float EchoBrightness = .6f;
+    private const float EchoAlpha = .5f;
+    private const float SpriteMaxScale = 1.5f;
+    private const float AnticipationCutoffTime = .15f; //스프라이트 에코가 끝나기 몇 초 전에 애니메이션이 재생될 것인지.
+    private const float MagicCircleTime = 7f;
 
     protected override void Awake()
     {
@@ -49,9 +46,10 @@ public class Boss : Enemy
         _ownSpriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         _projManager = FindObjectOfType<ProjectileManager>();
+        _handleLaserPattern = FindObjectOfType<HandleLaserPattern>();
 
-        _spriteEchoRenderer.enabled = false;
-        _spriteEchoRenderer.color = new Color(_echoBrightness, _echoBrightness, _echoBrightness, _echoAlpha);
+        spriteEchoRenderer.enabled = false;
+        spriteEchoRenderer.color = new Color(EchoBrightness, EchoBrightness, EchoBrightness, EchoAlpha);
         _magicCircle.SetActive(false);
         _magicCirclePreview.localScale = Vector3.zero;
     }
@@ -60,7 +58,7 @@ public class Boss : Enemy
     {
         base.Update();
 
-        if (canFlip)
+        if (_canFlip)
         {
             if (Player != null)
             {
@@ -75,8 +73,8 @@ public class Boss : Enemy
     private void AE_StartRandomPattern()
     {
         _stunStar.SetActive(false);
-        int numOfPatterns = 4;
-        int index = UnityEngine.Random.Range(0, numOfPatterns);
+        const int numOfPatterns = 5;
+        var index = Random.Range(0, numOfPatterns);
         switch (index)
         {
             case 0:
@@ -91,20 +89,23 @@ public class Boss : Enemy
             case 3:
                 _animator.Play("Boss_Cast 2");
                 break;
+            case 4:
+                _animator.Play("Boss_Laser");
+                break;
         }
     }
     
     public IEnumerator CR_3HitAnticipation(int index)
     {
-        //��������Ʈ ���߱�
-        _spriteEchoRenderer.sprite = _3hitAnticipations[index].sprite;
-        _spriteEchoRenderer.flipX = _ownSpriteRenderer.flipX;
-        _spriteEchoRenderer.enabled = true;
+        //
+        spriteEchoRenderer.sprite = _3hitAnticipations[index].sprite;
+        spriteEchoRenderer.flipX = _ownSpriteRenderer.flipX;
+        spriteEchoRenderer.enabled = true;
 
-        //ũ�� �ִϸ��̼�
-        _spriteEchoRenderer.transform.DOScale(_spriteMaxScale, _3hitAnticipations[index].time + _anticipationCutoffTime).OnComplete(SpriteEchoEnded);
+        //
+        spriteEchoRenderer.transform.DOScale(SpriteMaxScale, _3hitAnticipations[index].time + AnticipationCutoffTime).OnComplete(SpriteEchoEnded);
 
-        //�����̵� �ؾ��ϸ� ����
+        //
         TeleportInfo tInfo = _3hitAnticipations[index].teleportInfo;
         if (tInfo.duration > 0)
         {
@@ -112,28 +113,28 @@ public class Boss : Enemy
             _teleportCR = StartCoroutine(CR_Teleport(tInfo.startDelay, tInfo.duration, tInfo.relativePositionFromPlayer, tInfo.shouldFlip));
         }
 
-        //��Ʈ�ڽ�
+        //
         _hitBoxes[index].ActivateHitBox(_3hitAnticipations[index].time + _3hitAnticipations[index].hitboxDelayOffset);
 
-        //�ִϸ��̼� ����� ���
+        //
         float originalSpeed = _animator.speed;
         _animator.speed = 0;
         yield return new WaitForSeconds(_3hitAnticipations[index].time);
         _animator.speed = originalSpeed;
-        _spriteEchoRenderer.transform.DOPunchScale(Vector3.one * .5f, .08f);
+        spriteEchoRenderer.transform.DOPunchScale(Vector3.one * .5f, .08f);
     }
 
     public IEnumerator CR_3HitVer2(int index)
     {
-        //��������Ʈ ���߱�
-        _spriteEchoRenderer.sprite = _3hitVer2[index].sprite;
-        _spriteEchoRenderer.flipX = _ownSpriteRenderer.flipX;
-        _spriteEchoRenderer.enabled = true;
+        //
+        spriteEchoRenderer.sprite = _3hitVer2[index].sprite;
+        spriteEchoRenderer.flipX = _ownSpriteRenderer.flipX;
+        spriteEchoRenderer.enabled = true;
 
-        //ũ�� �ִϸ��̼�
-        _spriteEchoRenderer.transform.DOScale(_spriteMaxScale, _3hitVer2[index].time + _anticipationCutoffTime).OnComplete(SpriteEchoEnded);
+        //
+        spriteEchoRenderer.transform.DOScale(SpriteMaxScale, _3hitVer2[index].time + AnticipationCutoffTime).OnComplete(SpriteEchoEnded);
 
-        //�����̵� �ؾ��ϸ� ����
+        //
         TeleportInfo tInfo = _3hitVer2[index].teleportInfo;
         if (tInfo.duration > 0)
         {
@@ -141,16 +142,16 @@ public class Boss : Enemy
             _teleportCR = StartCoroutine(CR_Teleport(tInfo.startDelay, tInfo.duration, tInfo.relativePositionFromPlayer, tInfo.shouldFlip));
         }
 
-        //��Ʈ�ڽ�
+        //
         int hitBoxIndex = index == 2 ? 0 : index;
         _hitBoxes[hitBoxIndex].ActivateHitBox(_3hitVer2[index].time + _3hitVer2[index].hitboxDelayOffset);
 
-        //�ִϸ��̼� ����� ���
+        //
         float originalSpeed = _animator.speed;
         _animator.speed = 0;
         yield return new WaitForSeconds(_3hitVer2[index].time);
         _animator.speed = originalSpeed;
-        _spriteEchoRenderer.transform.DOPunchScale(Vector3.one * .5f, .08f);
+        spriteEchoRenderer.transform.DOPunchScale(Vector3.one * .5f, .08f);
     }
 
     public IEnumerator CR_Teleport(float startDelay, float duration, Vector2 targetPosition, bool shouldFlip, bool isRelativePosition = true)
@@ -173,7 +174,7 @@ public class Boss : Enemy
         teleportOffset = isRelativePosition ? (Vector2)Player.position + teleportOffset : targetPosition;
         transform.position = teleportOffset;
         if (shouldFlip) _ownSpriteRenderer.flipX = !_ownSpriteRenderer.flipX;
-        _spriteEchoRenderer.flipX = _ownSpriteRenderer.flipX;
+        spriteEchoRenderer.flipX = _ownSpriteRenderer.flipX;
 
         //순간이동 나타나는 효과.
         transform.DOScaleY(1f, duration);
@@ -189,9 +190,9 @@ public class Boss : Enemy
 
     public IEnumerator CR_Cast1()
     {
-        //����ü 4�� ��ȯ
+        //
         _projManager.Start4ProjAttack();
-        //�ִϸ��̼� ���߱�
+        //
         float originalAnimSpd = _animator.speed;
         _animator.speed = 0f;
         //플레이어 속박시킴
@@ -206,6 +207,12 @@ public class Boss : Enemy
         if (_magicCircleCR != null) StopCoroutine(_magicCircleCR);
         _magicCircleCR = StartCoroutine(CR_Cast2_NotAE());
     }
+    
+    public void AE_StartLaserPattern()
+    {
+        var facingLeft = Player.position.x < _handleLaserPattern.transform.position.x;
+        _handleLaserPattern.StartLaserPattern(facingLeft);
+    }
 
     public IEnumerator CR_Cast2_NotAE()
     {
@@ -219,9 +226,9 @@ public class Boss : Enemy
         //최종 범위 표시
         _magicCircle.SetActive(true);
         //진행도 표시
-        while (_timer < _magicCircleTime)
+        while (_timer < MagicCircleTime)
         {
-            _magicCirclePreview.localScale = Vector3.one * (_timer / _magicCircleTime) * 3.18f;
+            _magicCirclePreview.localScale = Vector3.one * (_timer / MagicCircleTime) * 3.18f;
             _timer += Time.deltaTime;
             yield return null;
         }
@@ -243,7 +250,7 @@ public class Boss : Enemy
 
         //애니메이션 재생
         _animator.speed = originalSpeed;
-        _spriteEchoRenderer.transform.DOPunchScale(Vector3.one * .5f, .08f);
+        spriteEchoRenderer.transform.DOPunchScale(Vector3.one * .5f, .08f);
     }
 
     private void AE_TeleportToCenter()
@@ -267,23 +274,23 @@ public class Boss : Enemy
 
     private void SpriteEchoEnded()
     {
-        _spriteEchoRenderer.enabled = false;
-        _spriteEchoRenderer.transform.DOScale(1, 0.01f);
+        spriteEchoRenderer.enabled = false;
+        spriteEchoRenderer.transform.DOScale(1, 0.01f);
     }
 
     private void AE_CanFlip()
     {
-        canFlip = true;
+        _canFlip = true;
     }
 
     private void AE_CanNotFlip()
     {
-        canFlip = false;
+        _canFlip = false;
     }
     
     public bool GetCurrentFlipXIsTurnedOn()
     {
-        return _spriteEchoRenderer.flipX;
+        return spriteEchoRenderer.flipX;
     }
 }
 
@@ -302,6 +309,6 @@ public struct TeleportInfo
 {
     public float startDelay;
     public float duration;
-    [Tooltip("������ ������ ���� ���� �� ����, �÷��̾� ��� ��� ��ġ�� �����̵� �ؾ��ϴ°�.")] public Vector2 relativePositionFromPlayer;
+    [Tooltip("플레이어 위치 기준 순간이동 대상 로컬 포지션.")] public Vector2 relativePositionFromPlayer;
     public bool shouldFlip;
 }

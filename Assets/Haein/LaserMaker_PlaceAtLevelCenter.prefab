@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1653267222711464732}
   - component: {fileID: 1653267222711464731}
   m_Layer: 0
-  m_Name: LaserMaker
+  m_Name: LaserMaker_PlaceAtLevelCenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da2dbef249c60d74ca17ff7cc76b4053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  widthOfLevel: 20.8
   movingLeafSpike: {fileID: 8405317545363986898, guid: 173d414e45beefa4791f4e99ae58e40e, type: 3}
   horizontalLaser: {fileID: 7519189290322619011, guid: 4eb4027d414b02847a4785c666afe978, type: 3}
   verticalLaser: {fileID: 8835631932789078229, guid: 12a8fce0a264c974684ccd113577be20, type: 3}
