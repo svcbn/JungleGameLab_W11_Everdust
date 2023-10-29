@@ -131,7 +131,7 @@ public class HandleWeaknessCircle : MonoBehaviour
             }
         }
         
-        print(currentWeaknessNum);
+        //print(currentWeaknessNum);
         if (weaknessCirclePosArr.Length > currentWeaknessNum)
         {
             Vector3 targetPos = weaknessCirclePosArr[currentWeaknessNum];
