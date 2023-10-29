@@ -23,6 +23,8 @@ public class Boss : Enemy
     private ProjectileManager _projManager;
     private UnityEngine.Coroutine _magicCircleCR;
     private HandleLaserPattern _handleLaserPattern;
+    private BoxCollider2D[] _hitboxCols;
+    private Vector3[] _hitboxStartingOffsets;
 
     public Transform Player
     {
@@ -52,11 +54,28 @@ public class Boss : Enemy
         spriteEchoRenderer.color = new Color(EchoBrightness, EchoBrightness, EchoBrightness, EchoAlpha);
         _magicCircle.SetActive(false);
         _magicCirclePreview.localScale = Vector3.zero;
+        //히트박스 콜라이더들 받아오기
+        _hitboxCols = new BoxCollider2D[_hitBoxes.Length];
+        _hitboxStartingOffsets = new Vector3[_hitBoxes.Length];
+        for (int i = 0; i < _hitBoxes.Length; i++)
+        {
+            _hitboxCols[i] = _hitBoxes[i].GetComponent<BoxCollider2D>();
+            _hitboxStartingOffsets[i] = _hitboxCols[i].offset;
+        }
     }
 
     protected override void Update()
     {
         base.Update();
+        
+        //히트박스 오프셋 flipX에 맞추기
+        var inverse = _ownSpriteRenderer.flipX ? 1 : -1;
+        for (int i = 0; i < _hitBoxes.Length; i++)
+        {
+            var newOffset = _hitboxStartingOffsets[i];
+            newOffset = new Vector3(newOffset.x * inverse, newOffset.y, newOffset.z);
+            _hitboxCols[i].offset = newOffset;
+        }
 
         if (!_canFlip) return;
         if (Player is null) return;
@@ -91,15 +110,15 @@ public class Boss : Enemy
     
     public IEnumerator CR_3HitAnticipation(int index)
     {
-        //
+        //스프라이트 맞추기
         spriteEchoRenderer.sprite = _3hitAnticipations[index].sprite;
         spriteEchoRenderer.flipX = _ownSpriteRenderer.flipX;
         spriteEchoRenderer.enabled = true;
 
-        //
+        //스프라이트 에코
         spriteEchoRenderer.transform.DOScale(SpriteMaxScale, _3hitAnticipations[index].time + AnticipationCutoffTime).OnComplete(SpriteEchoEnded);
 
-        //
+        //순간이동
         TeleportInfo tInfo = _3hitAnticipations[index].teleportInfo;
         if (tInfo.duration > 0)
         {
@@ -107,10 +126,13 @@ public class Boss : Enemy
             _teleportCR = StartCoroutine(CR_Teleport(tInfo.startDelay, tInfo.duration, tInfo.relativePositionFromPlayer, tInfo.shouldFlip));
         }
 
-        //
+        if (index == 2) StartCoroutine(ActualCoyoteTime(.75f));
+
+        //히트박스 적용
+        _hitBoxes[index].Damage = _3hitAnticipations[index].damage;
         _hitBoxes[index].ActivateHitBox(_3hitAnticipations[index].time + _3hitAnticipations[index].hitboxDelayOffset);
 
-        //
+        //애니메이터 속도 되돌리기
         float originalSpeed = _animator.speed;
         _animator.speed = 0;
         yield return new WaitForSeconds(_3hitAnticipations[index].time);
@@ -129,7 +151,7 @@ public class Boss : Enemy
         spriteEchoRenderer.transform.DOScale(SpriteMaxScale, _3hitVer2[index].time + AnticipationCutoffTime).OnComplete(SpriteEchoEnded);
 
         //
-        TeleportInfo tInfo = _3hitVer2[index].teleportInfo;
+        var tInfo = _3hitVer2[index].teleportInfo;
         if (tInfo.duration > 0)
         {
             if (_teleportCR != null) StopCoroutine(_teleportCR);
@@ -137,11 +159,12 @@ public class Boss : Enemy
         }
 
         //
-        int hitBoxIndex = index == 2 ? 0 : index;
+        var hitBoxIndex = index == 2 ? 0 : index;
+        _hitBoxes[index].Damage = _3hitVer2[index].damage;
         _hitBoxes[hitBoxIndex].ActivateHitBox(_3hitVer2[index].time + _3hitVer2[index].hitboxDelayOffset);
 
         //
-        float originalSpeed = _animator.speed;
+        var originalSpeed = _animator.speed;
         _animator.speed = 0;
         yield return new WaitForSeconds(_3hitVer2[index].time);
         _animator.speed = originalSpeed;
@@ -209,7 +232,7 @@ public class Boss : Enemy
         _handleLaserPattern.StartLaserPattern(facingLeft);
     }
 
-    public IEnumerator CR_Cast2_NotAE()
+    private IEnumerator CR_Cast2_NotAE()
     {
         float _timer = 0f;
         //애니메이션 멈추기
@@ -267,6 +290,28 @@ public class Boss : Enemy
         _animator.speed = 1f;
     }
 
+    /// <summary>
+    /// 잠시 중력을 무시한 뒤 다시 중력에 영향받도록 하는 함수.
+    /// </summary>
+    /// <param name="duration"></param>
+    /// <returns></returns>
+    private IEnumerator ActualCoyoteTime(float duration)
+    {
+        var rb2d = GetComponent<Rigidbody2D>();
+        var originalGravityScale = rb2d.gravityScale;
+        //중력 무시
+        rb2d.gravityScale = 0;
+        //EnemyPhysics 비활성화
+        GetComponent<EnemyPhysics>().enabled = false;
+
+        yield return new WaitForSeconds(duration); //기다리기
+
+        //중력 되돌리기
+        rb2d.gravityScale = originalGravityScale;
+        //EnemyPhysics 활성화
+        GetComponent<EnemyPhysics>().enabled = true;
+    }
+    
     private void SpriteEchoEnded()
     {
         spriteEchoRenderer.enabled = false;

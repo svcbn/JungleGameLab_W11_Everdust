@@ -1559,10 +1559,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2392805497980416641, guid: 5872c1efe69757447b3e8e6d1d5bb3e0, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1264244212}
     - target: {fileID: 2392805497980416643, guid: 5872c1efe69757447b3e8e6d1d5bb3e0, type: 3}
       propertyPath: m_Name
       value: Boss

@@ -1,27 +1,16 @@
-using Myd.Platform;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMeleeHitBox : MonoBehaviour
 {
-    public static float parryTime = 0.3f;
+    private const float ParryTime = 0.3f;
 
-    private float _timer;
     private BoxCollider2D _collider;
     private Vector2 _startingOffset;
     private bool _isParried = false;
     private ParryingTest _parry;
 
 
-    public float Timer
-    {
-        get => _timer;
-        set
-        {
-            _timer = value;
-        }
-    }
+    private float Timer { get; set; }
     public int Damage { get; set; }
 
     public void ActivateHitBox(float delay)
@@ -31,7 +20,7 @@ public class EnemyMeleeHitBox : MonoBehaviour
 
     public void TryGetParried(float angle, GameObject boss = null)
     {
-        if (Timer < parryTime && Timer > 0)
+        if (Timer < ParryTime && Timer > 0)
         {
             _isParried = true;
             _parry.TriggerParry(angle, boss);
@@ -51,11 +40,11 @@ public class EnemyMeleeHitBox : MonoBehaviour
 
     private void Update()
     {
-        if (_timer > 0) 
+        if (Timer > 0) 
         { 
-            _timer -= Time.deltaTime;
+            Timer -= Time.deltaTime;
 
-            if (_timer <= 0)
+            if (Timer <= 0)
             {
                 if ( _isParried )
                 {
@@ -63,7 +52,7 @@ public class EnemyMeleeHitBox : MonoBehaviour
                     return;
                 }
                 //Ÿ�� ���� ����.
-                Vector2 offset = transform.parent.GetComponent<SpriteRenderer>().flipX ? _startingOffset + _collider.offset : new Vector2 ((_startingOffset.x + _collider.offset.x) * -1 , _startingOffset.y + _collider.offset.y);
+                Vector2 offset = _startingOffset + _collider.offset;
                 Collider2D[] playerCols = Physics2D.OverlapBoxAll((Vector2) transform.position + offset, _collider.size, LayerMask.GetMask("Player"));
                 for (int i = 0; i < playerCols.Length; i++)
                 {

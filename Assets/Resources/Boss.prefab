@@ -5411,7 +5411,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 3f9e70a89f49a544c80e10b152bbf9b7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5499,12 +5499,12 @@ MonoBehaviour:
       shouldFlip: 1
   - sprite: {fileID: -569058006, guid: e973d4cb19435a64883819be0e1dc5db, type: 3}
     time: 0.4
-    hitboxDelayOffset: 0.4
+    hitboxDelayOffset: 0.5
     damage: 10
     teleportInfo:
       startDelay: 0.3
       duration: 0.15
-      relativePositionFromPlayer: {x: -4, y: 12}
+      relativePositionFromPlayer: {x: -4, y: 9}
       shouldFlip: 1
   _3hitVer2:
   - sprite: {fileID: -2032308940, guid: e973d4cb19435a64883819be0e1dc5db, type: 3}
@@ -5859,7 +5859,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -3.4, y: 4.262192}
+  m_Offset: {x: -3.4, y: 2.752478}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5870,7 +5870,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.5, y: 7.8756166}
+  m_Size: {x: 5.5, y: 10.895044}
   m_EdgeRadius: 0
 --- !u!114 &7806626753430580770
 MonoBehaviour:

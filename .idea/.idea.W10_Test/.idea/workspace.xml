@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5d303fc-effd-4bd6-a27e-787eef776571" name="Changes" comment="" />
+    <list default="true" id="e5d303fc-effd-4bd6-a27e-787eef776571" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.W10_Test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.W10_Test/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Boss.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Boss.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EnemyMeleeHitBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/EnemyMeleeHitBox.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/MinJoon.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/MinJoon.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Boss.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sprites/Boss/Boss.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Sprites/Boss/Boss.controller" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,11 +60,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "MinJoon",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -70,9 +78,9 @@
 }]]></component>
   <component name="RunManager" selected="Standalone Player.Start Unity">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.27f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Program Files/Unity/Hub/Editor/2021.3.27f1/Editor/Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\Jungle\Documents\GitHub\W10_Test -debugCodeOptimization" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\Jungle\Documents\GitHub\W10_Test" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Documents/GitHub/W10_Test" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
@@ -118,6 +126,8 @@
       <workItem from="1698381187464" duration="24459000" />
       <workItem from="1698452470693" duration="2376000" />
       <workItem from="1698555391466" duration="1544000" />
+      <workItem from="1698556976873" duration="10510000" />
+      <workItem from="1698580165958" duration="4965000" />
     </task>
     <servers />
   </component>
@@ -128,5 +138,9 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
