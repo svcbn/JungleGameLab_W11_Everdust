@@ -172,8 +172,8 @@ MonoBehaviour:
   rayDirection: {x: 1, y: 0, z: 0}
   laserBeforeSize: 0.3
   laserAfterSize: 2
-  delayTime: 1
-  laserTime: 1
+  delayTime: 0.8
+  laserTime: 0.3
   animVelocity: 10
   isGroundBlocking: 0
 --- !u!50 &-211200296681302562

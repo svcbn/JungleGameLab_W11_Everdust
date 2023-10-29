@@ -28,7 +28,8 @@ public class HandleLaserPattern : MonoBehaviour
         yield return new WaitForSeconds(.1f);
         
         CreateMovingProjectile();
-        Instantiate(verticalLaser, new Vector3(-widthOfLevel + widthOfLevel * (_dir + 1), -6f, 0f) + position, Quaternion.identity);
+        var laser = Instantiate(verticalLaser, new Vector3(-widthOfLevel + widthOfLevel * (_dir + 1), -6f, 0f) + position, Quaternion.identity).GetComponent<HandleLaser>();
+        laser.Dir = _dir * -1;
         
         yield return new WaitForSeconds(1.2f);
         
