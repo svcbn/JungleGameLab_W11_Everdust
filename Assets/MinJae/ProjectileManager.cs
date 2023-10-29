@@ -81,7 +81,6 @@ public class ProjectileManager : MonoBehaviour
         for(int i=0; i<randomOrderVs.Count; i++)
         {
             if( activeProjectileCount >= randomOrderVs.Count ){ break; }
-            activeProjectileCount++;
 
             CreateProjectile(randomOrderVs[i], order: i);
             yield return new WaitForSeconds(timeBetweenProj);
@@ -90,23 +89,26 @@ public class ProjectileManager : MonoBehaviour
 
     void CreateProjectile(Vector3 posOffset, int order)
     {
+        activeProjectileCount++;
+
         GameObject magicCircle = Instantiate(magicCirclePrefab, transform);
 
         magicCircle.GetComponent<MagicCircle>().Init(this, posOffset, order);
         magicCircles.Add(magicCircle);
     }
 
+    // hit 판정이 두번 일어나면서 두번 까일 때가 있다.(확률적, 원인불명)
     public void EraseProjectile(GameObject magicCircle)
     {
         magicCircles.Remove(magicCircle);
-        activeProjectileCount--;
+        activeProjectileCount--; // 이게 왜 (-) 로 떨어지나?
 
-        if( activeProjectileCount == 0){ 
+        if( activeProjectileCount <= 0){ 
             Debug.Log( $" activeProjectileCount : {activeProjectileCount}" );
             is4ProjAttacking = false; 
 
         }
-
+        magicCircle.SetActive(false); // 이거 전에 까는 부분, 창 트리거에 까임
         Destroy(magicCircle);
     }
 

@@ -233,7 +233,7 @@ public class Boss : Enemy
         //실제 데미지 적용
         if (_magicCircle.GetComponent<Collider2D>().IsTouching(Player.GetComponent<Collider2D>()))
         {
-            Player.GetComponent<PlayerStats>().Hit(40);
+            Player.GetComponent<PlayerStats>().TakeDamage(40);
         }
         //매직서클 효과 전부 비활성화
         _magicCircle.SetActive(false);

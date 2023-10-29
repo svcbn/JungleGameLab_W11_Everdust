@@ -25,7 +25,7 @@ public class FlowerAttackbox : MonoBehaviour
             if (!canDamage) return;
             if (delay < .6f) return;
             //플레이어 데미지 스크립트 추가
-            PlayerManager.Instance.player.GetComponent<PlayerStats>().Hit(10);
+            PlayerManager.Instance.player.GetComponent<PlayerStats>().TakeDamage(10);
             canDamage = false;
         }
     }
