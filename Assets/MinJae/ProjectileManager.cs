@@ -14,11 +14,10 @@ public class ProjectileManager : MonoBehaviour
     List<GameObject> magicCircles = new List<GameObject>();
     [ReadOnly][SerializeField]private int activeProjectileCount = 0;
 
-    public float timeBetweenProj = 0.5f;
-
-
-    private List<float> degrees = new List<float>{ 45f, 135f, 225f, 315f };
+    [SerializeField] private List<float> degrees = new List<float>{ 45f, 135f, 225f, 315f };
     [SerializeField] private float _projectileOffsetDistance = 6.7f;
+    [SerializeField] private float timeBetweenProj = 0.5f;
+    // MagicCircleData 의 값들과 함께 볼 것
 
     bool is4ProjAttacking;
 

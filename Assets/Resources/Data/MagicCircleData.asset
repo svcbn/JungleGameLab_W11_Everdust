@@ -12,21 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f460193dc5fc8449fd8e0802b7d812, type: 3}
   m_Name: MagicCircleData
   m_EditorClassIdentifier: 
-  _checkBoxCenter: {x: 0, y: 0}
-  _checkBoxSize: {x: 0, y: 0}
-  _hitBoxCenter: {x: 0, y: 0}
-  _hitBoxSize: {x: 0, y: 0}
-  _beforeDelay: 0
-  _afterDelay: 0
   _damage: 0
   missilePrefab: {fileID: 4315446772450325211, guid: f049426809135524e9545248a8d2d37f, type: 3}
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  duration: 0
-  missileCount: 1
-  shootDistance: 10
-  shotTime: 0.3
-  destroyTime: 5
   shakeMagnitude: 0.1
+  longestDistance: 6
   moveSpeed: 20
+  followEndTime: 1
+  shootTime: 1
+  destroyTime: 4

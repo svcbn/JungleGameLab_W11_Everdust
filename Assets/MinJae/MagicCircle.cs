@@ -96,7 +96,7 @@ public class MagicCircle : Projectile
             
             transform.position = playerPos + circlePos;
 
-            if( startTimer > _data.shotTime )
+            if( startTimer > _data.followEndTime )
             {
                 followPlayer = false;
                 waitTileShoot = true;
@@ -114,7 +114,7 @@ public class MagicCircle : Projectile
             Shake();
             BlinkRedBox();
 
-            if(shootTimer > _data.shotTime)
+            if(shootTimer > _data.shootTime)
             {
                 waitTileShoot = false;
                 redbox.SetActive(false);
@@ -143,7 +143,7 @@ public class MagicCircle : Projectile
     {
         Vector3 nextPosition = transform.position + shootDirection * _data.moveSpeed * Time.deltaTime;
 
-        if (Vector3.Distance(transform.position, nextPosition) >= _data.shootDistance)
+        if (Vector3.Distance(transform.position, nextPosition) >= _data.longestDistance)
         {
             EraseProjectile();
         }
