@@ -10,7 +10,7 @@ public class MagicMissile : MonoBehaviour
 	private MagicMissileData _data;
 	float AfterDelay = 1f;
 
-	FlowerEnemy Owner;
+	GameObject Owner;
 
 
 	private void LoadDataSO()
@@ -34,21 +34,14 @@ public class MagicMissile : MonoBehaviour
 			LoadDataSO();
 		}
 
-		Owner = GetComponent<FlowerEnemy>();
-		if(Owner == null)
-		{
-			Debug.LogWarning(" Owner is null ");
-		}else{
-			Debug.Log( $" Owner : {Owner.name} ");
-		}
-
+		Owner = gameObject;
+		if(Owner == null){ Debug.LogWarning(" Owner is null "); return; }
 
 	}
 
 	public void Execute()
 	{
 		StartCoroutine(ExecuteImplCo());
-
 	}
 
 	public IEnumerator ExecuteImplCo()
@@ -58,8 +51,9 @@ public class MagicMissile : MonoBehaviour
 
         int colCount = 0;
         Collider2D[] cols = Physics2D.OverlapCircleAll(Owner.transform.position, 40f, _data.targetLayer);
-        if (cols.Length == 0) // 타겟이 없을때 
+        if (cols.Length == 0) // 타겟이 OverlapCircleAll에 잡히지 않았을때
         {
+			Debug.Log("타겟이 OverlapCircleAll에 잡히지 않음");
             for (int i = 0; i < _data.missileCount; i++)
             {
                 GuidedBulletMover g = Instantiate(_data.missilePrefab, Owner.transform.position, Quaternion.identity);
@@ -67,7 +61,7 @@ public class MagicMissile : MonoBehaviour
                 g.target = null;
                 g.bezierDelta  = _data.bezierDelta;
                 g.bezierDelta2 = _data.bezierDelta2;
-                g.Init(Owner, _data.Damage);
+                g.Init(_data.Damage);
             }
             yield break;
         }
@@ -75,10 +69,7 @@ public class MagicMissile : MonoBehaviour
 		List<Collider2D> validTargets = new List<Collider2D>();
 		foreach (var col in cols)
 		{
-			if (col.GetComponent<Character>() != Owner)
-			{
-				validTargets.Add(col);
-			}
+			validTargets.Add(col);
 		}
 
 		if( validTargets.Count > 0)
@@ -91,7 +82,7 @@ public class MagicMissile : MonoBehaviour
 				g.target = validTargets[colCount].transform;
 				g.bezierDelta  = _data.bezierDelta;  // 상대 원
 				g.bezierDelta2 = _data.bezierDelta2; // 나 원
-                g.Init(Owner, _data.Damage);
+                g.Init(_data.Damage);
 
 				colCount += 1;            
 			}
@@ -102,20 +93,5 @@ public class MagicMissile : MonoBehaviour
 		yield return new WaitForSeconds(AfterDelay);
 	}
 
-	
-	public bool CheckCanUse()
-	{
-		//bool isEnemyInRange = Vector2.Distance(Owner.Target.transform.position, Owner.transform.position) <= _data.range;
-
-		//return isEnemyInRange;
-		return true;
-	}
-
-	// private void OnDrawGizmos() 
-	// {
-	// 	Gizmos.color = new Color(255f / 255f, 182f / 255f, 193f / 255f); // 연분홍색
-	// 	Vector3 checkboxPos = Owner.transform.position;
-	// 	Gizmos.DrawWireCube(checkboxPos + (Vector3)_data.CheckBoxCenter, (Vector3)_data.CheckBoxSize);	
-	// }
 }
 
