@@ -46,7 +46,7 @@ public class MagicCircle : Projectile
 		if(_data == null){
 			Debug.LogWarning(" Data Load Fail ");
 		}else{
-			Debug.Log(" Data Load Success ");
+			//Debug.Log(" Data Load Success ");
 		}
 	}
 

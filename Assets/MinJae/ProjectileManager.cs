@@ -17,10 +17,10 @@ public class ProjectileManager : MonoBehaviour
     public float timeBetweenProj = 0.3f;
 
     private List<Vector3> offSetsProj = new List<Vector3>{
-                                            new Vector3(1,1,0),
-                                            new Vector3(1,-1,0),
-                                            new Vector3(-1,-1,0),
-                                            new Vector3(-1,1,0) };
+                                                new Vector3(3,3,0),
+                                                new Vector3(3,-3,0),
+                                                new Vector3(-3,-3,0),
+                                                new Vector3(-3,3,0) };
 
     [SerializeField] private float _projectileOffsetDistance = 5f;
 

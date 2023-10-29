@@ -22,7 +22,7 @@ public class MagicMissile : MonoBehaviour
 		{
 			Debug.LogWarning(" Data Load Fail null ");
 		}else{
-			Debug.Log(" Data Load Success ");
+			//Debug.Log(" Data Load Success ");
 		}
 	}
 
