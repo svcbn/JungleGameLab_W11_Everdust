@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class Laser : MonoBehaviour
 {
      private LineRenderer _lineRenderer;
      private EdgeCollider2D _edgeCollider;
-     private bool hasDamaged = false;
+     private bool hasTriedHit = false;
 
     [Header("Ray")]
     [SerializeField] private float rayDistance; // 레이저 최대 길이
@@ -40,15 +41,19 @@ public class Laser : MonoBehaviour
         SetRayPosition();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         time += Time.deltaTime;
-        if(time >= delayTime){
+        if(time >= delayTime)
+        {
+            if (time >= delayTime + .1f && !hasTriedHit) TryHitPlayer();
             laserSize += animVelocity;
             laserSize = laserAfterSize < laserSize ? laserAfterSize : laserSize;
             _lineRenderer.SetWidth(laserSize,laserSize);
             isRayOn = true;
-            if(time >= delayTime + laserTime){
+            if(time >= delayTime + laserTime)
+            {
+                gameObject.SetActive(false);
                 Destroy(gameObject);
             }
         }
@@ -112,6 +117,20 @@ public class Laser : MonoBehaviour
         return false;
     }
 
+    private void TryHitPlayer()
+    {
+        if (hasTriedHit) return;
+        var hits = Physics2D.RaycastAll(rayStart, rayDirection, rayDistance);
+        if (hits.Length != 0)
+        {
+            if (hits.Any(hit => hit.collider.CompareTag("Player")))
+            {
+                PlayerManager.Instance.player.GetComponent<PlayerStats>().Hit(10);
+                hasTriedHit = true;
+            }
+        }   
+    }
+
     void SetRayPosition(){
         rayStart = transform.position + startOffset;
         rayEnd = rayStart + rayDistance * rayDirection;
@@ -128,7 +147,7 @@ public class Laser : MonoBehaviour
         _edgeCollider.points = points;
 
     }
-    
+
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && hasDamaged == false)
@@ -138,4 +157,5 @@ public class Laser : MonoBehaviour
             PlayerManager.Instance.player.GetComponent<PlayerStats>().TakeDamage(10);
         }
     }
+
 }

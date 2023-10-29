@@ -58,16 +58,10 @@ public class Boss : Enemy
     {
         base.Update();
 
-        if (_canFlip)
-        {
-            if (Player != null)
-            {
-                //if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Boss_Cast 2")) //원형 마법진 곻격 중에는 플립하지 않음
-                {
-                    _ownSpriteRenderer.flipX = Player.position.x < transform.position.x;
-                }
-            }
-        }
+        if (!_canFlip) return;
+        if (Player is null) return;
+        
+        _ownSpriteRenderer.flipX = Player.position.x < transform.position.x;
     }
 
     private void AE_StartRandomPattern()

@@ -81,6 +81,13 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0.083333336
+    functionName: AE_CanNotFlip
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.16666667
     functionName: AE_TeleportToCenter
     data: 
@@ -90,6 +97,13 @@ AnimationClip:
     messageOptions: 0
   - time: 1
     functionName: StartMagicCirclePattern
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 3
+    functionName: AE_CanFlip
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
