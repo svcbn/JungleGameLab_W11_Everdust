@@ -10,7 +10,7 @@ public class MagicMissile : MonoBehaviour
 	private MagicMissileData _data;
 	float AfterDelay = 1f;
 
-	GameObject Owner;
+	FlowerEnemy Owner;
 
 
 	private void LoadDataSO()
@@ -22,7 +22,7 @@ public class MagicMissile : MonoBehaviour
 		{
 			Debug.LogWarning(" Data Load Fail null ");
 		}else{
-			Debug.Log(" Data Load Success ");
+			//Debug.Log(" Data Load Success ");
 		}
 	}
 
@@ -34,7 +34,7 @@ public class MagicMissile : MonoBehaviour
 			LoadDataSO();
 		}
 
-		Owner = gameObject; //GetComponent<GameObject>()
+		Owner = GetComponent<FlowerEnemy>();
 		if(Owner == null)
 		{
 			Debug.LogWarning(" Owner is null ");

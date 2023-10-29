@@ -17,10 +17,10 @@ public class ProjectileManager : MonoBehaviour
     public float timeBetweenProj = 0.3f;
 
     private List<Vector3> offSetsProj = new List<Vector3>{
-                                            new Vector3(1,1,0),
-                                            new Vector3(1,-1,0),
-                                            new Vector3(-1,-1,0),
-                                            new Vector3(-1,1,0) };
+                                                new Vector3(3,3,0),
+                                                new Vector3(3,-3,0),
+                                                new Vector3(-3,-3,0),
+                                                new Vector3(-3,3,0) };
 
     [SerializeField] private float _projectileOffsetDistance = 5f;
 
@@ -37,8 +37,6 @@ public class ProjectileManager : MonoBehaviour
         if( Input.GetKeyDown(KeyCode.R) ) // for test
         {
             Debug.Log("Down Key R ");
-
-            return;
             if(Enemy == null)
             {
                 Debug.Log(" Enemy is null ");
@@ -66,6 +64,11 @@ public class ProjectileManager : MonoBehaviour
         StartCoroutine(DisplayProjectileCO(timeBetweenProj));
     }
 
+    public bool CanUse4ProjAttack()
+    {
+        return !is4ProjAttacking;
+    }
+
 
 
     IEnumerator DisplayProjectileCO( float timeBetweenProj = 0.5f)
@@ -73,21 +76,21 @@ public class ProjectileManager : MonoBehaviour
         Debug.Log("DisplayProjectileCO");
         if(magicCirclePrefab == null) { Debug.LogWarning(" magicCirclePrefab is null "); yield break; }
         
-        List<Vector3> randomOrderVs = Shuffle(offSetsProj);
+        List<Vector3> randomOrderVs = ShuffleOrder(offSetsProj);
 
         for(int i=0; i<randomOrderVs.Count; i++)
         {
             if( activeProjectileCount >= randomOrderVs.Count ){ break; }
             activeProjectileCount++;
 
-            DisplayProjectile(randomOrderVs[i] * _projectileOffsetDistance, order: i);
+            CreateProjectile(randomOrderVs[i], order: i);
             yield return new WaitForSeconds(timeBetweenProj);
         }
     }
 
-    void DisplayProjectile(Vector3 posOffset, int order)
+    void CreateProjectile(Vector3 posOffset, int order)
     {
-        GameObject magicCircle = Instantiate(magicCirclePrefab);
+        GameObject magicCircle = Instantiate(magicCirclePrefab, transform);
 
         magicCircle.GetComponent<MagicCircle>().Init(this, posOffset, order);
         magicCircles.Add(magicCircle);
@@ -108,7 +111,7 @@ public class ProjectileManager : MonoBehaviour
     }
 
 
-    public List<Vector3> Shuffle(List<Vector3> vList)
+    public List<Vector3> ShuffleOrder(List<Vector3> vList)
     {
         System.Random rand = new System.Random();
 

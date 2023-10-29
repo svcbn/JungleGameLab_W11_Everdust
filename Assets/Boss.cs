@@ -193,6 +193,7 @@ public class Boss : Enemy
         //
         _projManager.Start4ProjAttack();
         //
+
         float originalAnimSpd = _animator.speed;
         _animator.speed = 0f;
         //플레이어 속박시킴

@@ -134,16 +134,19 @@ public class HandleWeaknessCircle : MonoBehaviour
             }
         }
         
-        Vector3 targetPos = weaknessCirclePosArr[currentWeaknessNum];
-        /*
-        if (_boss is not null)
-        {
-            targetPos = spriteRenderer.flipX == false
-                ? new Vector3(targetPos.x * -1, targetPos.y, targetPos.z)
-                : targetPos;
+        if( weaknessCirclePosArr.Length > currentWeaknessNum ){ 
+            Vector3 targetPos = weaknessCirclePosArr[currentWeaknessNum];
+        
+            /*
+            if (_boss is not null)
+            {
+                targetPos = spriteRenderer.flipX == false
+                    ? new Vector3(targetPos.x * -1, targetPos.y, targetPos.z)
+                    : targetPos;
+            }
+            */
+            weaknessCircle.transform.localPosition = targetPos;
         }
-        */
-        weaknessCircle.transform.localPosition = targetPos;
     }
     
     public void ResetWeaknessPosition()

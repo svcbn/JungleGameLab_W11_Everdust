@@ -133,7 +133,8 @@ public class HandleWeaponClick : MonoBehaviour
             foreach (var hitbox in allMeleeCols)
             {
                 var _script = hitbox.GetComponent<EnemyMeleeHitBox>();
-                _script.TryGetParried(-angle);
+                Debug.Log($"Hit: {hitbox.gameObject.transform.parent.gameObject}");
+                _script.TryGetParried(-angle, hitbox.gameObject.transform.parent.gameObject);
             }
         }
 
