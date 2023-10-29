@@ -68,7 +68,6 @@ public class ProjectileManager : MonoBehaviour
 
     IEnumerator DisplayProjectileCO( float timeBetweenProj = 0.5f)
     {
-        Debug.Log("DisplayProjectileCO");
         if(magicCirclePrefab == null) { Debug.LogWarning(" magicCirclePrefab is null "); yield break; }
         
         List<int> randomOrderInts = ShuffleOrder(degrees);
@@ -99,7 +98,6 @@ public class ProjectileManager : MonoBehaviour
         activeProjectileCount--;
 
         if( activeProjectileCount <= 0){ 
-            Debug.Log( $" activeProjectileCount : {activeProjectileCount}" );
             is4ProjAttacking = false; 
 
         }

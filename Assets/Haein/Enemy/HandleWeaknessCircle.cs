@@ -11,30 +11,36 @@ public class HandleWeaknessCircle : MonoBehaviour
         CONTINUOUSWEAKNESS,
         DISTANCEDELAY,
     }
-    
+
     public bool isFlip = false;
     public GameObject weaknessCircle;
-    private SpriteRenderer spriteRenderer;
     private Animator weaknessCircleAnimator;
     public int weaknessCircleType = (int)WEAKTYPE.DISTANCE;
     public int currentWeaknessNum = 0;
     public Vector3 originalCirclePos;
     public float appearDelay = 0f;
+    private Boss _boss;
 
     public Vector2[] weaknessCirclePosArr;
-    
+    private SpriteRenderer _weaknessSpriteRenderer;
+
+    private void Awake()
+    {
+        _weaknessSpriteRenderer = weaknessCircle.GetComponent<SpriteRenderer>();
+        _boss = GetComponent<Boss>();
+    }
+
     private void Start()
     {
         weaknessCircleAnimator = weaknessCircle.GetComponent<Animator>();
         weaknessCircle.GetComponent<SpriteRenderer>().flipX = isFlip;
-        ChangeWeaknessPosition();
         originalCirclePos = weaknessCircle.transform.localPosition;
     }
 
     private void Update()
     {
-        weaknessCircle.GetComponent<SpriteRenderer>().flipX = isFlip;
-        if (PlayerManager.Instance.player != null)
+        _weaknessSpriteRenderer.flipX = isFlip;
+        if (PlayerManager.Instance.player is not null)
         {
             if (weaknessCircleType == (int)WEAKTYPE.ALWAYS)
             {
@@ -54,7 +60,6 @@ public class HandleWeaknessCircle : MonoBehaviour
             }
             else if (weaknessCircleType == (int)WEAKTYPE.ONLYCHARGING)
             {
-                
             }
             else if (weaknessCircleType == (int)WEAKTYPE.DISTANCEDELAY)
             {
@@ -65,7 +70,8 @@ public class HandleWeaknessCircle : MonoBehaviour
 
                 if (appearDelay <= 0f)
                 {
-                    float distance = Vector3.Distance(PlayerManager.Instance.player.transform.position, transform.position);
+                    float distance = Vector3.Distance(PlayerManager.Instance.player.transform.position,
+                        transform.position);
                     if (distance < 15f)
                     {
                         weaknessCircle.SetActive(true);
@@ -82,11 +88,10 @@ public class HandleWeaknessCircle : MonoBehaviour
             }
             else
             {
-                
             }
         }
     }
-    
+
     public bool IsWeaknessAttacked()
     {
         if (isFlip) //왼쪽으로 때려야 하는 경우
@@ -103,52 +108,51 @@ public class HandleWeaknessCircle : MonoBehaviour
                 return true;
             }
         }
+
         return false;
     }
 
     public void ChangeWeaknessPosition()
     {
+        //약점 모두 타격 시
         if (currentWeaknessNum > weaknessCirclePosArr.Length - 1 && weaknessCirclePosArr.Length > 0)
         {
-            if (TryGetComponent(out Boss b))
-            {
-                b.CancelMagicCircle();
-            }
+            _boss?.CancelMagicCircle();
             ResetWeaknessPosition();
             return;
         }
 
-        if (TryGetComponent(out Boss _boss))
+        if (_boss is not null)
         {
-            if (currentWeaknessNum == 0 && !_boss.GetComponent<Boss>().GetCurrentFlipXIsTurnedOn())
-            {
-                Vector3 _scale = weaknessCircle.transform.parent.localScale;
-                _scale.x *= -1;
-                isFlip = true;
-                weaknessCircle.transform.parent.localScale = _scale;
-            }
-            
             if (currentWeaknessNum == 1)
             {
                 isFlip = !isFlip;
             }
         }
         
-        if( weaknessCirclePosArr.Length > currentWeaknessNum ){ 
+        print(currentWeaknessNum);
+        if (weaknessCirclePosArr.Length > currentWeaknessNum)
+        {
             Vector3 targetPos = weaknessCirclePosArr[currentWeaknessNum];
-        
-            /*
+            //print(1);
             if (_boss is not null)
             {
-                targetPos = spriteRenderer.flipX == false
-                    ? new Vector3(targetPos.x * -1, targetPos.y, targetPos.z)
-                    : targetPos;
+                var inverse = _boss.GetFlipX() ? 1 : -1;
+                //print(inverse);
+                targetPos.x *= inverse;
             }
-            */
             weaknessCircle.transform.localPosition = targetPos;
         }
     }
-    
+
+    public void Init_BossOnly()
+    {
+        if (_boss is null) return;
+
+        isFlip = _boss.GetFlipX();
+        ChangeWeaknessPosition();
+    }
+
     public void ResetWeaknessPosition()
     {
         currentWeaknessNum = 0;

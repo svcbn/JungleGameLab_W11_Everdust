@@ -15,8 +15,8 @@ MonoBehaviour:
   _damage: 0
   missilePrefab: {fileID: 4315446772450325211, guid: f049426809135524e9545248a8d2d37f, type: 3}
   shakeMagnitude: 0.1
-  longestDistance: 6
-  moveSpeed: 20
-  followEndTime: 1
-  shootTime: 1
-  destroyTime: 4
+  longestDistance: 15
+  moveSpeed: 15
+  followEndTime: 0.6
+  shootTime: 0.15
+  destroyTime: 5

@@ -25,6 +25,9 @@ public class Boss : Enemy
     private HandleLaserPattern _handleLaserPattern;
     private BoxCollider2D[] _hitboxCols;
     private Vector3[] _hitboxStartingOffsets;
+    private const int numOfPatterns = 5;
+    private InverseWeightedRandom invRandom = new(0, numOfPatterns);
+    private HandleWeaknessCircle _handleWeaknessCircle1;
 
     public Transform Player
     {
@@ -86,8 +89,7 @@ public class Boss : Enemy
     private void AE_StartRandomPattern()
     {
         _stunStar.SetActive(false);
-        const int numOfPatterns = 5;
-        var index = Random.Range(0, numOfPatterns);
+        var index = invRandom.GetRandomInt();
         switch (index)
         {
             case 0:
@@ -239,14 +241,15 @@ public class Boss : Enemy
         float originalSpeed = _animator.speed;
         _animator.speed = 0;
         
-        GetComponent<HandleWeaknessCircle>().weaknessCircle.SetActive(true);
-        
+        //약점 활성화
+        _handleWeaknessCircle.weaknessCircle.SetActive(true);
+        _handleWeaknessCircle.Init_BossOnly();
         //최종 범위 표시
         _magicCircle.SetActive(true);
         //진행도 표시
         while (_timer < MagicCircleTime)
         {
-            _magicCirclePreview.localScale = Vector3.one * (_timer / MagicCircleTime) * 3.18f;
+            _magicCirclePreview.localScale = Vector3.one * (_timer / MagicCircleTime * 3.18f);
             _timer += Time.deltaTime;
             yield return null;
         }
@@ -262,9 +265,9 @@ public class Boss : Enemy
         _magicCircle.SetActive(false);
         _magicCirclePreview.localScale = Vector3.zero;
 
-        //TODO: 약점 비활성화 및 초기화
-        GetComponent<HandleWeaknessCircle>().weaknessCircle.SetActive(false);
-        GetComponent<HandleWeaknessCircle>().ResetWeaknessPosition();
+        //약점 비활성화 및 초기화
+        _handleWeaknessCircle.weaknessCircle.SetActive(false);
+        _handleWeaknessCircle.ResetWeaknessPosition();
 
         //애니메이션 재생
         _animator.speed = originalSpeed;
@@ -328,9 +331,9 @@ public class Boss : Enemy
         _canFlip = false;
     }
     
-    public bool GetCurrentFlipXIsTurnedOn()
+    public bool GetFlipX()
     {
-        return spriteEchoRenderer.flipX;
+        return _ownSpriteRenderer.flipX;
     }
 }
 
