@@ -32,18 +32,10 @@ public class ProjectileManager : MonoBehaviour
         if( Input.GetKeyDown(KeyCode.R) ) // for test
         {
             Debug.Log("Down Key R ");
-            if(Enemy == null)
-            {
-                Debug.Log(" Enemy is null ");
-                return;
-            }
+            if(Enemy == null){ Debug.Log("Enemy is null "); return; }
 
             Enemy.TryGetComponent<MagicMissile>(out MagicMissile magicMissile);
-            if(magicMissile == null)    
-            {
-                Debug.Log(" No <MagicMissile> Component  in Enmey ");
-                return;
-            }
+            if(magicMissile == null){ Debug.Log("No <MagicMissile> Component in Enmey"); return; }
 
             Enemy.GetComponent<MagicMissile>().Init();
             Enemy.GetComponent<MagicMissile>().Execute();

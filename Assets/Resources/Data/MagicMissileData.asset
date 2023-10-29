@@ -22,7 +22,7 @@ MonoBehaviour:
   missilePrefab: {fileID: 7856125624765333942, guid: 0fcec37d6cf832d46a65502e3d65a4fd, type: 3}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 128
   duration: 1
   missileCount: 1
   range: 5

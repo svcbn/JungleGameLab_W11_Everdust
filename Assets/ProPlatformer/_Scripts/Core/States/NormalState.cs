@@ -173,7 +173,7 @@ namespace Myd.Platform
                 }
             }
 
-            if (GameInput.Jump.Pressed())
+            if (GameInput.Jump.Pressed() || InputManager.Instance.JumpButton)
             {
                 //土狼时间范围内,允许跳跃
                 if (this.ctx.JumpCheck.AllowJump())

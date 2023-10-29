@@ -17,7 +17,7 @@ public class PortalController : MonoBehaviour
             {
                 //스테이지 변경
                 Debug.Log("스테이지 변경됨");
-                SceneManager.LoadScene("HaeinBoss");
+                SceneManager.LoadScene("MinJoon");
             }
         }
     }

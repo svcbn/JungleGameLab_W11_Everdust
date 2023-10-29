@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/ProPlatformer/Scenes/HaeinMain.unity
     guid: f2fa04def5b41e844b0fa51b6e00094a
   - enabled: 1
-    path: Assets/ProPlatformer/Scenes/HaeinBoss.unity
-    guid: a029c81f1bfcd954f8fac88f0c5119e7
+    path: Assets/ProPlatformer/Scenes/MinJoon.unity
+    guid: 3cff256a02bd47f4d9ac94010899e4f8
   m_configObjects: {}

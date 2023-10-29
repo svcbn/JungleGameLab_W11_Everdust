@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class HandleWeaknessCircle : MonoBehaviour
@@ -134,7 +135,7 @@ public class HandleWeaknessCircle : MonoBehaviour
         if (weaknessCirclePosArr.Length > currentWeaknessNum)
         {
             Vector3 targetPos = weaknessCirclePosArr[currentWeaknessNum];
-            //print(1);
+
             if (_boss is not null)
             {
                 var inverse = _boss.GetFlipX() ? 1 : -1;
