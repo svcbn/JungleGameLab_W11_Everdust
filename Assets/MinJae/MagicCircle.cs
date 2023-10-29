@@ -22,7 +22,7 @@ public class MagicCircle : Projectile
     Transform player;
     [ReadOnly][SerializeField]private Vector3 playerPos;
     [ReadOnly][SerializeField]private Vector3 targetPos;
-    Vector3 posOffset;
+    Vector3 circlePos;
 
     bool followPlayer  = true;
     bool waitTileShoot = false;
@@ -58,25 +58,26 @@ public class MagicCircle : Projectile
     }
 
 
-    public void Init(ProjectileManager projM_, Vector3 posOffset_, int order)
+    public void Init(ProjectileManager projM_, float angle, float distance, int order)
     {
 		if(_data == null )
 		{
 			LoadDataSO();
 		}
-        textOrder.text = (order + 1).ToString() ;
+
+        textOrder.text = (order + 1).ToString(); // 구체 표시되는 숫자
+        textOrder.gameObject.SetActive(false);  
 
         projM     = projM_;
-        posOffset = posOffset_;
 
 
-        SetRedboxAngle(posOffset_);
+        SetRedboxAngle(angle, distance);
 
-
-        redbox.SetActive(false);
+        circlePos = CalculatePoint(playerPos, angle, distance);
 
         isInit = true;
     }
+
 
     protected override void Update()
     {
@@ -93,7 +94,7 @@ public class MagicCircle : Projectile
 
         if(followPlayer){
             
-            transform.position = playerPos + posOffset;
+            transform.position = playerPos + circlePos;
 
             if( startTimer > _data.shotTime )
             {
@@ -170,26 +171,41 @@ public class MagicCircle : Projectile
 
     }
 
-    void SetRedboxAngle(Vector3 posOffset_)
+    void SetRedboxAngle(float angle, float distance)
     {
-        if(posOffset_ == new Vector3(-3,-3,0))
+        redbox.transform.rotation = Quaternion.Euler(0,0,angle);        
+
+        switch(angle)
         {
-            redbox.transform.position += new Vector3(1,1,0);
-            redbox.transform.rotation = Quaternion.Euler(0,0,-135);
-        }else if(posOffset_ == new Vector3(-3,3,0))
-        {
-            redbox.transform.position += new Vector3(1,-1,0);
-            redbox.transform.rotation = Quaternion.Euler(0,0,-45);
-            
-        }else if(posOffset_ == new Vector3(3,-3,0))
-        {
-        redbox.transform.position += new Vector3(-1,1,0);
-            redbox.transform.rotation = Quaternion.Euler(0,0,-45);
-        }else if(posOffset_ == new Vector3(3,3,0))
-        {
-            redbox.transform.position += new Vector3(-1,-1,0);
-            redbox.transform.rotation = Quaternion.Euler(0,0,-135);
+            case 45:
+            redbox.transform.position += new Vector3(-2,-2,0);
+            break;
+            case 135:
+            redbox.transform.position += new Vector3(2,-2,0);
+            break;
+            case 225:
+            redbox.transform.position += new Vector3(2,2,0);
+            break;
+            case 315:
+            redbox.transform.position += new Vector3(-2,2,0);
+            break;
+
         }
+    }
+
+
+    public static Vector3 CalculatePoint(Vector3 startPoint, float angle, float distance)
+    {
+        // 각도를 라디안으로 변환
+        float radian = angle * Mathf.Deg2Rad;
+
+        // 좌표 계산
+        float x = distance * Mathf.Cos(radian);
+        float y = distance * Mathf.Sin(radian);
+
+        Vector3 endPoint = new Vector3(startPoint.x + x, startPoint.y + y, startPoint.z);
+
+        return endPoint;
     }
 
 }

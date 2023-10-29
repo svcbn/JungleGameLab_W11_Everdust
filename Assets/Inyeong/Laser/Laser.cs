@@ -30,6 +30,8 @@ public class Laser : MonoBehaviour
 
     float time = 0;
 
+    bool hasDamaged = false;
+
     private void Start()
     {
         _lineRenderer = GetComponent<LineRenderer>();
@@ -125,7 +127,7 @@ public class Laser : MonoBehaviour
         {
             if (hits.Any(hit => hit.collider.CompareTag("Player")))
             {
-                PlayerManager.Instance.player.GetComponent<PlayerStats>().Hit(10);
+                PlayerManager.Instance.player.GetComponent<PlayerStats>().TakeDamage(10);
                 hasTriedHit = true;
             }
         }   
