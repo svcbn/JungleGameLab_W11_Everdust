@@ -21,6 +21,7 @@ namespace Myd.Platform
         float varJumpTimer;
         float varJumpSpeed; //
         int moveX;
+        int moveY;
         private float maxFall;
         private float fastMaxFall;
 
@@ -175,8 +176,15 @@ namespace Myd.Platform
                 }
                 else
                 {
-                    //输入
-                    this.moveX = Math.Sign(UnityEngine.Input.GetAxisRaw("Horizontal"));
+
+                    if(InputManager.Instance.MoveButton){
+                        this.moveX = Math.Sign(InputManager.Instance.MoveHorizontal);
+                    }else{
+
+                        //输入
+                        this.moveX = Math.Sign(UnityEngine.Input.GetAxisRaw("Horizontal"));
+                    }
+
                 }
 
                 //Facing
@@ -391,7 +399,7 @@ namespace Myd.Platform
         {
             get
             {
-                return GameInput.Dash.Pressed() && dashCooldownTimer <= 0 && this.dashes > 0;
+                return (GameInput.Dash.Pressed() || InputManager.Instance.DashButton) && dashCooldownTimer <= 0 && this.dashes > 0;
             }
         }
 
@@ -425,7 +433,24 @@ namespace Myd.Platform
         }
 
         public int MoveX => moveX;
-        public int MoveY => Math.Sign(UnityEngine.Input.GetAxisRaw("Vertical"));
+        public int MoveY{
+            get{
+                return moveY;
+            }
+            set{
+                if(InputManager.Instance.MoveButton)
+                {
+                    moveY = Math.Sign(InputManager.Instance.MoveVertical);
+                }else{
+                    moveY = Math.Sign(UnityEngine.Input.GetAxisRaw("Vertical"));
+                }
+
+            }
+        }
+        
+            
+        
+
 
         public float MaxFall { get => maxFall; set => maxFall = value; }
         public float DashCooldownTimer { get => dashCooldownTimer; set => dashCooldownTimer = value; }

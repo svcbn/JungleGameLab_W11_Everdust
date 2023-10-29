@@ -103,8 +103,15 @@ namespace Myd.Platform
             yield return null;
 
             //var dir = ctx.LastAim;
-            Vector2 mousePointVec = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-            var dir = (mousePointVec - ctx.Position).normalized;
+            Vector2 dir;
+            if(InputManager.Instance.AimButton)
+            {
+                dir = new Vector2(InputManager.Instance.AimHorizontal, InputManager.Instance.AimVertical).normalized;
+            }else{
+                Vector2 mousePointVec = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+                dir = (mousePointVec - ctx.Position).normalized;
+            }
+
             var newSpeed = dir * Constants.DashSpeed;
             //惯性
             if (Math.Sign(beforeDashSpeed.x) == Math.Sign(newSpeed.x) && Math.Abs(beforeDashSpeed.x) > Math.Abs(newSpeed.x))

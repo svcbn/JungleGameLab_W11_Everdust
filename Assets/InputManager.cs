@@ -11,7 +11,7 @@ public class InputManager : MonoBehaviour
     public float MoveVertical { get; private set;}
     public bool MoveButton { get; private set; }
     public float AimHorizontal { get; private set; }
-    public float AimVertical { get; private set ; }
+    public float AimVertical   { get; private set ; }
     public bool AimButton { get; private set; }
     #endregion
 
@@ -195,8 +195,8 @@ public class InputManager : MonoBehaviour
     private void OnAim(InputAction.CallbackContext context)
     {
         AimHorizontal = context.ReadValue<Vector2>().x;
-        AimVertical = context.ReadValue<Vector2>().y;
-        AimButton = true;
+        AimVertical   = context.ReadValue<Vector2>().y;
+        AimButton     = true;
     }
 
     private void OnCancelAim(InputAction.CallbackContext context)
