@@ -51,7 +51,6 @@ public class ParryingTest : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         _hitBox = GetComponent<BoxCollider2D>();
@@ -61,7 +60,6 @@ public class ParryingTest : MonoBehaviour
         parryingEffect = parryingEffectObject.GetComponent<ParticleSystem>();
     }
 
-    // Update is called once per frame
     void Update()
     {
 

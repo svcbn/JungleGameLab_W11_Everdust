@@ -135,7 +135,7 @@ public class Laser : MonoBehaviour
         {
             hasDamaged = true;
             //플레이어 데미지 스크립트 추가
-            PlayerManager.Instance.player.GetComponent<PlayerStats>().Hit(10);
+            PlayerManager.Instance.player.GetComponent<PlayerStats>().TakeDamage(10);
         }
     }
 }

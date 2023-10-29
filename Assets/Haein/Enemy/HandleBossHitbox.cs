@@ -16,7 +16,7 @@ public class HandleBossHitbox : MonoBehaviour
             Vector3 playerPosition = playerTransform.position;
             if (spriteBounds.Contains(playerPosition))
             {
-                PlayerManager.Instance.player.GetComponent<PlayerStats>().Hit(10);
+                PlayerManager.Instance.player.GetComponent<PlayerStats>().TakeDamage(10);
             }
         }
     }

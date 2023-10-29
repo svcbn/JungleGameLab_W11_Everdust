@@ -77,9 +77,14 @@ public class MagicCircle : Projectile
 
         isInit = true;
     }
+
     protected override void Update()
     {
-        base.Update();
+        //base.Update();
+    }
+
+    void FixedUpdate()
+    {
         if(!isInit) return;
 
         startTimer += Time.deltaTime;

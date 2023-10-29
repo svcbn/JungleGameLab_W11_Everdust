@@ -19,6 +19,8 @@ public abstract class Projectile : MonoBehaviour
     protected int _curHp;
     protected float _hitDelay = 0f;
 
+    bool hasDamaged = false;
+
     protected virtual void Awake()
     {
         
@@ -64,8 +66,10 @@ public abstract class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if ( hasDamaged ) return;
+            hasDamaged = true; // 가끔 hit 두번 뜨는 버그 있음. 일단 막는 중.
             //플레이어 데미지 스크립트 추가
-            PlayerManager.Instance.player.GetComponent<PlayerStats>().Hit(10);
+            PlayerManager.Instance.player.GetComponent<PlayerStats>().TakeDamage(10);
             HandleCollision();
         }
     }
