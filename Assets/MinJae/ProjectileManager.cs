@@ -14,15 +14,10 @@ public class ProjectileManager : MonoBehaviour
     List<GameObject> magicCircles = new List<GameObject>();
     [ReadOnly][SerializeField]private int activeProjectileCount = 0;
 
-    public float timeBetweenProj = 0.3f;
-
-    private List<Vector3> offSetsProj = new List<Vector3>{
-                                                new Vector3(3,3,0),
-                                                new Vector3(3,-3,0),
-                                                new Vector3(-3,-3,0),
-                                                new Vector3(-3,3,0) };
-
-    [SerializeField] private float _projectileOffsetDistance = 5f;
+    [SerializeField] private List<float> degrees = new List<float>{ 45f, 135f, 225f, 315f };
+    [SerializeField] private float _projectileOffsetDistance = 6.7f;
+    [SerializeField] private float timeBetweenProj = 0.5f;
+    // MagicCircleData 의 값들과 함께 볼 것
 
     bool is4ProjAttacking;
 
@@ -76,55 +71,63 @@ public class ProjectileManager : MonoBehaviour
         Debug.Log("DisplayProjectileCO");
         if(magicCirclePrefab == null) { Debug.LogWarning(" magicCirclePrefab is null "); yield break; }
         
-        List<Vector3> randomOrderVs = ShuffleOrder(offSetsProj);
+        List<int> randomOrderInts = ShuffleOrder(degrees);
 
-        for(int i=0; i<randomOrderVs.Count; i++)
+        for(int i=0; i<randomOrderInts.Count; i++)
         {
-            if( activeProjectileCount >= randomOrderVs.Count ){ break; }
-            activeProjectileCount++;
+            if( activeProjectileCount >= randomOrderInts.Count ){ break; }
 
-            CreateProjectile(randomOrderVs[i], order: i);
+            CreateProjectile( degrees[ randomOrderInts[i] ], order: i);
             yield return new WaitForSeconds(timeBetweenProj);
         }
     }
 
-    void CreateProjectile(Vector3 posOffset, int order)
+    void CreateProjectile(float angle, int order)
     {
+        activeProjectileCount++;
+
         GameObject magicCircle = Instantiate(magicCirclePrefab, transform);
 
-        magicCircle.GetComponent<MagicCircle>().Init(this, posOffset, order);
+        magicCircle.GetComponent<MagicCircle>().Init(this, angle, _projectileOffsetDistance, order);
         magicCircles.Add(magicCircle);
     }
 
+    
     public void EraseProjectile(GameObject magicCircle)
     {
         magicCircles.Remove(magicCircle);
         activeProjectileCount--;
 
-        if( activeProjectileCount == 0){ 
+        if( activeProjectileCount <= 0){ 
             Debug.Log( $" activeProjectileCount : {activeProjectileCount}" );
             is4ProjAttacking = false; 
 
         }
-
+        magicCircle.SetActive(false);
         Destroy(magicCircle);
     }
 
-
-    public List<Vector3> ShuffleOrder(List<Vector3> vList)
+    public List<int> ShuffleOrder(List<float> degrees_)
     {
         System.Random rand = new System.Random();
 
-        List<Vector3> newVList = new List<Vector3>(vList);
+        List<int> intList = new List<int>();
 
-        for (int i = newVList.Count - 1; i > 0; i--)
+        for (int i=0; i< degrees_.Count; i++)
         {
-            int j = rand.Next(i + 1);
-            Vector3 temp = newVList[i];
-            newVList[i] = newVList[j];
-            newVList[j] = temp;
+            intList.Add(i);
         }
 
-        return newVList;
+        List<int> intRandomList = new List<int>();
+
+        //intList의 값을 랜덤으로 뽑아서 intRandomList에 넣는다.
+        for (int i = intList.Count - 1; i >= 0; i--)
+        {
+            int j = rand.Next(i + 1); // 0부터 i까지의 범위 내에서 랜덤한 정수를 선택
+            intRandomList.Add(intList[j]);
+            intList.RemoveAt(j);
+        }
+
+        return intRandomList;
     }
 }

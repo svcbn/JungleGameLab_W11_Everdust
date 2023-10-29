@@ -30,6 +30,8 @@ public class Laser : MonoBehaviour
 
     float time = 0;
 
+    bool hasDamaged = false;
+
     private void Start()
     {
         _lineRenderer = GetComponent<LineRenderer>();
@@ -125,7 +127,7 @@ public class Laser : MonoBehaviour
         {
             if (hits.Any(hit => hit.collider.CompareTag("Player")))
             {
-                PlayerManager.Instance.player.GetComponent<PlayerStats>().Hit(10);
+                PlayerManager.Instance.player.GetComponent<PlayerStats>().TakeDamage(10);
                 hasTriedHit = true;
             }
         }   
@@ -147,4 +149,15 @@ public class Laser : MonoBehaviour
         _edgeCollider.points = points;
 
     }
+
+    protected virtual void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && hasDamaged == false)
+        {
+            hasDamaged = true;
+            //플레이어 데미지 스크립트 추가
+            PlayerManager.Instance.player.GetComponent<PlayerStats>().TakeDamage(10);
+        }
+    }
+
 }

@@ -19,7 +19,7 @@ public class PlayerStats : MonoBehaviour
 
     }
 
-    public void Hit(int damage)
+    public void TakeDamage(int damage)
     {
         if (!playerController.CanHit) return;
 

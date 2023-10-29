@@ -1390,6 +1390,14 @@ PrefabInstance:
       propertyPath: Enemy
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3238967961553690807, guid: bf1e4a41c4ffa934c8b563f7b6ded166, type: 3}
+      propertyPath: timeBetweenProj
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238967961553690807, guid: bf1e4a41c4ffa934c8b563f7b6ded166, type: 3}
+      propertyPath: _projectileOffsetDistance
+      value: 6.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf1e4a41c4ffa934c8b563f7b6ded166, type: 3}
 --- !u!4 &1762080443 stripped

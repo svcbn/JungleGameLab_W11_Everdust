@@ -1,55 +1,32 @@
 
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 [CreateAssetMenu(fileName = nameof(MagicCircleData), menuName = "ScriptableObjects/" + nameof(MagicCircleData))]
 public class MagicCircleData : ScriptableObject
 {
 
-	[Header("OverlapBox")]
-	[Header("Check")]
-	[SerializeField] private Vector2 _checkBoxCenter;
-	[SerializeField] private Vector2 _checkBoxSize;
-
-	[Header("HitBox")]
-	[SerializeField] private Vector2 _hitBoxCenter;
-	[SerializeField] private Vector2 _hitBoxSize;
-
-
-    [Header("Delay")]
-	[SerializeField] private float _beforeDelay;
-	[SerializeField] private float _afterDelay;
-
-
-
     [Header("Damage")]
 	[SerializeField] private int _damage;
 
-	public float BeforeDelay => _beforeDelay;
-	public float AfterDelay  => _afterDelay;
 
-	public Vector2 CheckBoxCenter => _checkBoxCenter;
-	public Vector2 CheckBoxSize   => _checkBoxSize;
-
-	public Vector2 HitBoxCenter => _hitBoxCenter;
-	public Vector2 HitBoxSize   => _hitBoxSize;
-	
 	public int Damage => _damage;
 
 
-
     [Header("Detail")]
-
 	public GameObject missilePrefab;
-    public LayerMask targetLayer; // Player Layer
-    public float duration;
-    public int missileCount;
     
-	public float shootDistance;
-    public float shotTime; 
-	public float destroyTime;
 
     public float shakeMagnitude; // 떨림의 강도
+	public float longestDistance;
 
-    public float moveSpeed;
-	
+    public float moveSpeed; // 탄환이 날아가는 속도
+
+	[Header("Timer")]
+	public float followEndTime;
+    public float shootTime; 
+	public float destroyTime;
+
+	//ProjectileManager 의 _projectileOffsetDistance, timeBetweenProj 값과 함께 볼것
+
 }
