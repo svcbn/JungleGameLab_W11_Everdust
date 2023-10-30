@@ -12,6 +12,7 @@ public class FlowerEnemy : Enemy
     private int attackMode;
     private int moveDir;
     private float moveSpeed = 2f;
+    private float delay = 0f;
     
     protected override void Awake()
     {
@@ -26,6 +27,14 @@ public class FlowerEnemy : Enemy
     protected override void Update()
     {
         base.Update();
+        if (delay > 0f)
+        {
+            delay -= Time.deltaTime;
+        }
+        else
+        {
+            delay = 0f;
+        }
         //move X
         if (canFlip && Mathf.Abs(PlayerManager.Instance.player.transform.position.y - transform.position.y) < 2f)
         {
@@ -82,8 +91,9 @@ public class FlowerEnemy : Enemy
             }
             if(animator.GetCurrentAnimatorStateInfo(0).IsName("FlowerAttack") || animator.GetCurrentAnimatorStateInfo(0).IsName("FlowerCharging"))
             {
-                if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+                if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f && delay <= 0f)
                 {
+                    delay = 1f;
                     StartCoroutine(HandleAnimationEnd());
                 }
             }
@@ -93,7 +103,7 @@ public class FlowerEnemy : Enemy
 
     public IEnumerator HandleAnimationEnd()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1f);
         canFlip = true;
         attackMode = attackMode == 0 ? 1 : 0;
     }

@@ -5,33 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5d303fc-effd-4bd6-a27e-787eef776571" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Controls.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Controls.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Controls.inputactions" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Controls.inputactions.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/InputManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/InputManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/InputSystem.inputsettings.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/InputSystem.inputsettings.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/NewInputManager.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/NewInputManager.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/HandleWeaknessCircle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/HandleWeaknessCircle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Haein/HandleWeaponClick.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/HandleWeaponClick.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Haein/MouseLook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/MouseLook.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Haein/PortalController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/PortalController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MinJae/MagicMissile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MinJae/MagicMissile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MinJae/ProjectileManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MinJae/ProjectileManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/HaeinBoss.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/HaeinBoss.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.W10_Test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.W10_Test/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Haein/Enemy/FlowerEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Haein/Enemy/FlowerEnemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/HaeinMain.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/HaeinMain.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/Main mj.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProPlatformer/Scenes/Main mj.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProPlatformer/_Scripts/Core/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProPlatformer/_Scripts/Core/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProPlatformer/_Scripts/Core/States/DashState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProPlatformer/_Scripts/Core/States/DashState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProPlatformer/_Scripts/Core/States/NormalState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProPlatformer/_Scripts/Core/States/NormalState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Data/MagicMissileData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Data/MagicMissileData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PlayerRenderer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/PlayerRenderer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Projectiles/GuidedBulletMover.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Projectiles/GuidedBulletMover.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Projectiles/TriggerAttacker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Projectiles/TriggerAttacker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,38 +52,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Merging MinJoon&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "Haein",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Jungle\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Jungle\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Jungle\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\Jungle\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Jungle\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache",
+      "C:\\Users\\Jungle\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Standalone Player.Start Unity">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.27f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity 2021.3.27f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\Jungle\Documents\GitHub\W10_Test -debugCodeOptimization" />
-      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Documents/GitHub/W10_Test" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.27f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity 2021.3.27f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\Jungle\Documents\GitHub\W10_Test -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Jungle\Documents\GitHub\W10_Test" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -149,6 +125,7 @@
       <workItem from="1698555391466" duration="1544000" />
       <workItem from="1698556976873" duration="10510000" />
       <workItem from="1698580165958" duration="10942000" />
+      <workItem from="1698630004337" duration="2211000" />
     </task>
     <servers />
   </component>
