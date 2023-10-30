@@ -11,7 +11,7 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        if(InputManager.Instance.AimButton)
+        if(InputManager.Instance.MoveButton)
         {
             AimHorizontal = InputManager.Instance.AimHorizontal;
             AimVertical   = InputManager.Instance.AimVertical;
