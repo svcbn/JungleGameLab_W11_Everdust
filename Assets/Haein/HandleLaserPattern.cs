@@ -59,7 +59,7 @@ public class HandleLaserPattern : MonoBehaviour
         var xOffset = Mathf.Sin(radians) * distance;
         var zOffset = Mathf.Cos(radians) * distance;
 
-        var createXPos = (_dir == 1) ? -40f : 50f;
+        var createXPos = (_dir == 1) ? -40f : 10f;
         var createPos = new Vector3(createXPos, 17f, 0f);
         var spawnPosition = createPos + new Vector3(xOffset, 0f, zOffset);
 
