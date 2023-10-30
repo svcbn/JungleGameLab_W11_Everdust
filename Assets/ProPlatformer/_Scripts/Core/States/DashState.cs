@@ -104,7 +104,7 @@ namespace Myd.Platform
 
             //var dir = ctx.LastAim;
             Vector2 dir;
-            if(InputManager.Instance.AimButton)
+            if(InputManager.Instance.MoveButton)
             {
                 dir = new Vector2(InputManager.Instance.AimHorizontal, InputManager.Instance.AimVertical).normalized;
             }else{
