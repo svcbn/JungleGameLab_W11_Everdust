@@ -10,7 +10,7 @@
 ![]()  
 
 ---
-프로젝트 소개 - [Notion](https://pickle-orchestra-70c.notion.site/POC-1-231030-93db82a3a05d44fb8c888261b81d9a86?pvs=4)  
+프로젝트 소개 - [Notion](https://svcbn.notion.site/Everdust-3513f227fa194b19a39587f0de136076?pvs=4)  
 
 프로젝트 영상 - [추가 예정]()  
 
