@@ -1,7 +1,8 @@
 # JungleGameLab W11  
 ##### Krafton Jungle GameLab Proof of Concept Project W11  
 
-<img src="Thumbnail.gif" width="60%"> 
+<img src="Thumbnail.gif" width="70%">
+<br/>
    
 - 프로젝트명 : Everdust
 - 장르 : 2D 사이드뷰 액션 플랫포머
